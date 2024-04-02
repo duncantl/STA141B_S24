@@ -3,3 +3,5 @@
 
 I will put code, notes, R sessions from live coding in class, etc. from the course in this github repository and some also on Canvas.
 
+
++ [Piazza](https://piazza.com/class/lufnnjs0ub36ht)
