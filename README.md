@@ -5,3 +5,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 
 
 + [Piazza](https://piazza.com/class/lufnnjs0ub36ht)
+
++ [Canvas](https://canvas.ucdavis.edu/courses/877218)
+
+
