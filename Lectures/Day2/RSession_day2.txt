@@ -1,0 +1,12 @@
+.   extract_itcont.R        907 ESS[R] [none]    ~/Data/FEC/extract_itcont.R
+  * *shell*               12640 Shell:run        ~/Data/FEC/
+ %  FEC                    1268 Dired by name    ~/Data/FEC/
+  * u                      2204 Shell:run        ~/Data/FEC/
+    itcont22_small.txt  3011138 Text             ~/Data/FEC/itcont22_small.txt
+    Explore.md            15237 Markdown         ~/sta141b_23/Data/FEC/Explore.md
+    cloudhigh1.txt         4954 Text             ~/Data/NASAWeather/cloudhigh1.txt
+ %  NASAWeather           33937 Dired by name    ~/Data/NASAWeather/
+    *scratch*               145 Lisp Interaction 
+ %* *Messages*             2275 Messages         
+ %* *Flymake log*           268 Special          
+ %* *Completions*           133 Completion List  
