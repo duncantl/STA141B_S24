@@ -1,4 +1,4 @@
-wea =
+readWeather = wea = 
 function(f)
 {
     # read the data
@@ -6,7 +6,7 @@ function(f)
 
     # Got this from searching for this file format and finding
     # the variable descriptions.
-    names(ans) = c("month", "day", "time", "direct", "diffuse")
+    names(d) = c("month", "day", "time", "direct", "diffuse")
 
     # Get the metadata
     ll = readLines(f, 5)
