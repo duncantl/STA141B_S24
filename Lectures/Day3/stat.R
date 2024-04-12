@@ -15,7 +15,15 @@ function(file, lines)
 transformTable =
 function(d)    
 {
-  d
+    tmp = t(d)
+    ids = tmp[1,]
+    ans = as.data.frame(tmp[-1,])
+    names(ans) = trimws(ids)
+
+    w = names(ans) == "Day:Hour"
+    browser()
+    tmp2 = as.POSIXct(strptime(paste("2023", rownames(ans), ans[[2]]), "%Y %b %d:%H"))
+    
 }
 
 
