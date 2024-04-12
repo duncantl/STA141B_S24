@@ -9,3 +9,12 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 + [Canvas](https://canvas.ucdavis.edu/courses/877218)
 
 
+
++ Lectures
+     + [Day 1](Lectures/Day1)
+     + [Day 2](Lectures/Day2)
+     + [Day 2](Lectures/Day3)
+         + [Day 3 R session](Lectures/Day3/Rsession_day3.txt)		 
+     + [Day 4](Lectures/Day4)	 
+         + [lapply() & do.call()](Lectures/Day4/lapply_do.call.md)
+         + [Day 3 R session](Lectures/Day4/Day4Rsession.txt)
