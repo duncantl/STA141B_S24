@@ -1,0 +1,258 @@
+]0;NASAWeather~/Data/NASAWeather> cd ../FEC
+]0;FEC~/Data/FEC> R
+
+R Under development (unstable) (2022-12-18 r83472) -- "Unsuffered Consequences"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 90599 
+Time = 2024-04-04 10:36:22 
+Dir = /Users/duncan/Data/FEC 
+1> f = "itcont22_small.txt"
+[42:49] 2> file.exist(f)
+Error in file.exist(f) : could not find function "file.exist"
+No suitable frames for recover()
+[42:49] 2> file.exists(f)
+[1] TRUE
+[43:30] 3> head(f)
+[1] "itcont22_small.txt"
+[45:04] 4> readLines(f, n = 5)
+[1] "C00434563|N|Q3|P2024|202210149532339641|15E|IND|STEPHENSON, L. A.|TULSA|OK|741371906|NOT EMPLOYED|NOT EMPLOYED|09162022|25|C00401224|1931901|1639092||* EARMARKED CONTRIBUTION: SEE BELOW|4110420221605041955"                    
+[2] "C00434563|N|Q3|P2024|202210149532339663|15E|IND|MERRIAM, CAROLINE|WASHINGTON|DC|200073343|RAMSAY MERRIAM FUND|FOUNDATION PRESIDENT|09162022|10|C00401224|1931891|1639092||* EARMARKED CONTRIBUTION: SEE BELOW|4110420221605042023"
+[3] "C00434563|N|Q3|P2024|202210149532339785|15E|IND|SOLIZ, SUSAN|ALBUQUERQUE|NM|871096438|NOT EMPLOYED|NOT EMPLOYED|09162022|100|C00401224|1931925|1639092||* EARMARKED CONTRIBUTION: SEE BELOW|4110420221605042388"                  
+[4] "C00434563|N|Q3|P2024|202210149532339897|15E|IND|CASTELLANOS, ANDREA|LOS LUNAS|NM|870313193|NOT EMPLOYED|NOT EMPLOYED|09162022|25|C00401224|1931897|1639092||* EARMARKED CONTRIBUTION: SEE BELOW|4110420221605042723"              
+[5] "C00434563|N|Q3|P2024|202210149532339815|15E|IND|SCOTT, JOHN ARTHUR DOM|SANTA FE|NM|875052610|GOLDEN FLOWER CHINESE HERBS|OWNER|09162022|100|C00401224|1931895|1639092||* EARMARKED CONTRIBUTION: SEE BELOW|4110420221605042478"   
+[47:25] 5> read.csv
+function (file, header = TRUE, sep = ",", quote = "\"", dec = ".", 
+    fill = TRUE, comment.char = "", ...) 
+read.table(file = file, header = header, sep = sep, quote = quote, 
+    dec = dec, fill = fill, comment.char = comment.char, ...)
+<bytecode: 0x12019d790>
+<environment: namespace:utils>
+[49:43] 6> ? read.table
+WARNING: terminal is not fully functional
+Press RETURN to continue  
+
+read.table                package:utils                R Documentation
+
+Data Input
+
+Description:
+
+     Reads a file in table format and creates a data frame from it,
+     with cases corresponding to lines and variables to fields in the
+     file.
+
+Usage:
+
+     read.table(file, header = FALSE, sep = "", quote = "\"'",
+                dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+                row.names, col.names, as.is = !stringsAsFactors, tryLogical = TRUE,
+                na.strings = "NA", colClasses = NA, nrows = -1,
+:
+
+^
+Data Input
+
+Description:
+
+     Reads a file in table format and creates a data frame from it,
+     with cases corresponding to lines and variables to fields in the
+     file.
+
+Usage:
+
+     read.table(file, header = FALSE, sep = "", quote = "\"'",
+                dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+                row.names, col.names, as.is = !stringsAsFactors, tryLogical = TRUE,
+                na.strings = "NA", colClasses = NA, nrows = -1,
+                skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+                strip.white = FALSE, blank.lines.skip = TRUE,
+                comment.char = "#",
+                allowEscapes = FALSE, flush = FALSE,
+                stringsAsFactors = FALSE,
+                fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+     
+     read.csv(file, header = TRUE, sep = ",", quote = "\"",
+              dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.csv2(file, header = TRUE, sep = ";", quote = "\"",
+               dec = ",", fill = TRUE, comment.char = "", ...)
+     
+     read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+                dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.delim2(file, header = TRUE, sep = "\t", quote = "\"",
+                 dec = ",", fill = TRUE, comment.char = "", ...)
+:q
+[52:25] 7> 
+[52:25] 7> d = read.table(f, header = FALSE, sep  = "|")
+Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
+  line 127 did not have 21 elements
+
+Enter a frame number, or 0 to exit   
+
+1: read.table(f, header = FALSE, sep = "|")
+2: scan(file = file, what = what, sep = sep, quote = quote, dec = dec, nmax = nrows, skip = 0, na.strings = na.strings, quiet = TRUE, fill = fill, strip.white = strip.white, blank.lines.skip = blank.lines.skip, multi.line =
+
+Selection: 0
+[52:25] 7> ll = readLines(f, n = 130)
+[58:17] 8> ll[126:128]
+[1] "C00740597|N|Q3|P|202210159533293656|15|IND|SEYMORE, ALEKSANDER|MENLO PARK|CA|940256266|LEARN TO WIN|EXECUTIVE|09162022|250||7735800|1641974|||4102720221592491116"    
+[2] "C00740597|N|Q3|P|202210159533294077|15|IND|GEORGE, RACHEL|ATLANTA|GA|303274646|THE AARON'S COMPANY, INC.|ATTORNEY|09162022|500||7735726|1641974|||4102720221592492379"
+[3] "C00740597|N|Q3|P|202210159533294215|15|IND|SMITH, SARAH|MENLO PARK|CA|940255865|SARAH SMITH FUND|INVESTOR|09162022|1000||7735728|1641974|||4102720221592492792"       
+[58:30] 9> tmp = strsplit(ll[127], "|")[[1]]
+[01:24] 10> length(tmp)
+[1] 165
+[01:40] 11> class(tmp)
+[1] "character"
+[01:43] 12> tmp
+*** output flushed ***
+[02:04] 13> tmp = strsplit(ll[127], "|", fixed = TRUE)[[1]]
+[03:47] 14> length(tmp)
+[1] 21
+[03:51] 15> tmp
+ [1] "C00740597"                 "N"                         "Q3"                        "P"                         "202210159533294077"        "15"                        "IND"                      
+ [8] "GEORGE, RACHEL"            "ATLANTA"                   "GA"                        "303274646"                 "THE AARON'S COMPANY, INC." "ATTORNEY"                  "09162022"                 
+[15] "500"                       ""                          "7735726"                   "1641974"                   ""                          ""                          "4102720221592492379"      
+[07:29] 16> options(width = 70)
+[07:38] 17> tmp
+ [1] "C00740597"                 "N"                        
+ [3] "Q3"                        "P"                        
+ [5] "202210159533294077"        "15"                       
+ [7] "IND"                       "GEORGE, RACHEL"           
+ [9] "ATLANTA"                   "GA"                       
+[11] "303274646"                 "THE AARON'S COMPANY, INC."
+[13] "ATTORNEY"                  "09162022"                 
+[15] "500"                       ""                         
+[17] "7735726"                   "1641974"                  
+[19] ""                          ""                         
+[21] "4102720221592492379"      
+[07:39] 18> tmp = strsplit(ll[126:127], "|", fixed = TRUE)
+[09:44] 19> sapply(tmp, length)
+[1] 21 21
+[09:56] 20> d = read.table(f, header = FALSE, sep  = "|", nrow = 126)
+[10:28] 21> dim(d)
+[1] 126  21
+[10:44] 22> tail(d, 1)
+           V1 V2 V3 V4           V5 V6  V7                  V8
+126 C00740597  N Q3  P 2.022102e+17 15 IND SEYMORE, ALEKSANDER
+            V9 V10       V11          V12       V13     V14 V15 V16
+126 MENLO PARK  CA 940256266 LEARN TO WIN EXECUTIVE 9162022 250    
+        V17     V18 V19 V20         V21
+126 7735800 1641974         4.10272e+18
+[10:58] 23> ll[126]
+[1] "C00740597|N|Q3|P|202210159533293656|15|IND|SEYMORE, ALEKSANDER|MENLO PARK|CA|940256266|LEARN TO WIN|EXECUTIVE|09162022|250||7735800|1641974|||4102720221592491116"
+[11:09] 24> ll[127]
+[1] "C00740597|N|Q3|P|202210159533294077|15|IND|GEORGE, RACHEL|ATLANTA|GA|303274646|THE AARON'S COMPANY, INC.|ATTORNEY|09162022|500||7735726|1641974|||4102720221592492379"
+[11:49] 25> unlist(strsplit(ll[126], "|"))
+  [1] "C" "0" "0" "7" "4" "0" "5" "9" "7" "|" "N" "|" "Q" "3" "|" "P"
+ [17] "|" "2" "0" "2" "2" "1" "0" "1" "5" "9" "5" "3" "3" "2" "9" "3"
+ [33] "6" "5" "6" "|" "1" "5" "|" "I" "N" "D" "|" "S" "E" "Y" "M" "O"
+ [49] "R" "E" "," " " "A" "L" "E" "K" "S" "A" "N" "D" "E" "R" "|" "M"
+ [65] "E" "N" "L" "O" " " "P" "A" "R" "K" "|" "C" "A" "|" "9" "4" "0"
+ [81] "2" "5" "6" "2" "6" "6" "|" "L" "E" "A" "R" "N" " " "T" "O" " "
+ [97] "W" "I" "N" "|" "E" "X" "E" "C" "U" "T" "I" "V" "E" "|" "0" "9"
+[113] "1" "6" "2" "0" "2" "2" "|" "2" "5" "0" "|" "|" "7" "7" "3" "5"
+[129] "8" "0" "0" "|" "1" "6" "4" "1" "9" "7" "4" "|" "|" "|" "4" "1"
+[145] "0" "2" "7" "2" "0" "2" "2" "1" "5" "9" "2" "4" "9" "1" "1" "1"
+[161] "6"
+[14:10] 26> unlist(strsplit(ll[1:126], "|"))
+*** output flushed ***
+[14:33] 27> ch = unique(unlist(strsplit(ll[1:126], "|")))
+[14:45] 28> ch127 = unique(unlist(strsplit(ll[127], "|")))
+[15:02] 29> setdiff(ch127, ch)
+[1] "'"
+[16:06] 30> ll = readLines(f)
+[17:28] 31> tmp = strsplit(ll, "|", fixed = TRUE)
+[17:39] 32> table(sapply(tmp, length))
+
+   21 
+16000 
+[18:32] 33> formals(read.table)
+*** output flushed ***
+[20:59] 34> ll[127:128]
+[1] "C00740597|N|Q3|P|202210159533294077|15|IND|GEORGE, RACHEL|ATLANTA|GA|303274646|THE AARON'S COMPANY, INC.|ATTORNEY|09162022|500||7735726|1641974|||4102720221592492379"
+[2] "C00740597|N|Q3|P|202210159533294215|15|IND|SMITH, SARAH|MENLO PARK|CA|940255865|SARAH SMITH FUND|INVESTOR|09162022|1000||7735728|1641974|||4102720221592492792"       
+[22:57] 35> grep("'", ll)[1:4]
+[1] 127 227 234 441
+[25:07] 36> d = read.table(f, header = FALSE, sep  = "|", nrow = 228, quote = "")
+[28:18] 37> dim(d)
+[1] 228  21
+[28:34] 38> d = read.table(f, header = FALSE, sep  = "|",  quote = "")
+Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
+  line 15580 did not have 21 elements
+
+Enter a frame number, or 0 to exit   
+
+1: read.table(f, header = FALSE, sep = "|", quote = "")
+2: scan(file = file, what = what, sep = sep, quote = quote, dec = de
+
+Selection: 0
+[28:34] 38> ll[15580]
+[1] "C00633404|N|Q3|P|202210149532307881|15E|IND|SAKHO, ABDOULAYE|BRONX|NY|104664376|COMMODORE|LABORER LOCAL #79 NEW YORK CITY|09162022|15|C00401224|13563893|1638779||* EARMARKED CONTRIBUTION: SEE BELOW|4110820221616496427"
+[29:43] 39> z = read.table(textConnection(ll[15580]), header = FALSE, sep = "|", quote = "")
+[32:50] 40> dim(z)
+[1]  1 13
+[32:56] 41> zz[1, 13]
+Error: object 'zz' not found
+No suitable frames for recover()
+[32:56] 41> z[1, 13]
+[1] "LABORER LOCAL "
+[33:28] 42> z2 = read.table(textConnection(ll[15579:15581]), header = FALSE, sep = "|", quote = "")
+Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
+  line 2 did not have 21 elements
+
+Enter a frame number, or 0 to exit   
+
+1: read.table(textConnection(ll[15579:15581]), header = FALSE, sep =
+2: scan(file = file, what = what, sep = sep, quote = quote, dec = de
+
+Selection: 0
+[33:28] 42> z2 = read.table(textConnection(ll[15579:15581]), header = FALSE, sep = "|", quote = "", comment.char ="")
+[35:22] 43> dim(z2)
+[1]  3 21
+[35:26] 44> z = list.files(pattern = "indiv")
+[39:28] 45> 
+[39:28] 45> z
+[1] "indiv08.zip" "indiv12.zip" "indiv16.zip" "indiv20.zip"
+[5] "indiv22.zip" "indiv80.zip"
+[39:30] 46> substring(z, 6, 7)
+[1] "08" "12" "16" "20" "22" "80"
+[40:20] 47> paste0("itcont", substring(z, 6, 7), ".txt")
+[1] "itcont08.txt" "itcont12.txt" "itcont16.txt" "itcont20.txt"
+[5] "itcont22.txt" "itcont80.txt"
+[40:24] 48> cmds = sprintf("unzip %s itcont.txt; mv itcont.txt %s",  z, newFileNames)
+Error in sprintf("unzip %s itcont.txt; mv itcont.txt %s", z, newFileNames) : 
+  object 'newFileNames' not found
+
+Enter a frame number, or 0 to exit   
+
+1: sprintf("unzip %s itcont.txt; mv itcont.txt %s", z, newFileNames)
+
+Selection: 0
+[40:24] 48> newFileNames = paste0("itcont", substring(z, 6, 7), ".txt")
+[41:57] 49> newFileNames = paste0("itcont", substring(z, 6, 7), ".txt")
+[42:17] 50> cmds = sprintf("unzip %s itcont.txt; mv itcont.txt %s",  z, newFileNames)
+[42:21] 51> cmds
+[1] "unzip indiv08.zip itcont.txt; mv itcont.txt itcont08.txt"
+[2] "unzip indiv12.zip itcont.txt; mv itcont.txt itcont12.txt"
+[3] "unzip indiv16.zip itcont.txt; mv itcont.txt itcont16.txt"
+[4] "unzip indiv20.zip itcont.txt; mv itcont.txt itcont20.txt"
+[5] "unzip indiv22.zip itcont.txt; mv itcont.txt itcont22.txt"
+[6] "unzip indiv80.zip itcont.txt; mv itcont.txt itcont80.txt"
+[42:22] 52> 
