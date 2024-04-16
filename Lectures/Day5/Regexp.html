@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STA141B Spring 2024 - Day 5 Regular Expressions </title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# STA141B Spring 2024
+
+## Day 5 - Regular Expressions
+
+### Duncan Temple Lang
+### Professor, Statistics
+
+
+<div style="clear: both"/>
+
+<!-- <hr width="50%"/> -->
+
+---
+layout: true
+<div style="float:right"><i>STA141B-S24</i></div>
+
+---
+# Regular Expressions
+
++ Pattern matching in text
+
++ Cleaning, Extracting and Transforming data
+
++ Find strings that contain a pattern
+   + Which lines start with #
+   + Which line(s) contain the sequence of characters "TIME"
+   + which line(s) contains email, date(s), time, URL, Phone number, IP address, MAC address, ...
+   + text in quotes  - 'He said "this is it" and then left'
+
++ Find the specific pattern in the string
+   +  not just whether it contains pattern, but where in the strings the pattern occurs.
+
++ Replace/substitute pattern with another string/pattern
+
++ Extract matched pattern
+
+   
+---
+# Usefulness of Regular Expressions
+
++ From `Mastering Regular Expressions` book:
+```
+Regular expressions can save you time and aggravation.
+```
+   + They can also be frustrating and aggravating.
+
+```
+A command of regular expressions is an invaluable skill. Yet what is power
+in the hands of an expert can be fraught with peril for the unwary.  .....
+```
+
+```
+Once you've mastered regular expressions, they'll become an invaluable part of your toolkit.
+You will wonder how you ever got by without them.
+```
+
+---
+# Regular Expressions
+
++ Another opinion
+```
+If regular expressions are the solution to your problem, you now have 2 problems!
+```
+
++ But for data cleaning and transformation, they are "invaluable".
+   + Short recipes for getting what we want.
+
++ swiss army knife 
+
++ rarely the best tool for a specific task
+  + see if there is a specialized "parser" for your data, e.g., JSON, XML/HTML, YAML.
+  + but a good tool for many jobs
+
+---
+# Core Regular Expression R Functions
+
++ Regular Expressions - Powerful Domain-specific Language (DSL) for expressing patterns.
+
++ Several functions  that take a regular expression as a string
+  + pattern is written in regular expression *language*
+  + functions interpret regular expression to create complex matching procedure.
+
++ R Functions
+
++ Identify which elements contain pattern
+   + grep(), grepl(), gregexpr()
+
++ Substitute/Extract
+   + sub(), gsub(), regmatches()
+
++ Other functions supporting regular expressions
+  + strsplit()
+  + list.files(pattern = )
+  + agrep(), adist() - fuzzy matching, distance
+
+---
+# grep(), grepl(), gregexpr()
+
++ `grep("regex.pattern", characterVector)`
+   + returns all indices in characterVector in which the pattern was found
+
++ `grepl("regex.pattern", characterVector)`
+   + returns a logical vector with the same length as characterVector
+   + TRUE if that element contains the pattern, FALSE otherwise.
+
++ `gregexpr("regex.pattern", characterVector)`
+   + result for elements of characterVector
+   + gives the positions of all matches of the pattern in each of the elements of characterVector.
+
+```
+str = c("The central dogma of dog owners",
+        "She doggishly worked to identify the endogenous variables")
+m = gregexpr("dog", str)
+regmatches(str, m)
+```
+---
++ gsub(), sub()
+
+```r
+ans = gsub("pattern", "replace", charVector)
+```
+    + replaces each match of `pattern` with the content of `replace`
+    + `replace` can refer to content matched in `pattern`
+
++ gsub() - global substitution - all matches within each string
+```r
+gsub("dog", "cat", "The dogma of dog owners")
+[1] "The catma of cat owners"
+```
+
++ sub() - first match within each string
+```r
+sub("dog", "cat", "The dogma of dog owners")
+[1] "The catma of dog owners"
+```
+
+---
+# Regular Expression Language
+## Core elements
+
++ literal matching
++ wildcard
++ start and end - meta characters - ^ and $
+   + escaping meta-characters  (\\)
++ character classes
+   + named character classes  ( [[:space:][:punct:]]
+   + complement set   ([^])
++ quantifiers - ?, *, +, {m,n}
++ alternates (|)
++ grouping  ()
++ back references  (\\1)
+
+
+---
+# Regular Expression Language
+## Core elements
+
++ Literal patterns  - "dog", "JAN"
+
++ Wildcard - matches any single character
+   + `.`
+
++ Quantifiers
+   + `?` - zero or one occurrence
+   + `*` - zero or more occurences
+   + `+` - 1 or more occurrences
+   + `{n}` - exactly n occurrences
+   + `{n,}` - n or more occurrences   
+   + `{,n}` - zero up to  n occurrences
+   + `{m,n}` - between m and n occurrences, inclusive
+
+---
+# Anchors
+
++ Beginning of string  - `^`
+
++ End of string - `$`
+
++ Start of word - `\b`
+
+---
+# Alternation via Character Sets
+
++ Often want to match
+   + any number
+   + any lower-case letter
+   + any upper-case letter
+   + any punctuation character
+
++ Use character sets - list inside `[ ]`
+  +  Match A or X or Z
+```
+[AXZ]
+(A|X|Z)
+```
+
+
+---
+# Character Set Ranges
+
++ `[0123456789]` long to type.
++ Can use - to get ranges
+```
+  [0-9]
+  [a-fA-F]
+  [A-Za-z]
+```
+
+---
+# Named Character Sets
+
++ Include `[:name:]` within containing/outside [] pair.
+```
+[abc[:space:][:punct:]]
+```
+
++ Alphabetic characters `[:alpha:]`
++ lower case `[:lower:]`
++ upper case `[:upper:]`
++ Numbers `[:digit:]`
++ Punctuation `[:punct:]`
++ White space - `[:space:[`
+
++ [Named Character Sets](https://www.regular-expressions.info/posixbrackets.html)
+
+---
+# Opposite Set Ranges
+
++ Want everything but/except the elements in this set of characters.
+
++ Can put ^ at start of character set,  e.g.,  `[^a-f]`
+
+
+
+---
+# More complex Alternation  - OR
+
++ pattern1 OR pattern2 -  `dog|cat`
+
++ group the patterns via `()`
+
++ Start of string is From or To followed by : followed by space
+```
+"^(From|To): "
+``` 
+
+
+---
+# Escaping Special/Meta Characters
+
++ How do we match a literal `$` or `.`
+ + will be treated as special character.
+
++ Need to *escape*  - treat as literal.
+  + Preceed by \\
+```
+grepl("\\.", c("123", "123.45"))
+[1] FALSE  TRUE
+```
+
++ Find $
+```
+grepl("\\$", c("$123K", "less than $2.45", "less than 2.45"))
+[1] FALSE  TRUE
+```
+---
+# Extract via gregexpr()/regmatch()  
+
+```
+m = gregexpr("[0-9]{1,2}-[A-Z]{3}-(19|20)[0-9]{2}", x)
+regmatches(x, m)
+```
+
++ gregexec() can help get the sub-patterns in a convenient form.
+
+---
+# Groups
+
++ Sometimes want to transform string to combination of pat1, pat2, pat3, ...
+  + i.e. combine pat1, pat2, pat3, ... into a new string.
+
++ Put each pattern within () in regular expression.
+  + refer to it in replacement by group number - `\\1`, `\\2`, `\\3`, ...
+
+
+---
+# Greedy Matching
+
++ Each pattern matches as much as it can
++ Next pattern picks up from where previous one finished.
+
++ Consider
+
+```r
+x = "            TIME     : 16-JAN-1995 00:00"
+grepl("[0-9]{1,2}-[A-Z]{3}-(19|20)[0-9]{2}", x)
+```
+
++ Want to match and extract the "16-JAN-1995"
+```r
+gsub(".*([0-9]{1,2}-[A-Z]{3}-(19|20)[0-9]{2}).*", "\\1", x)
+```
+
++ But consider
+```r
+gsub(".*:", "", x)
+```
+    + Matches up to the : in 00:00 at the end of the string.
+
+---
+# Tutorials
+
+
++ [regular-expressions.info](https://www.regular-expressions.info/)
+
++ [https://cheatography.com/davechild/cheat-sheets/regular-expressions\
+/](https://cheatography.com/davechild/cheat-sheets/regular-expressions\
+/)
+
+
+---
+# Regular Expressions
+
++ Powerful Domain-specific Language (DSL) for expressing patterns in text.
+
++ Range from matching
+   + literal sequence of characters
+   + complex alternative patterns with different number
+
++ Succinct regular expression pattern as a string is a **program** to process each line
+   + So has to be correct
+   + Challenging to debug
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="remark-toc/index.js">     </script>   
+    <script>
+     var slideshow = remark.create();
+//     var toc = require('remark-toc');
+//     slideshow.use(toc);
+    </script>
+  </body>
+</html>

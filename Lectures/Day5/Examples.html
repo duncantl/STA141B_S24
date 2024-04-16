@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STA141B Spring 2024 - Day 5 Regular Expressions  - Example Scenarios </title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# STA141B Spring 2024
+
+## Day 5 - Regular Expressions - Example Scenarios
+
+### Duncan Temple Lang
+### Professor, Statistics
+
+<div style="clear: both"/>
+
+
+---
+layout: true
+
+<div style="float:right"><i>STA141B-S24</i></div>
+
+---
+
+# "Simple" Tabular Data
+
+```
+"","amount","percent","date"
+"1","$4,121","86%","2024/01/18"
+"2","$2,887","0%","2023/10/25"
+"3","$9,795","72%","2022-01-29"
+"4","$5,095","6%","2022/09/04"
+"5","$5,292","27%","2023/03/07"
+"6","$5,730","28%","03/11"
+"7","$6,575","21%","02/06"
+"8","$2,053","62%","02/11"
+"9","$3,100","1%","2021-12-16"
+"10","$5,975","8%","2023-12-02"
+"11","$124.23","85%","2023/05/17"
+```
+
++ How to get the columns to be numbers and dates?
+
+---
+# Computer Log Files
+
+```
+Dec 10 06:55:46 LabSZ sshd[24200]: reverse mapping checking getaddrinfo for ns.marryaldkfaczcz.com [173.234.31.186] failed - POSSIBLE BREAK-IN ATTEMPT!
+Dec 10 06:55:46 LabSZ sshd[24200]: Invalid user webmaster from 173.234.31.186
+Dec 10 06:55:46 LabSZ sshd[24200]: input_userauth_request: invalid user webmaster [preauth]
+Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): check pass; user unknown
+Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=173.234.31.186 
+Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2
+Dec 10 06:55:48 LabSZ sshd[24200]: Connection closed by 173.234.31.186 [preauth]
+Dec 10 07:02:47 LabSZ sshd[24203]: Connection closed by 212.47.254.145 [preauth]
+Dec 10 07:07:38 LabSZ sshd[24206]: Invalid user test9 from 52.80.34.196
+Dec 10 07:07:38 LabSZ sshd[24206]: input_userauth_request: invalid user test9 [preauth]
+Dec 10 07:07:38 LabSZ sshd[24206]: pam_unix(sshd:auth): check pass; user unknown
+```
+
+---
+# Log Files 
+
+```
+Jun 14 15:16:01 combo sshd(pam_unix)[19939]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4 
+Jun 14 15:16:02 combo sshd(pam_unix)[19937]: check pass; user unknown
+Jun 14 15:16:02 combo sshd(pam_unix)[19937]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4 
+Jun 15 02:04:59 combo sshd(pam_unix)[20882]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+Jun 15 02:04:59 combo sshd(pam_unix)[20884]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+Jun 15 02:04:59 combo sshd(pam_unix)[20883]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+Jun 15 02:04:59 combo sshd(pam_unix)[20885]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+Jun 15 02:04:59 combo sshd(pam_unix)[20886]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+Jun 15 02:04:59 combo sshd(pam_unix)[20892]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root
+```
+
+---
+# Computer Log Files
+
+```
+[**] [1:1113:5] WEB-MISC http directory traversal [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+03/16-10:50:38.760000 192.168.202.102:1234 -> 192.168.24.202:80
+TCP TTL:128 TOS:0x0 ID:46617 IpLen:20 DgmLen:197 DF
+***AP*** Seq: 0x4CC4BA16  Ack: 0x7A126DB8  Win: 0xFAF0  TcpLen: 20
+[Xref => http://www.whitehats.com/info/IDS297]
+
+[**] [1:2012886:2] ET POLICY Http Client Body contains passwd= in cleartext [**]
+[Classification: Potential Corporate Privacy Violation] [Priority: 1] 
+03/16-10:50:38.760000 192.168.202.102:1234 -> 192.168.24.202:80
+TCP TTL:63 TOS:0x0 ID:63299 IpLen:20 DgmLen:548 DF
+***A**** Seq: 0x4CC4B8B7  Ack: 0x7A126DB8  Win: 0x4180  TcpLen: 20
+```
++ How to read this information into a data.frame?
+
+---
+# Job Posting
+
++ [jobPost.md](jobPost.md)
+
++ [jobPost2.md](jobPost2.md)
+
++ How to get
+   + Salary information
+   + acroynms (e.g., NLP, AI, ML, DNN)
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="remark-toc/index.js">     </script>   
+    <script>
+     var slideshow = remark.create();
+//     var toc = require('remark-toc');
+//     slideshow.use(toc);
+    </script>
+  </body>
+</html>
