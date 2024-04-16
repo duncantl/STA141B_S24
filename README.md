@@ -22,3 +22,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	     + [Guidelines for writing report](Lectures/Day4/StructureOfReport.md)
          + [lapply() & do.call()](Lectures/Day4/lapply_do.call.md)
          + [Day 3 R session](Lectures/Day4/Day4Rsession.txt)
+     + [Day 5](Lectures/Day5)
+	     + [Scenarios (slides)](Lectures/Day5/Examples.html)
+	     + [Regular Expression Language](Lectures/Day5/Regexp.html)		 
+<!--	     + [examples](Lectures/Day5/examples.md) --?
