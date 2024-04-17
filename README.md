@@ -27,6 +27,4 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	     + [Regular Expression Language](Lectures/Day5/Regexp.html)		 
          + [job post 1](Lectures/Day5/jobPost.md)
          + [job post 2](Lectures/Day5/jobPost2.md)		 
-
-
-<!--	     + [examples](Lectures/Day5/examples.md) -->
+	     + [examples](Lectures/Day5/examples.md)

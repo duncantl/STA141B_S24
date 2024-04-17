@@ -12,8 +12,8 @@
 + And other prefixes/strings for other tables.
 
 
-```
-
+```{r}
+ll = readLines("../Day3/USA_CA_Bodega.Bay.CG.Light.Station.724995_TMYx.stat")
 grep(" - Monthly Statistics for Dry Bulb temperatures", ll)
 grep("- Maximum Dry Bulb temperature of", ll)
 ```
@@ -26,7 +26,7 @@ grep("- Maximum Dry Bulb temperature of", ll)
 + Want to remove the , and then call as.integer() or as.numeric().
   + We'd get NAs without removing the ','
 
-```
+```{r}
 vals = c("17,231", "8.91", "1,234.20")
 vals2 = as.numeric(gsub(",", "", vals))
 vals2
@@ -38,7 +38,7 @@ sum(vals2)
 + We often get data with dollar amounts of the form "$123.20" or a euro or any other currency
   identifying character.
 
-```
+```{r}
 x = c("$123.20", "$456.19", "€789.11", "¥432.00")
 ```
 
@@ -51,22 +51,22 @@ x = c("$123.20", "$456.19", "€789.11", "¥432.00")
    2. remove the first character
    3. remove the currency identifier at the start of the string
    
-```
+```{r}
 as.numeric(substring(x, 2))
 ```
 
-```
+```{r}
 as.numeric(gsub("^.", "", x))
 ```
 
-```
+```{r}
 as.numeric(gsub("^[$€¥]", "", x))
 ```
 
 The last of these allows us also to detect the characters in the middle of a string followed by
 digits
 
-```
+```{r}
 y = c("The amount is $123.20 after savings", "Total = $456.16", "Fin = €789.11 + VAT", "全部的: ¥432.00")
 grepl("[$€¥]([0-9]+)", y)
 
@@ -77,13 +77,13 @@ gsub(".*[$€¥]([0-9.]+).*", "\\1", y)
 ## % signs
 
 Consider "numbers" of the form 
-```
+```{r}
 p = c("99%", "23%")
 ```
 
 We need to remove the % to interpret as numbers.
 
-```
+```{r}
 as.numeric( gsub("%", "", p) )
 ```
 
@@ -97,10 +97,11 @@ Which lines contain
 
 ## Get the variable name from the file names
 
+```{r}
 ff = list.files("~/Data/NASAWeather", pattern = "txt$", full.names = TRUE)
 varNames = gsub("[0-9]{,2}\\.txt$", "", basename(ff))
 table(varNames)
-
+```
 
 Now we can 
 
@@ -112,13 +113,13 @@ Now we can
 
 ## Get and transform the Date
 
-```
+```{r}
 ll = readLines(filename)
 tm = ll[5]
 strsplit(tm, " +")[[1]] [ 4 ] 
 ```
 Or
-```
+```{r}
 gsub(" 00:00", "", gsub(".* : ", "", tm))
 ```
 
@@ -129,7 +130,7 @@ Figure out what we are doing in each of these.
 
 
 Remove the N or S.
-```
+```{r}
 lat = c("36.2N", "33.8N", "31.2N", "28.8N", "26.2N", "23.8N", "21.2N", 
 	    "18.8N", "16.2N", "13.8N", "11.2N", "8.8N", "6.2N", "3.8N", "1.2N", 
         "1.2S", "3.8S", "6.2S", "8.8S", "11.2S", "13.8S", "16.2S", "18.8S", 
@@ -140,7 +141,7 @@ lat2 = as.numeric(tmp)
 ```
 
 Multiply those that have S by -1
-```
+```{r}
 w = grepl("S", lat)
 lat2[w] = lat2[w] * -1
 ```
@@ -148,7 +149,7 @@ lat2[w] = lat2[w] * -1
 
 Alternatively, sometimes useful to get the N and S and then use that to subset another variable
 
-```
+```{r}
 mul = c(N = 1, S = 1)
 i = substring(lat, nchar(lat))
 lat3 = lat2* mul[ i ]
@@ -159,12 +160,12 @@ But we could  and in many ways it is more general.
 
 Remove all the digits and the . to leave only the N or the S
 
-```
+```{r}
 gsub("[0-9.]", "", lat)
 ```
 
 Or keep only the last character
-```
+```{r}
 gsub(".*([NS])", "\\1", lat)
 ```
 
