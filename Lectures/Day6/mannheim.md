@@ -56,7 +56,7 @@ ll = grepl("^#", ll, invert = TRUE, value = TRUE)
 ```
 els = strsplit(ll, ";")
 ```
-   + Note: I did `strsplit(";", ll)` since the regexp comes first in grep../gsub/...
+   + Note: I mistakenly typed `strsplit(";", ll)` since the regexp comes first in grep../gsub/...
 
 
 + For the first element, we get
@@ -115,7 +115,7 @@ m = matrix(tmp2, , 4, byrow = TRUE)
 + Have to split the pos
    + Can do that separately
    + But can also do at the same time
-
+   + Split also by ,
 ```
 tmp = unlist(lapply(els, function(x) x[1:4]))
 tmp2 = gsub(".*=", "", tmp)
@@ -137,12 +137,26 @@ m2[3:6] = lapply(m2[3:6], as.numeric)
 structure(1139643118358/1000, class = c("POSIXct","POSIXt"))
 ```
 
++ Doing this for the entire vector
+```
+m2$tm = structure(as.numeric(m2$timestamp)/1000, class = c("POSIXct","POSIXt"))
+```
+
 + Now we need to match the row here with the **rows** in `v` above
 
++ How rows dow need for each line
+    + It is the number elements  less 4 to account the t, id, pos, degree elements
 ```
 nels = sapply(els, length) - 4
 ```
+
++ So now we can use subsetting to repeat each row of m2 the correct number of times
 ```
 idx = rep(seq(along.with = els), nels)
 m2[ idx, ]
+```
+
++ And now we combine m2 and v
+```
+dt = cbind(m2[idx, ], v)
 ```

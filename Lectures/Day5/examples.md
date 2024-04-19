@@ -44,7 +44,7 @@ x = c("$123.20", "$456.19", "€789.11", "¥432.00")
 
 + Again, as.numeric() would give an NA if we passed it this.
 
-+ We need to remove the $.
++ We need to remove the $ and the other currency symbols.
 
 + $ is a special character in regular expressions so we have several ways we could deal with this:
    1. start after the first character with substring
@@ -63,14 +63,23 @@ as.numeric(gsub("^.", "", x))
 as.numeric(gsub("^[$€¥]", "", x))
 ```
 
-The last of these allows us also to detect the characters in the middle of a string followed by
+We can adapt the last of these to allow us to also detect the characters in the middle of a string followed by
 digits
 
 ```{r}
-y = c("The amount is $123.20 after savings", "Total = $456.16", "Fin = €789.11 + VAT", "全部的: ¥432.00")
+y = c("The amount is $123.20 after savings", "Total = $456.16", "Fin = €789.11 + VAT", "全部的: ¥432.00", "No Charge", "Sin cargo")
 grepl("[$€¥]([0-9]+)", y)
 
 gsub(".*[$€¥]([0-9.]+).*", "\\1", y)
+```
+
+In some circumstances, we might create a variable for the amount and pre-populate it with NAs.
+Then set just the values that have a matching pattern with the actual value
+```{r}
+amt = rep(NA, length(y))
+w = grepl("[$€¥]([0-9]+)", y)
+amt[w] = gsub(".*[$€¥]([0-9.]+).*", "\\1", y[w])
+amt = as.numeric(amt)
 ```
 
 
@@ -87,10 +96,6 @@ We need to remove the % to interpret as numbers.
 as.numeric( gsub("%", "", p) )
 ```
 
-
-## Find email addresses
-
-Which lines contain
 
 
 # NASA
@@ -178,10 +183,74 @@ When data come in free-form text, we have to find the elements above within the 
 Consider the [following part of a job posting from indeed](jobPost.md):
 
 
-
 + Often has much more structure. But if dealing with simple text
   + Find the salary information
   + Academic qualifications
      + required 
 	 + preferred
   + 
+
+
+
+
+## Find email addresses
+
+Which lines contain  `<something>@<domain>`
+
+
+## IP Addresses
+
+Consider the log files in Examples.html
+
+
+```
+Dec 10 06:55:46 LabSZ sshd[24200]: reverse mapping checking getaddrinfo for ns.marryaldkfaczcz.com [173.234.31.186] failed - POSSIBLE BREAK-IN ATTEMPT!
+Dec 10 06:55:46 LabSZ sshd[24200]: Invalid user webmaster from 173.234.31.186
+Dec 10 06:55:46 LabSZ sshd[24200]: input_userauth_request: invalid user webmaster [preauth]
+Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): check pass; user unknown
+Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=173.234.31.186 
+Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2
+Dec 10 06:55:48 LabSZ sshd[24200]: Connection closed by 173.234.31.186 [preauth]
+Dec 10 07:02:47 LabSZ sshd[24203]: Connection closed by 212.47.254.145 [preauth]
+Dec 10 07:07:38 LabSZ sshd[24206]: Invalid user test9 from 52.80.34.196
+Dec 10 07:07:38 LabSZ sshd[24206]: input_userauth_request: invalid user test9 [preauth]
+Dec 10 07:07:38 LabSZ sshd[24206]: pam_unix(sshd:auth): check pass; user unknown
+```
+
++ Find the lines that contain an IP address
++ Extract them
+
+
+```
+ll = readLines("log1.txt")
+grep("173.234.31.186", ll)
+```
+
++ Remember, . means any character. Works, but may be too general
+   + Would match 172x234...
+
++ Let's match an IP address generally
+
++ Looking for a number between 0 and 255 and then a . and then 3 more of these.
+   + We'll allow 256 or 999. 
+   + We can validate later.
+   + Or we can restrict to 0..255 but that is harder with regular expressions. 
+      + They don't understand the value, just the text.
+
+
+
+
+# Web Server Log
+
++ ../../Data/eeyore.log
+
+```
+114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /stat141/Code/Session1.txt HTTP/1.1" 404 223 "https://www.google.co.jp/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /favicon.ico HTTP/1.1" 404 209 "http://eeyore.ucdavis.edu/stat141/Code/Session1.txt" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+114.188.183.88 - - [01/Nov/2015:03:42:10 -0800] "GET /stat141/Code/ HTTP/1.1" 404 211 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+114.188.183.88 - - [01/Nov/2015:03:42:12 -0800] "GET /stat141/ HTTP/1.1" 200 4176 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+```
+
++
+
+# Mannheim Wireless Data
