@@ -11,6 +11,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 
 
 + [Bonus Idiom](Lectures/Day7/cumsum.md)
+   + cumsum() and grouping lines
    + Related to and might be useful for assignment 2 - Spam Email.
 
 + Lectures
