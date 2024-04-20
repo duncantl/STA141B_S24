@@ -14,6 +14,9 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
    + cumsum() and grouping lines
    + Related to and might be useful for assignment 2 - Spam Email.
 
++ [Note on Dates & Locales](Docs/locale.md)
+   + [Function](Docs/locale.R)
+   
 + [Brief Git Tutorial](GitBasics.md)
 
 + Lectures
