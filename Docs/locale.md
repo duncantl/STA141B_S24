@@ -124,3 +124,34 @@ And we can check the locale is back to its original
 ```
 Sys.getlocale() == orig
 ```
+
+
+
+It is always good to know what locale you are using and share that with others when asking
+questions, e.g., on Piazza.
+It is good to report the output from `sessionInfo()`, e.g.,
+
+```
+R Under development (unstable) (2024-04-19 r86451)
+Platform: aarch64-apple-darwin22.2.0
+Running under: macOS Ventura 13.1
+
+Matrix products: default
+BLAS:   /Users/duncan/Rtrunk3/build/lib/libRblas.dylib 
+LAPACK: /Users/duncan/Rtrunk3/build/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Los_Angeles
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+[1] RShellTools_0-1.0
+
+loaded via a namespace (and not attached):
+[1] compiler_4.5.0
+```
