@@ -1,0 +1,749 @@
+rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]+) (-|[0-9]+) "([^"])+" "([^"]+)"'
+[43:19] 76> 
+[43:19] 76> rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]+) (-|[0-9]+) "([^"])+" "([^"]+)"'
+w = grepl(rx, ll)
+[45:32] 77> [45:32] 78> table(w)
+w
+FALSE  TRUE 
+    1  8547 
+[45:36] 79> ll[!w]
+[1] "41.220.68.249 - - [03/Nov/2015:02:41:58 -0800] \"GET /stat141/Lectures/Day1.pdf HTTP/1.1\" 200 116340 \"\" \"Mozilla/5.0 (Linux; Android 4.2.2; en-us; SAMSUNG GT-I9192 Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Version/1.0 Chrome/18.0.1025.308 Mobile Safari/535.19\""
+[45:53] 80> cat(ll[!w])
+41.220.68.249 - - [03/Nov/2015:02:41:58 -0800] "GET /stat141/Lectures/Day1.pdf HTTP/1.1" 200 116340 "" "Mozilla/5.0 (Linux; Android 4.2.2; en-us; SAMSUNG GT-I9192 Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Version/1.0 Chrome/18.0.1025.308 Mobile Safari/535.19"[47:04] 81> 
+[47:04] 81> rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]+) (-|[0-9]+) '
+[47:29] 82> table(grepl(rx, ll))
+
+
+TRUE 
+8548 
+[47:44] 83> [47:44] 83> rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]+) (-|[0-9]+) "([^"])*" "([^"]+)"'
+[49:30] 84> table(grepl(rx, ll))
+
+
+TRUE 
+8548 
+[49:34] 85> [49:34] 85> 
+[49:34] 85> m = gregexec(rx, ll)
+[50:42] 86> 
+[50:42] 86> m = gregexec(rx, ll, perl = TRUE)
+[50:55] 87> els = regmatches(ll, m)
+[51:01] 88> els[[1]]
+      [,1]                                                                                                                                                                                                                                                
+ [1,] "114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] \"GET /stat141/Code/Session1.txt HTTP/1.1\" 404 223 \"https://www.google.co.jp/\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36\""
+ [2,] "114.188.183.88"                                                                                                                                                                                                                                    
+ [3,] "-"                                                                                                                                                                                                                                                 
+ [4,] "01/Nov/2015:03:41:50 -0800"                                                                                                                                                                                                                        
+ [5,] "GET"                                                                                                                                                                                                                                               
+ [6,] "/stat141/Code/Session1.txt"                                                                                                                                                                                                                        
+ [7,] "1.1"                                                                                                                                                                                                                                               
+ [8,] "404"                                                                                                                                                                                                                                               
+ [9,] "223"                                                                                                                                                                                                                                               
+[10,] "/"                                                                                                                                                                                                                                                 
+[11,] "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"                                                                                                                                      
+[51:03] 89> class(els)
+[1] "list"
+[52:55] 90> length(els)
+[1] 8548
+[52:58] 91> length(ll)
+[1] 8548
+[53:03] 92> table(sapply(els, class))
+
+ array matrix 
+  8548   8548 
+[53:20] 93> class(els[[1]])
+[1] "matrix" "array" 
+[53:34] 94> as.data.frame(els[[1]])
+                                                                                                                                                                                                                                             V1
+1  114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /stat141/Code/Session1.txt HTTP/1.1" 404 223 "https://www.google.co.jp/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+2                                                                                                                                                                                                                                114.188.183.88
+3                                                                                                                                                                                                                                             -
+4                                                                                                                                                                                                                    01/Nov/2015:03:41:50 -0800
+5                                                                                                                                                                                                                                           GET
+6                                                                                                                                                                                                                    /stat141/Code/Session1.txt
+7                                                                                                                                                                                                                                           1.1
+8                                                                                                                                                                                                                                           404
+9                                                                                                                                                                                                                                           223
+10                                                                                                                                                                                                                                            /
+11                                                                                                                                 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+[54:41] 95> dim(els[[1]])
+[1] 11  1
+[55:25] 96> as.data.frame(t(els[[1]]))
+                                                                                                                                                                                                                                            V1
+1 114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /stat141/Code/Session1.txt HTTP/1.1" 404 223 "https://www.google.co.jp/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+              V2 V3                         V4  V5                         V6  V7  V8  V9 V10
+1 114.188.183.88  - 01/Nov/2015:03:41:50 -0800 GET /stat141/Code/Session1.txt 1.1 404 223   /
+                                                                                                           V11
+1 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+[55:52] 97> tmp = as.data.frame(t(els[[1]]))
+[55:59] 98> dim(tmp)
+[1]  1 11
+[56:02] 99> tmp = lapply(els, function(x) as.data.frame(t(x)))
+[57:30] 100> table(sapply(tmp, class))
+
+data.frame 
+      8548 
+[57:38] 101> table(sapply(tmp, nrow))
+
+   1 
+8548 
+[57:48] 102> table(sapply(tmp, ncol))
+
+  11 
+8548 
+[57:53] 103> d = do.call(rbind, tmp)
+[58:32] 104> dim(d)
+[1] 8548   11
+[58:35] 105> head(d)
+*** output flushed ***
+[58:49] 106> d = d[, -1]
+[59:13] 107> head(d)
+              V2 V3                         V4  V5                         V6  V7  V8   V9 V10
+1 114.188.183.88  - 01/Nov/2015:03:41:50 -0800 GET /stat141/Code/Session1.txt 1.1 404  223   /
+2 114.188.183.88  - 01/Nov/2015:03:41:50 -0800 GET               /favicon.ico 1.1 404  209   t
+3 114.188.183.88  - 01/Nov/2015:03:42:10 -0800 GET             /stat141/Code/ 1.1 404  211   -
+4 114.188.183.88  - 01/Nov/2015:03:42:12 -0800 GET                  /stat141/ 1.1 200 4176   -
+5 114.188.183.88  - 01/Nov/2015:03:42:13 -0800 GET         /stat141/Class.css 1.1 200 1973   /
+6 114.188.183.88  - 01/Nov/2015:03:42:13 -0800 GET     /stat141/OmegaTech.css 1.1 200 5221   /
+                                                                                                           V11
+1 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+2 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+3 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+4 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+5 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+6 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+[59:17] 108> sapply(d, class)
+         V2          V3          V4          V5          V6          V7          V8          V9         V10         V11 
+"character" "character" "character" "character" "character" "character" "character" "character" "character" "character" 
+[59:39] 109> table(nchar(d$V10))
+
+   0    1 
+   1 8547 
+[01:23] 110> rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]+) (-|[0-9]+) "([^"]*)" "([^"]+)"'
+[04:50] 111> m = gregexec(rx, ll, perl = TRUE)
+[04:54] 112> els = regmatches(ll, m)
+[04:59] 113> tmp = lapply(els, function(x) as.data.frame(t(x)))
+[05:05] 114> d = do.call(rbind, tmp)
+[05:16] 115> d = d[, -1]
+[05:20] 116> dim(d)
+[1] 8548   10
+[05:22] 117> head(d)
+              V2 V3                         V4  V5                         V6  V7  V8   V9
+1 114.188.183.88  - 01/Nov/2015:03:41:50 -0800 GET /stat141/Code/Session1.txt 1.1 404  223
+2 114.188.183.88  - 01/Nov/2015:03:41:50 -0800 GET               /favicon.ico 1.1 404  209
+3 114.188.183.88  - 01/Nov/2015:03:42:10 -0800 GET             /stat141/Code/ 1.1 404  211
+4 114.188.183.88  - 01/Nov/2015:03:42:12 -0800 GET                  /stat141/ 1.1 200 4176
+5 114.188.183.88  - 01/Nov/2015:03:42:13 -0800 GET         /stat141/Class.css 1.1 200 1973
+6 114.188.183.88  - 01/Nov/2015:03:42:13 -0800 GET     /stat141/OmegaTech.css 1.1 200 5221
+                                                  V10
+1                           https://www.google.co.jp/
+2 http://eeyore.ucdavis.edu/stat141/Code/Session1.txt
+3                                                   -
+4                                                   -
+5                  http://eeyore.ucdavis.edu/stat141/
+6                  http://eeyore.ucdavis.edu/stat141/
+                                                                                                           V11
+1 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+2 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+3 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+4 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+5 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+6 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+[05:29] 118> names(d) = c("IP", "login", "time", "operation", "path", "httpVersion", "status", "numBytes", "referrer", "browserInfo")
+[07:32] 119> d$status = as.integer(d$status)
+[07:42] 120> d$numBytes = as.integer(d$numBytes)
+Warning message:
+NAs introduced by coercion 
+[07:56] 121> table(d$status[ is.na(d$numBytes) ])
+
+ 200  304  404 
+ 239 2291    7 
+[09:31] 122> head(d$time)
+[1] "01/Nov/2015:03:41:50 -0800" "01/Nov/2015:03:41:50 -0800" "01/Nov/2015:03:42:10 -0800" "01/Nov/2015:03:42:12 -0800"
+[5] "01/Nov/2015:03:42:13 -0800" "01/Nov/2015:03:42:13 -0800"
+[09:59] 123> as.numeric(d$time[1])
+[1] NA
+Warning message:
+NAs introduced by coercion 
+[10:28] 124> as.Date(d$time[1])
+Error in charToDate(x) : 
+  character string is not in a standard unambiguous format
+
+Enter a frame number, or 0 to exit   
+
+1: as.Date(d$time[1])
+2: as.Date.character(d$time[1])
+3: charToDate(x)
+
+Selection: 0
+[10:28] 124> t = d$time[1]
+[11:53] 125> t
+[1] "01/Nov/2015:03:41:50 -0800"
+[11:54] 126> strsplit(t, ":")
+[[1]]
+[1] "01/Nov/2015" "03"          "41"          "50 -0800"   
+
+[13:25] 127> 
+[15:11] 129> head(as.Date(gsub(":.*", "", d$time), "%d/%b/%Y"))
+[1] "2015-11-01" "2015-11-01" "2015-11-01" "2015-11-01" "2015-11-01" "2015-11-01"
+[16:04] 130> head(d$time)
+[1] "01/Nov/2015:03:41:50 -0800" "01/Nov/2015:03:41:50 -0800" "01/Nov/2015:03:42:10 -0800" "01/Nov/2015:03:42:12 -0800"
+[5] "01/Nov/2015:03:42:13 -0800" "01/Nov/2015:03:42:13 -0800"
+[16:14] 131> head(gsub(" -0800", "", d$time))
+[1] "01/Nov/2015:03:41:50" "01/Nov/2015:03:41:50" "01/Nov/2015:03:42:10" "01/Nov/2015:03:42:12" "01/Nov/2015:03:42:13"
+[6] "01/Nov/2015:03:42:13"
+[16:43] 132> tmp = as.POSIXct( strptime( gsub(" -0800", "", d$time), "%d/%b/%Y:%H:%M:%S") )
+[17:30] 133> head(tmp)
+[1] "2015-11-01 03:41:50 PST" "2015-11-01 03:41:50 PST" "2015-11-01 03:42:10 PST" "2015-11-01 03:42:12 PST"
+[5] "2015-11-01 03:42:13 PST" "2015-11-01 03:42:13 PST"
+[17:32] 134> rx
+[1] "^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] \"([A-Z]+) ([^ ]+) HTTP/(1.[01])\" ([0-9]+) (-|[0-9]+) \"([^\"]*)\" \"([^\"]+)\""
+[18:37] 135> 
+[18:37] 135> 
+[18:37] 135> gsub("$", "", "$1,234.23")
+[1] "$1,234.23"
+[20:32] 136> gsub("\\$", "", "$1,234.23")
+[1] "1,234.23"
+[20:59] 137> as.integer(gsub("\\$", "", "$1,234.23"))
+[1] NA
+Warning message:
+NAs introduced by coercion 
+[21:06] 138> gsub("\\$|,", "", "$1,234.23")
+[1] "1234.23"
+[21:21] 139> gsub("[$,]", "", "$1,234.23")
+[1] "1234.23"
+[21:40] 140> cur = c("$1,234.23", "345,678")
+[22:24] 141> cur
+[1] "$1,234.23" "345,678"  
+[22:25] 142> grepl("\\$", cur)
+[1]  TRUE FALSE
+[22:36] 143> cur2 = cur
+[22:42] 144> w = grepl("\\$", cur)
+[22:53] 145> cur2[w] = gsub("\\$", "", cur2[w])
+[23:08] 146> gsub("[$,]", "", cur)
+[1] "1234.23" "345678" 
+[24:19] 147> cur = c("$1,234.23", "345,678", "12")
+[24:41] 148> gsub("[$,]", "", cur)
+[1] "1234.23" "345678"  "12"     
+[24:43] 149> 
+[24:43] 149> 
+[24:43] 149> l2 = readLines("../Day3/USA_CA_Bodega.Bay.CG.Light.Station.724995_TMYx.stat", encoding = "latin1")
+[30:42] 150> length(grep("^ - ", l2, value = TRUE))
+[1] 64
+[31:08] 151> head(grep("^ - ", l2, value = TRUE))
+[1] " - Actual Data Years for Monthly Data**"                                              
+[2] " - ** Not all weather data sources represent contiguous years."                       
+[3] " - ** Monthly data values may come from different years."                             
+[4] " - Displaying Design Conditions calculated from this weather source data."            
+[5] " -  The following design temperature statistics are calculated based on THIS weather "
+[6] " -  source data ONLY and may not be representative of a long-term period of record"   
+[31:12] 152> head(grep("^ - ", l2))
+[1] 19 22 23 25 26 27
+[31:37] 153> length(grep("^ - (Monthly|Average)", l2))
+[1] 35
+[33:00] 154> grep("^ - (Monthly|Average)", l2, value = TRUE)
+ [1] " - Monthly Statistics for Dry Bulb temperatures [C]"                                           
+ [2] " - Monthly Statistics for Extreme Dry Bulb temperatures [C]"                                   
+ [3] " - Monthly Statistics for Dew Point temperatures [C]"                                          
+ [4] " - Average Hourly Statistics for Dry Bulb temperatures [C]"                                    
+ [5] " - Average Hourly Statistics for Dew Point temperatures [C]"                                   
+ [6] " - Monthly Statistics for Relative Humidity [%]"                                               
+ [7] " - Average Hourly Relative Humidity [%]"                                                       
+ [8] " - Monthly Statistics for Enthalpy [kJ/kg]"                                                    
+ [9] " - Average Hourly Enthalpy [kJ/kg]"                                                            
+[10] " - Monthly Indicators for Precipitation/Moisture [kPa]"                                        
+[11] " - Monthly Statistics for Wind Chill/HeatIndex temperatures [C] **"                            
+[12] " - Monthly Statistics for WindChill Cautions"                                                  
+[13] " - Monthly Statistics for HeatIndex Cautions"                                                  
+[14] " - Monthly Statistics for Humidex Discomfort Calculation (HeatIndex) [HumidexValue]"           
+[15] " - Monthly Statistics for UTCI - Universal Thermal Climate Index [Stress] [Calc Value]"        
+[16] " - Monthly Wind Direction {Interval 11.25 deg from displayed deg) [%]"                         
+[17] " - Monthly Statistics for Wind Speed [m/s]"                                                    
+[18] " - Average Hourly Statistics for Wind Speed [m/s]"                                             
+[19] " - Average Hourly Statistics for Wind Direction [Degrees] {N=0,E=90,S=180,W=270}"              
+[20] " - Monthly Statistics for Liquid Precipitation [mm]"                                           
+[21] " - Monthly Statistics for Snow Depth [cm]"                                                     
+[22] " - Monthly Statistics for Albedo []"                                                           
+[23] " - Monthly Statistics for Solar Radiation  (Direct Normal, Diffuse, Global Horizontal) [Wh/m²]"
+[24] " - Average Hourly Statistics for Direct Normal Solar Radiation [Wh/m²]"                        
+[25] " - Average Hourly Statistics for Diffuse Horizontal Solar Radiation [Wh/m²]"                   
+[26] " - Average Hourly Statistics for Global Horizontal Solar Radiation [Wh/m²]"                    
+[27] " - Monthly Sunshine/Daylight (Daily Average) [hours]"                                          
+[28] " - Monthly Statistics for Horizontal Infrared Radiation Intensity from Sky [Wh/m²]"            
+[29] " - Average Hourly Statistics for Horizontal Infrared Radiation Intensity from Sky [Wh/m²]"     
+[30] " - Monthly Statistics for Illuminance  (Direct Normal, Diffuse, Global Horizontal) [kLux]"     
+[31] " - Monthly Statistics for Zenith Luminance [kCD/m²] **"                                        
+[32] " - Average Hourly Statistics for Total Sky Cover [%]"                                          
+[33] " - Average Hourly Statistics for Opaque Sky Cover [%]"                                         
+[34] " - Monthly Calculated \"undisturbed\" Ground Temperatures** [C]"                               
+[35] " - Monthly Weather File Heating/Cooling Degree Days/Hours []"                                  
+[33:15] 155> w = grepl("^ - (Monthly|Average)", l2)
+[34:17] 156> length(w)
+[1] 739
+[34:20] 157> table(w)
+w
+FALSE  TRUE 
+  704    35 
+[34:30] 158> head(w)
+[1] FALSE FALSE FALSE FALSE FALSE FALSE
+[34:51] 159> head(w, 30)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[22] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[35:07] 160> head(w, 50)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[22] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[43] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[35:12] 161> cumsum(w)
+  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+ [42]  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2
+ [83]  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4
+[124]  4  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  6  6  6  6  6  6  6  6  6  6  6
+[165]  6  6  6  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  8  8  8  8  9  9  9  9  9
+[206]  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9 10 10 10 10 11 11 11 11 11 11 11 11 11 11 11 11 11
+[247] 11 11 11 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 14 14 14 14 14 14 14
+[288] 14 14 14 14 14 14 14 14 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 16 16 16 16 16 16 16
+[329] 16 16 16 16 16 16 16 16 16 16 16 16 17 17 17 17 17 17 17 17 17 17 17 17 17 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18
+[370] 18 18 18 18 18 18 18 18 18 18 18 18 18 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19
+[411] 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 19 20 20 20 20 20 20 20 21 21 21 21 21 22 22 22 22 23 23 23
+[452] 23 23 23 23 23 23 23 23 23 23 23 23 23 23 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24
+[493] 24 24 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 26 26 26 26 26 26 26 26 26 26
+[534] 26 26 26 26 26 26 26 26 26 26 26 26 26 26 26 26 26 26 26 27 27 27 27 27 27 27 28 28 28 28 29 29 29 29 29 29 29 29 29 29 29
+[575] 29 29 29 29 29 29 29 29 29 29 29 29 29 29 29 29 29 29 30 30 30 30 30 30 30 30 30 30 31 31 31 31 31 32 32 32 32 32 32 32 32
+[616] 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33
+[657] 33 33 33 33 33 33 33 33 33 34 34 34 34 34 34 34 34 34 34 34 34 34 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35
+[698] 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35
+[739] 35
+[35:33] 162> groupNum = cumsum(w)
+[36:15] 163> g = split(l2, groupNum)
+[36:47] 164> g[[1]]
+ [1] " -EnergyPlus Weather Converter Version 2022.11.03"                                                 
+ [2] " Statistics for USA_CA_Bodega.Bay.CG.Light.Station.724995_TMYx"                                    
+ [3] " Location -- Bodega.Bay.CG.Light.Station CA USA  "                                                 
+ [4] "      {N 38° 18.72'} {W 123° 3.10'} {GMT -8.0 Hours}"                                              
+ [5] " Elevation --     4 m above sea level"                                                             
+ [6] " Standard Pressure at Elevation -- 101277 Pa"                                                      
+ [7] " Data Source -- SRC-TMYx"                                                                          
+ [8] ""                                                                                                  
+ [9] " WMO Station 724995"                                                                               
+[10] " -alternate WMO Station same"                                                                      
+[11] ""                                                                                                  
+[12] " Comment 1: NCEI ISD/ERA5-CRN - #years=[14] Period of Record=2008-2021; Jan=2021; "                
+[13] " Feb=2021; Mar=2018; Apr=2015; May=2013; Jun=2016; Jul=2018; Aug=2020; Sep=2015; "                 
+[14] " Oct=2018; Nov=2018; Dec=2012"                                                                     
+[15] ""                                                                                                  
+[16] " Comment 2: Downloaded from Climate.Onebuilding.org -- Ground temps represent "                    
+[17] " undisturbed earth temperatures - calculated from this weather data."                              
+[18] ""                                                                                                  
+[19] " - Actual Data Years for Monthly Data**"                                                           
+[20] "         Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                             
+[21] "         2021\t2021\t2018\t2015\t2013\t2016\t2018\t2020\t2015\t2018\t2018\t2012\t"                 
+[22] " - ** Not all weather data sources represent contiguous years."                                    
+[23] " - ** Monthly data values may come from different years."                                          
+[24] ""                                                                                                  
+[25] " - Displaying Design Conditions calculated from this weather source data."                         
+[26] " -  The following design temperature statistics are calculated based on THIS weather "             
+[27] " -  source data ONLY and may not be representative of a long-term period of record"                
+[28] " -  normally used for design temperatures. Also, note that dew point temperatures are"             
+[29] " -  listed where wet-bulb temperatures are normally presented."                                    
+[30] ""                                                                                                  
+[31] " \tDesign Stat\tColdest Month\tHDB 99.6%\tHDB 99%\tAvg DB Range"                                   
+[32] " \t   Units   \t    {}   \t   {°C}   \t  {°C}  \t   {delta°C}"                                     
+[33] " \t  Heating  \t12\t  2.4\t  3.5\t  5.5"                                                           
+[34] ""                                                                                                  
+[35] " \tDesign Stat\tHottest Month\tCDB .4%\tCDB 1%\tCDB 2%\tCDP .4%\tCDP 1%\tCDP 2%\tAvg DB Range"     
+[36] " \t   Units   \t    {}   \t  {°C}  \t  {°C} \t  {°C} \t  {°C}  \t  {°C} \t  {°C} \t   {delta°C}"   
+[37] " \t  Cooling  \t11\t 20.6\t 19.6\t 18.7\t 16.2\t 15.7\t 15.3\t  5.5"                               
+[38] ""                                                                                                  
+[39] " \tDesign Stat\tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec"                        
+[40] " \t   Units   \t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}\t{m/s}"
+[41] " \tMax WS\t  9.7\t  7.4\t  8.0\t  6.6\t  6.5\t  6.7\t  5.8\t  6.0\t  6.4\t  7.0\t  8.2\t  7.6"     
+[42] ""                                                                                                  
+[43] " - Heating/Cooling Degree Days/Hours calculated from this weather file are later in this report."  
+[44] ""                                                                                                  
+[45] " ========================= Source Weather Data Statistics ========================="               
+[46] " - The following information is derived directly from the source weather data."                    
+[47] " - It may not be indicative of the long term climate for this location."                           
+[48] ""                                                                                                  
+[36:50] 165> g[[2]]
+ [1] " - Monthly Statistics for Dry Bulb temperatures [C]"                                                   
+ [2] " \t           \tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                          
+ [3] " \tMaximum \t 18.8\t 14.4\t 19.2\t 17.7\t 20.5\t 18.0\t 18.9\t 21.6\t 20.2\t 18.9\t 22.5\t 16.0\t"     
+ [4] " \t Day:Hour\t19:16\t24:22\t 6:15\t30:14\t 2:10\t 9:14\t20:13\t16:15\t 8:11\t 2:11\t12:14\t11:14\t"    
+ [5] ""                                                                                                      
+ [6] " \tMinimum \t  2.0\t  4.2\t  1.7\t  4.8\t  6.9\t  7.2\t  9.3\t  9.5\t  8.9\t  8.0\t  3.7\t  1.3\t"     
+ [7] " \t Day:Hour\t26:09\t17:08\t 4:08\t 6:07\t 1:04\t27:05\t31:06\t 8:05\t 5:07\t16:07\t10:03\t20:06\t"    
+ [8] ""                                                                                                      
+ [9] " \tDaily Avg\t9.9  \t9.7  \t10.0 \t10.7 \t11.2 \t12.5 \t13.4 \t13.7 \t14.3 \t13.4 \t11.9 \t10.0 \t"    
+[10] ""                                                                                                      
+[11] " \tDaily Range\t5.6  \t5.1  \t5.7  \t5.9  \t5.6  \t5.4  \t5.0  \t5.4  \t5.9  \t4.9  \t6.4  \t5.1  \t"  
+[12] ""                                                                                                      
+[13] " \tDayTime Max\t18.8 \t14.0 \t19.2 \t17.7 \t20.5 \t18.0 \t18.9 \t21.6 \t20.2 \t18.9 \t22.5 \t16.0 \t"  
+[14] ""                                                                                                      
+[15] " \tDayTime Min\t2.0  \t4.2  \t1.7  \t4.8  \t7.3  \t9.0  \t9.4  \t10.2 \t8.9  \t8.0  \t5.2  \t1.5  \t"  
+[16] ""                                                                                                      
+[17] " \tDayTime Avg\t10.6 \t10.4 \t10.8 \t11.8 \t12.6 \t13.8 \t14.4 \t14.8 \t15.5 \t14.2 \t12.9 \t10.6 \t"  
+[18] ""                                                                                                      
+[19] " \tNightTime Max\t17.7 \t14.4 \t14.0 \t12.3 \t16.1 \t15.0 \t16.5 \t18.7 \t18.4 \t16.4 \t15.7 \t15.0 \t"
+[20] ""                                                                                                      
+[21] " \tNightTime Min\t4.2  \t4.5  \t2.7  \t5.0  \t6.9  \t7.2  \t9.3  \t9.5  \t9.1  \t8.8  \t3.7  \t1.3  \t"
+[22] ""                                                                                                      
+[23] " \tNightTime Avg\t9.3  \t9.0  \t9.2  \t9.5  \t9.9  \t11.3 \t12.4 \t12.6 \t13.1 \t12.6 \t10.9 \t9.4  \t"
+[24] ""                                                                                                      
+[25] "   - Maximum Dry Bulb temperature of  22.5C on Nov 12"                                                 
+[26] "   - Minimum Dry Bulb temperature of   1.3C on Dec 20"                                                 
+[27] ""                                                                                                      
+[37:03] 166> g[[3]]
+[1] " - Monthly Statistics for Extreme Dry Bulb temperatures [C]"                                       
+[2] " \t  #Days  \tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                        
+[3] " \tMax >= 32\t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t"
+[4] " \tMax <=  0\t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t"
+[5] " \tMin <=  0\t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t"
+[6] " \tMin <=-18\t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t     \t"
+[7] ""                                                                                                  
+[37:15] 167> length(g)
+[1] 36
+[37:34] 168> g[[36]]
+*** output flushed ***
+[37:51] 169> g[[2]]
+ [1] " - Monthly Statistics for Dry Bulb temperatures [C]"                                                   
+ [2] " \t           \tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                          
+ [3] " \tMaximum \t 18.8\t 14.4\t 19.2\t 17.7\t 20.5\t 18.0\t 18.9\t 21.6\t 20.2\t 18.9\t 22.5\t 16.0\t"     
+ [4] " \t Day:Hour\t19:16\t24:22\t 6:15\t30:14\t 2:10\t 9:14\t20:13\t16:15\t 8:11\t 2:11\t12:14\t11:14\t"    
+ [5] ""                                                                                                      
+ [6] " \tMinimum \t  2.0\t  4.2\t  1.7\t  4.8\t  6.9\t  7.2\t  9.3\t  9.5\t  8.9\t  8.0\t  3.7\t  1.3\t"     
+ [7] " \t Day:Hour\t26:09\t17:08\t 4:08\t 6:07\t 1:04\t27:05\t31:06\t 8:05\t 5:07\t16:07\t10:03\t20:06\t"    
+ [8] ""                                                                                                      
+ [9] " \tDaily Avg\t9.9  \t9.7  \t10.0 \t10.7 \t11.2 \t12.5 \t13.4 \t13.7 \t14.3 \t13.4 \t11.9 \t10.0 \t"    
+[10] ""                                                                                                      
+[11] " \tDaily Range\t5.6  \t5.1  \t5.7  \t5.9  \t5.6  \t5.4  \t5.0  \t5.4  \t5.9  \t4.9  \t6.4  \t5.1  \t"  
+[12] ""                                                                                                      
+[13] " \tDayTime Max\t18.8 \t14.0 \t19.2 \t17.7 \t20.5 \t18.0 \t18.9 \t21.6 \t20.2 \t18.9 \t22.5 \t16.0 \t"  
+[14] ""                                                                                                      
+[15] " \tDayTime Min\t2.0  \t4.2  \t1.7  \t4.8  \t7.3  \t9.0  \t9.4  \t10.2 \t8.9  \t8.0  \t5.2  \t1.5  \t"  
+[16] ""                                                                                                      
+[17] " \tDayTime Avg\t10.6 \t10.4 \t10.8 \t11.8 \t12.6 \t13.8 \t14.4 \t14.8 \t15.5 \t14.2 \t12.9 \t10.6 \t"  
+[18] ""                                                                                                      
+[19] " \tNightTime Max\t17.7 \t14.4 \t14.0 \t12.3 \t16.1 \t15.0 \t16.5 \t18.7 \t18.4 \t16.4 \t15.7 \t15.0 \t"
+[20] ""                                                                                                      
+[21] " \tNightTime Min\t4.2  \t4.5  \t2.7  \t5.0  \t6.9  \t7.2  \t9.3  \t9.5  \t9.1  \t8.8  \t3.7  \t1.3  \t"
+[22] ""                                                                                                      
+[23] " \tNightTime Avg\t9.3  \t9.0  \t9.2  \t9.5  \t9.9  \t11.3 \t12.4 \t12.6 \t13.1 \t12.6 \t10.9 \t9.4  \t"
+[24] ""                                                                                                      
+[25] "   - Maximum Dry Bulb temperature of  22.5C on Nov 12"                                                 
+[26] "   - Minimum Dry Bulb temperature of   1.3C on Dec 20"                                                 
+[27] ""                                                                                                      
+[38:17] 170> g = g[-1]
+[38:52] 171> g[[1]]
+ [1] " - Monthly Statistics for Dry Bulb temperatures [C]"                                                   
+ [2] " \t           \tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                          
+ [3] " \tMaximum \t 18.8\t 14.4\t 19.2\t 17.7\t 20.5\t 18.0\t 18.9\t 21.6\t 20.2\t 18.9\t 22.5\t 16.0\t"     
+ [4] " \t Day:Hour\t19:16\t24:22\t 6:15\t30:14\t 2:10\t 9:14\t20:13\t16:15\t 8:11\t 2:11\t12:14\t11:14\t"    
+ [5] ""                                                                                                      
+ [6] " \tMinimum \t  2.0\t  4.2\t  1.7\t  4.8\t  6.9\t  7.2\t  9.3\t  9.5\t  8.9\t  8.0\t  3.7\t  1.3\t"     
+ [7] " \t Day:Hour\t26:09\t17:08\t 4:08\t 6:07\t 1:04\t27:05\t31:06\t 8:05\t 5:07\t16:07\t10:03\t20:06\t"    
+ [8] ""                                                                                                      
+ [9] " \tDaily Avg\t9.9  \t9.7  \t10.0 \t10.7 \t11.2 \t12.5 \t13.4 \t13.7 \t14.3 \t13.4 \t11.9 \t10.0 \t"    
+[10] ""                                                                                                      
+[11] " \tDaily Range\t5.6  \t5.1  \t5.7  \t5.9  \t5.6  \t5.4  \t5.0  \t5.4  \t5.9  \t4.9  \t6.4  \t5.1  \t"  
+[12] ""                                                                                                      
+[13] " \tDayTime Max\t18.8 \t14.0 \t19.2 \t17.7 \t20.5 \t18.0 \t18.9 \t21.6 \t20.2 \t18.9 \t22.5 \t16.0 \t"  
+[14] ""                                                                                                      
+[15] " \tDayTime Min\t2.0  \t4.2  \t1.7  \t4.8  \t7.3  \t9.0  \t9.4  \t10.2 \t8.9  \t8.0  \t5.2  \t1.5  \t"  
+[16] ""                                                                                                      
+[17] " \tDayTime Avg\t10.6 \t10.4 \t10.8 \t11.8 \t12.6 \t13.8 \t14.4 \t14.8 \t15.5 \t14.2 \t12.9 \t10.6 \t"  
+[18] ""                                                                                                      
+[19] " \tNightTime Max\t17.7 \t14.4 \t14.0 \t12.3 \t16.1 \t15.0 \t16.5 \t18.7 \t18.4 \t16.4 \t15.7 \t15.0 \t"
+[20] ""                                                                                                      
+[21] " \tNightTime Min\t4.2  \t4.5  \t2.7  \t5.0  \t6.9  \t7.2  \t9.3  \t9.5  \t9.1  \t8.8  \t3.7  \t1.3  \t"
+[22] ""                                                                                                      
+[23] " \tNightTime Avg\t9.3  \t9.0  \t9.2  \t9.5  \t9.9  \t11.3 \t12.4 \t12.6 \t13.1 \t12.6 \t10.9 \t9.4  \t"
+[24] ""                                                                                                      
+[25] "   - Maximum Dry Bulb temperature of  22.5C on Nov 12"                                                 
+[26] "   - Minimum Dry Bulb temperature of   1.3C on Dec 20"                                                 
+[27] ""                                                                                                      
+[38:56] 172> grepl("^ *-", g[[1]])
+ [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[22] FALSE FALSE FALSE  TRUE  TRUE FALSE
+[39:34] 173> grep("^ *-", g[[1]], value = TRUE)
+[1] " - Monthly Statistics for Dry Bulb temperatures [C]"   "   - Maximum Dry Bulb temperature of  22.5C on Nov 12"
+[3] "   - Minimum Dry Bulb temperature of   1.3C on Dec 20"
+[39:51] 174> grep("^ *-", g[[1]], value = TRUE, invert = TRUE)
+ [1] " \t           \tJan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\t"                          
+ [2] " \tMaximum \t 18.8\t 14.4\t 19.2\t 17.7\t 20.5\t 18.0\t 18.9\t 21.6\t 20.2\t 18.9\t 22.5\t 16.0\t"     
+ [3] " \t Day:Hour\t19:16\t24:22\t 6:15\t30:14\t 2:10\t 9:14\t20:13\t16:15\t 8:11\t 2:11\t12:14\t11:14\t"    
+ [4] ""                                                                                                      
+ [5] " \tMinimum \t  2.0\t  4.2\t  1.7\t  4.8\t  6.9\t  7.2\t  9.3\t  9.5\t  8.9\t  8.0\t  3.7\t  1.3\t"     
+ [6] " \t Day:Hour\t26:09\t17:08\t 4:08\t 6:07\t 1:04\t27:05\t31:06\t 8:05\t 5:07\t16:07\t10:03\t20:06\t"    
+ [7] ""                                                                                                      
+ [8] " \tDaily Avg\t9.9  \t9.7  \t10.0 \t10.7 \t11.2 \t12.5 \t13.4 \t13.7 \t14.3 \t13.4 \t11.9 \t10.0 \t"    
+ [9] ""                                                                                                      
+[10] " \tDaily Range\t5.6  \t5.1  \t5.7  \t5.9  \t5.6  \t5.4  \t5.0  \t5.4  \t5.9  \t4.9  \t6.4  \t5.1  \t"  
+[11] ""                                                                                                      
+[12] " \tDayTime Max\t18.8 \t14.0 \t19.2 \t17.7 \t20.5 \t18.0 \t18.9 \t21.6 \t20.2 \t18.9 \t22.5 \t16.0 \t"  
+[13] ""                                                                                                      
+[14] " \tDayTime Min\t2.0  \t4.2  \t1.7  \t4.8  \t7.3  \t9.0  \t9.4  \t10.2 \t8.9  \t8.0  \t5.2  \t1.5  \t"  
+[15] ""                                                                                                      
+[16] " \tDayTime Avg\t10.6 \t10.4 \t10.8 \t11.8 \t12.6 \t13.8 \t14.4 \t14.8 \t15.5 \t14.2 \t12.9 \t10.6 \t"  
+[17] ""                                                                                                      
+[18] " \tNightTime Max\t17.7 \t14.4 \t14.0 \t12.3 \t16.1 \t15.0 \t16.5 \t18.7 \t18.4 \t16.4 \t15.7 \t15.0 \t"
+[19] ""                                                                                                      
+[20] " \tNightTime Min\t4.2  \t4.5  \t2.7  \t5.0  \t6.9  \t7.2  \t9.3  \t9.5  \t9.1  \t8.8  \t3.7  \t1.3  \t"
+[21] ""                                                                                                      
+[22] " \tNightTime Avg\t9.3  \t9.0  \t9.2  \t9.5  \t9.9  \t11.3 \t12.4 \t12.6 \t13.1 \t12.6 \t10.9 \t9.4  \t"
+[23] ""                                                                                                      
+[24] ""                                                                                                      
+[40:03] 175> tt = grep("^ *-", g[[1]], value = TRUE, invert = TRUE)
+[40:10] 176> read.table(textConnection(tt), header = TRUE, sep = "\t")
+    X           X.1   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec X.2
+1  NA      Maximum   18.8  14.4  19.2  17.7  20.5  18.0  18.9  21.6  20.2  18.9  22.5  16.0  NA
+2  NA      Day:Hour 19:16 24:22  6:15 30:14  2:10  9:14 20:13 16:15  8:11  2:11 12:14 11:14  NA
+3  NA      Minimum    2.0   4.2   1.7   4.8   6.9   7.2   9.3   9.5   8.9   8.0   3.7   1.3  NA
+4  NA      Day:Hour 26:09 17:08  4:08  6:07  1:04 27:05 31:06  8:05  5:07 16:07 10:03 20:06  NA
+5  NA     Daily Avg 9.9   9.7   10.0  10.7  11.2  12.5  13.4  13.7  14.3  13.4  11.9  10.0   NA
+6  NA   Daily Range 5.6   5.1   5.7   5.9   5.6   5.4   5.0   5.4   5.9   4.9   6.4   5.1    NA
+7  NA   DayTime Max 18.8  14.0  19.2  17.7  20.5  18.0  18.9  21.6  20.2  18.9  22.5  16.0   NA
+8  NA   DayTime Min 2.0   4.2   1.7   4.8   7.3   9.0   9.4   10.2  8.9   8.0   5.2   1.5    NA
+9  NA   DayTime Avg 10.6  10.4  10.8  11.8  12.6  13.8  14.4  14.8  15.5  14.2  12.9  10.6   NA
+10 NA NightTime Max 17.7  14.4  14.0  12.3  16.1  15.0  16.5  18.7  18.4  16.4  15.7  15.0   NA
+11 NA NightTime Min 4.2   4.5   2.7   5.0   6.9   7.2   9.3   9.5   9.1   8.8   3.7   1.3    NA
+12 NA NightTime Avg 9.3   9.0   9.2   9.5   9.9   11.3  12.4  12.6  13.1  12.6  10.9  9.4    NA
+[40:36] 177> ff = list.files("~/Data/NASAWeather", pattern = "\\.txt$")
+[46:37] 178> ff
+  [1] "cloudhigh1.txt"    "cloudhigh10.txt"   "cloudhigh11.txt"   "cloudhigh12.txt"   "cloudhigh13.txt"   "cloudhigh14.txt"  
+  [7] "cloudhigh15.txt"   "cloudhigh16.txt"   "cloudhigh17.txt"   "cloudhigh18.txt"   "cloudhigh19.txt"   "cloudhigh2.txt"   
+ [13] "cloudhigh20.txt"   "cloudhigh21.txt"   "cloudhigh22.txt"   "cloudhigh23.txt"   "cloudhigh24.txt"   "cloudhigh25.txt"  
+ [19] "cloudhigh26.txt"   "cloudhigh27.txt"   "cloudhigh28.txt"   "cloudhigh29.txt"   "cloudhigh3.txt"    "cloudhigh30.txt"  
+ [25] "cloudhigh31.txt"   "cloudhigh32.txt"   "cloudhigh33.txt"   "cloudhigh34.txt"   "cloudhigh35.txt"   "cloudhigh36.txt"  
+ [31] "cloudhigh37.txt"   "cloudhigh38.txt"   "cloudhigh39.txt"   "cloudhigh4.txt"    "cloudhigh40.txt"   "cloudhigh41.txt"  
+ [37] "cloudhigh42.txt"   "cloudhigh43.txt"   "cloudhigh44.txt"   "cloudhigh45.txt"   "cloudhigh46.txt"   "cloudhigh47.txt"  
+ [43] "cloudhigh48.txt"   "cloudhigh49.txt"   "cloudhigh5.txt"    "cloudhigh50.txt"   "cloudhigh51.txt"   "cloudhigh52.txt"  
+ [49] "cloudhigh53.txt"   "cloudhigh54.txt"   "cloudhigh55.txt"   "cloudhigh56.txt"   "cloudhigh57.txt"   "cloudhigh58.txt"  
+ [55] "cloudhigh59.txt"   "cloudhigh6.txt"    "cloudhigh60.txt"   "cloudhigh61.txt"   "cloudhigh62.txt"   "cloudhigh63.txt"  
+ [61] "cloudhigh64.txt"   "cloudhigh65.txt"   "cloudhigh66.txt"   "cloudhigh67.txt"   "cloudhigh68.txt"   "cloudhigh69.txt"  
+ [67] "cloudhigh7.txt"    "cloudhigh70.txt"   "cloudhigh71.txt"   "cloudhigh72.txt"   "cloudhigh8.txt"    "cloudhigh9.txt"   
+ [73] "cloudlow1.txt"     "cloudlow10.txt"    "cloudlow11.txt"    "cloudlow12.txt"    "cloudlow13.txt"    "cloudlow14.txt"   
+ [79] "cloudlow15.txt"    "cloudlow16.txt"    "cloudlow17.txt"    "cloudlow18.txt"    "cloudlow19.txt"    "cloudlow2.txt"    
+ [85] "cloudlow20.txt"    "cloudlow21.txt"    "cloudlow22.txt"    "cloudlow23.txt"    "cloudlow24.txt"    "cloudlow25.txt"   
+ [91] "cloudlow26.txt"    "cloudlow27.txt"    "cloudlow28.txt"    "cloudlow29.txt"    "cloudlow3.txt"     "cloudlow30.txt"   
+ [97] "cloudlow31.txt"    "cloudlow32.txt"    "cloudlow33.txt"    "cloudlow34.txt"    "cloudlow35.txt"    "cloudlow36.txt"   
+[103] "cloudlow37.txt"    "cloudlow38.txt"    "cloudlow39.txt"    "cloudlow4.txt"     "cloudlow40.txt"    "cloudlow41.txt"   
+[109] "cloudlow42.txt"    "cloudlow43.txt"    "cloudlow44.txt"    "cloudlow45.txt"    "cloudlow46.txt"    "cloudlow47.txt"   
+[115] "cloudlow48.txt"    "cloudlow49.txt"    "cloudlow5.txt"     "cloudlow50.txt"    "cloudlow51.txt"    "cloudlow52.txt"   
+[121] "cloudlow53.txt"    "cloudlow54.txt"    "cloudlow55.txt"    "cloudlow56.txt"    "cloudlow57.txt"    "cloudlow58.txt"   
+[127] "cloudlow59.txt"    "cloudlow6.txt"     "cloudlow60.txt"    "cloudlow61.txt"    "cloudlow62.txt"    "cloudlow63.txt"   
+[133] "cloudlow64.txt"    "cloudlow65.txt"    "cloudlow66.txt"    "cloudlow67.txt"    "cloudlow68.txt"    "cloudlow69.txt"   
+[139] "cloudlow7.txt"     "cloudlow70.txt"    "cloudlow71.txt"    "cloudlow72.txt"    "cloudlow8.txt"     "cloudlow9.txt"    
+[145] "cloudmid1.txt"     "cloudmid10.txt"    "cloudmid11.txt"    "cloudmid12.txt"    "cloudmid13.txt"    "cloudmid14.txt"   
+[151] "cloudmid15.txt"    "cloudmid16.txt"    "cloudmid17.txt"    "cloudmid18.txt"    "cloudmid19.txt"    "cloudmid2.txt"    
+[157] "cloudmid20.txt"    "cloudmid21.txt"    "cloudmid22.txt"    "cloudmid23.txt"    "cloudmid24.txt"    "cloudmid25.txt"   
+[163] "cloudmid26.txt"    "cloudmid27.txt"    "cloudmid28.txt"    "cloudmid29.txt"    "cloudmid3.txt"     "cloudmid30.txt"   
+[169] "cloudmid31.txt"    "cloudmid32.txt"    "cloudmid33.txt"    "cloudmid34.txt"    "cloudmid35.txt"    "cloudmid36.txt"   
+[175] "cloudmid37.txt"    "cloudmid38.txt"    "cloudmid39.txt"    "cloudmid4.txt"     "cloudmid40.txt"    "cloudmid41.txt"   
+[181] "cloudmid42.txt"    "cloudmid43.txt"    "cloudmid44.txt"    "cloudmid45.txt"    "cloudmid46.txt"    "cloudmid47.txt"   
+[187] "cloudmid48.txt"    "cloudmid49.txt"    "cloudmid5.txt"     "cloudmid50.txt"    "cloudmid51.txt"    "cloudmid52.txt"   
+[193] "cloudmid53.txt"    "cloudmid54.txt"    "cloudmid55.txt"    "cloudmid56.txt"    "cloudmid57.txt"    "cloudmid58.txt"   
+[199] "cloudmid59.txt"    "cloudmid6.txt"     "cloudmid60.txt"    "cloudmid61.txt"    "cloudmid62.txt"    "cloudmid63.txt"   
+[205] "cloudmid64.txt"    "cloudmid65.txt"    "cloudmid66.txt"    "cloudmid67.txt"    "cloudmid68.txt"    "cloudmid69.txt"   
+[211] "cloudmid7.txt"     "cloudmid70.txt"    "cloudmid71.txt"    "cloudmid72.txt"    "cloudmid8.txt"     "cloudmid9.txt"    
+[217] "ozone1.txt"        "ozone10.txt"       "ozone11.txt"       "ozone12.txt"       "ozone13.txt"       "ozone14.txt"      
+[223] "ozone15.txt"       "ozone16.txt"       "ozone17.txt"       "ozone18.txt"       "ozone19.txt"       "ozone2.txt"       
+[229] "ozone20.txt"       "ozone21.txt"       "ozone22.txt"       "ozone23.txt"       "ozone24.txt"       "ozone25.txt"      
+[235] "ozone26.txt"       "ozone27.txt"       "ozone28.txt"       "ozone29.txt"       "ozone3.txt"        "ozone30.txt"      
+[241] "ozone31.txt"       "ozone32.txt"       "ozone33.txt"       "ozone34.txt"       "ozone35.txt"       "ozone36.txt"      
+[247] "ozone37.txt"       "ozone38.txt"       "ozone39.txt"       "ozone4.txt"        "ozone40.txt"       "ozone41.txt"      
+[253] "ozone42.txt"       "ozone43.txt"       "ozone44.txt"       "ozone45.txt"       "ozone46.txt"       "ozone47.txt"      
+[259] "ozone48.txt"       "ozone49.txt"       "ozone5.txt"        "ozone50.txt"       "ozone51.txt"       "ozone52.txt"      
+[265] "ozone53.txt"       "ozone54.txt"       "ozone55.txt"       "ozone56.txt"       "ozone57.txt"       "ozone58.txt"      
+[271] "ozone59.txt"       "ozone6.txt"        "ozone60.txt"       "ozone61.txt"       "ozone62.txt"       "ozone63.txt"      
+[277] "ozone64.txt"       "ozone65.txt"       "ozone66.txt"       "ozone67.txt"       "ozone68.txt"       "ozone69.txt"      
+[283] "ozone7.txt"        "ozone70.txt"       "ozone71.txt"       "ozone72.txt"       "ozone8.txt"        "ozone9.txt"       
+[289] "pressure1.txt"     "pressure10.txt"    "pressure11.txt"    "pressure12.txt"    "pressure13.txt"    "pressure14.txt"   
+[295] "pressure15.txt"    "pressure16.txt"    "pressure17.txt"    "pressure18.txt"    "pressure19.txt"    "pressure2.txt"    
+[301] "pressure20.txt"    "pressure21.txt"    "pressure22.txt"    "pressure23.txt"    "pressure24.txt"    "pressure25.txt"   
+[307] "pressure26.txt"    "pressure27.txt"    "pressure28.txt"    "pressure29.txt"    "pressure3.txt"     "pressure30.txt"   
+[313] "pressure31.txt"    "pressure32.txt"    "pressure33.txt"    "pressure34.txt"    "pressure35.txt"    "pressure36.txt"   
+[319] "pressure37.txt"    "pressure38.txt"    "pressure39.txt"    "pressure4.txt"     "pressure40.txt"    "pressure41.txt"   
+[325] "pressure42.txt"    "pressure43.txt"    "pressure44.txt"    "pressure45.txt"    "pressure46.txt"    "pressure47.txt"   
+[331] "pressure48.txt"    "pressure49.txt"    "pressure5.txt"     "pressure50.txt"    "pressure51.txt"    "pressure52.txt"   
+[337] "pressure53.txt"    "pressure54.txt"    "pressure55.txt"    "pressure56.txt"    "pressure57.txt"    "pressure58.txt"   
+[343] "pressure59.txt"    "pressure6.txt"     "pressure60.txt"    "pressure61.txt"    "pressure62.txt"    "pressure63.txt"   
+[349] "pressure64.txt"    "pressure65.txt"    "pressure66.txt"    "pressure67.txt"    "pressure68.txt"    "pressure69.txt"   
+[355] "pressure7.txt"     "pressure70.txt"    "pressure71.txt"    "pressure72.txt"    "pressure8.txt"     "pressure9.txt"    
+[361] "surftemp1.txt"     "surftemp10.txt"    "surftemp11.txt"    "surftemp12.txt"    "surftemp13.txt"    "surftemp14.txt"   
+[367] "surftemp15.txt"    "surftemp16.txt"    "surftemp17.txt"    "surftemp18.txt"    "surftemp19.txt"    "surftemp2.txt"    
+[373] "surftemp20.txt"    "surftemp21.txt"    "surftemp22.txt"    "surftemp23.txt"    "surftemp24.txt"    "surftemp25.txt"   
+[379] "surftemp26.txt"    "surftemp27.txt"    "surftemp28.txt"    "surftemp29.txt"    "surftemp3.txt"     "surftemp30.txt"   
+[385] "surftemp31.txt"    "surftemp32.txt"    "surftemp33.txt"    "surftemp34.txt"    "surftemp35.txt"    "surftemp36.txt"   
+[391] "surftemp37.txt"    "surftemp38.txt"    "surftemp39.txt"    "surftemp4.txt"     "surftemp40.txt"    "surftemp41.txt"   
+[397] "surftemp42.txt"    "surftemp43.txt"    "surftemp44.txt"    "surftemp45.txt"    "surftemp46.txt"    "surftemp47.txt"   
+[403] "surftemp48.txt"    "surftemp49.txt"    "surftemp5.txt"     "surftemp50.txt"    "surftemp51.txt"    "surftemp52.txt"   
+[409] "surftemp53.txt"    "surftemp54.txt"    "surftemp55.txt"    "surftemp56.txt"    "surftemp57.txt"    "surftemp58.txt"   
+[415] "surftemp59.txt"    "surftemp6.txt"     "surftemp60.txt"    "surftemp61.txt"    "surftemp62.txt"    "surftemp63.txt"   
+[421] "surftemp64.txt"    "surftemp65.txt"    "surftemp66.txt"    "surftemp67.txt"    "surftemp68.txt"    "surftemp69.txt"   
+[427] "surftemp7.txt"     "surftemp70.txt"    "surftemp71.txt"    "surftemp72.txt"    "surftemp8.txt"     "surftemp9.txt"    
+[433] "temperature1.txt"  "temperature10.txt" "temperature11.txt" "temperature12.txt" "temperature13.txt" "temperature14.txt"
+[439] "temperature15.txt" "temperature16.txt" "temperature17.txt" "temperature18.txt" "temperature19.txt" "temperature2.txt" 
+[445] "temperature20.txt" "temperature21.txt" "temperature22.txt" "temperature23.txt" "temperature24.txt" "temperature25.txt"
+[451] "temperature26.txt" "temperature27.txt" "temperature28.txt" "temperature29.txt" "temperature3.txt"  "temperature30.txt"
+[457] "temperature31.txt" "temperature32.txt" "temperature33.txt" "temperature34.txt" "temperature35.txt" "temperature36.txt"
+[463] "temperature37.txt" "temperature38.txt" "temperature39.txt" "temperature4.txt"  "temperature40.txt" "temperature41.txt"
+[469] "temperature42.txt" "temperature43.txt" "temperature44.txt" "temperature45.txt" "temperature46.txt" "temperature47.txt"
+[475] "temperature48.txt" "temperature49.txt" "temperature5.txt"  "temperature50.txt" "temperature51.txt" "temperature52.txt"
+[481] "temperature53.txt" "temperature54.txt" "temperature55.txt" "temperature56.txt" "temperature57.txt" "temperature58.txt"
+[487] "temperature59.txt" "temperature6.txt"  "temperature60.txt" "temperature61.txt" "temperature62.txt" "temperature63.txt"
+[493] "temperature64.txt" "temperature65.txt" "temperature66.txt" "temperature67.txt" "temperature68.txt" "temperature69.txt"
+[499] "temperature7.txt"  "temperature70.txt" "temperature71.txt" "temperature72.txt" "temperature8.txt"  "temperature9.txt" 
+[46:38] 179> gsub("[0-9]+\\.txt$", "", ff)
+  [1] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+  [9] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [17] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [25] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [33] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [41] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [49] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [57] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [65] "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"   "cloudhigh"  
+ [73] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+ [81] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+ [89] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+ [97] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[105] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[113] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[121] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[129] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[137] "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"    "cloudlow"   
+[145] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[153] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[161] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[169] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[177] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[185] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[193] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[201] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[209] "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"    "cloudmid"   
+[217] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[225] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[233] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[241] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[249] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[257] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[265] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[273] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[281] "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"       "ozone"      
+[289] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[297] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[305] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[313] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[321] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[329] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[337] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[345] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[353] "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"    "pressure"   
+[361] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[369] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[377] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[385] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[393] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[401] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[409] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[417] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[425] "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"    "surftemp"   
+[433] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[441] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[449] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[457] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[465] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[473] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[481] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[489] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[497] "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature" "temperature"
+[47:14] 180> split(ff, gsub("[0-9]+\\.txt$", "", ff))
+$cloudhigh
+ [1] "cloudhigh1.txt"  "cloudhigh10.txt" "cloudhigh11.txt" "cloudhigh12.txt" "cloudhigh13.txt" "cloudhigh14.txt" "cloudhigh15.txt"
+ [8] "cloudhigh16.txt" "cloudhigh17.txt" "cloudhigh18.txt" "cloudhigh19.txt" "cloudhigh2.txt"  "cloudhigh20.txt" "cloudhigh21.txt"
+[15] "cloudhigh22.txt" "cloudhigh23.txt" "cloudhigh24.txt" "cloudhigh25.txt" "cloudhigh26.txt" "cloudhigh27.txt" "cloudhigh28.txt"
+[22] "cloudhigh29.txt" "cloudhigh3.txt"  "cloudhigh30.txt" "cloudhigh31.txt" "cloudhigh32.txt" "cloudhigh33.txt" "cloudhigh34.txt"
+[29] "cloudhigh35.txt" "cloudhigh36.txt" "cloudhigh37.txt" "cloudhigh38.txt" "cloudhigh39.txt" "cloudhigh4.txt"  "cloudhigh40.txt"
+[36] "cloudhigh41.txt" "cloudhigh42.txt" "cloudhigh43.txt" "cloudhigh44.txt" "cloudhigh45.txt" "cloudhigh46.txt" "cloudhigh47.txt"
+[43] "cloudhigh48.txt" "cloudhigh49.txt" "cloudhigh5.txt"  "cloudhigh50.txt" "cloudhigh51.txt" "cloudhigh52.txt" "cloudhigh53.txt"
+[50] "cloudhigh54.txt" "cloudhigh55.txt" "cloudhigh56.txt" "cloudhigh57.txt" "cloudhigh58.txt" "cloudhigh59.txt" "cloudhigh6.txt" 
+[57] "cloudhigh60.txt" "cloudhigh61.txt" "cloudhigh62.txt" "cloudhigh63.txt" "cloudhigh64.txt" "cloudhigh65.txt" "cloudhigh66.txt"
+[64] "cloudhigh67.txt" "cloudhigh68.txt" "cloudhigh69.txt" "cloudhigh7.txt"  "cloudhigh70.txt" "cloudhigh71.txt" "cloudhigh72.txt"
+[71] "cloudhigh8.txt"  "cloudhigh9.txt" 
+
+$cloudlow
+ [1] "cloudlow1.txt"  "cloudlow10.txt" "cloudlow11.txt" "cloudlow12.txt" "cloudlow13.txt" "cloudlow14.txt" "cloudlow15.txt"
+ [8] "cloudlow16.txt" "cloudlow17.txt" "cloudlow18.txt" "cloudlow19.txt" "cloudlow2.txt"  "cloudlow20.txt" "cloudlow21.txt"
+[15] "cloudlow22.txt" "cloudlow23.txt" "cloudlow24.txt" "cloudlow25.txt" "cloudlow26.txt" "cloudlow27.txt" "cloudlow28.txt"
+[22] "cloudlow29.txt" "cloudlow3.txt"  "cloudlow30.txt" "cloudlow31.txt" "cloudlow32.txt" "cloudlow33.txt" "cloudlow34.txt"
+[29] "cloudlow35.txt" "cloudlow36.txt" "cloudlow37.txt" "cloudlow38.txt" "cloudlow39.txt" "cloudlow4.txt"  "cloudlow40.txt"
+[36] "cloudlow41.txt" "cloudlow42.txt" "cloudlow43.txt" "cloudlow44.txt" "cloudlow45.txt" "cloudlow46.txt" "cloudlow47.txt"
+[43] "cloudlow48.txt" "cloudlow49.txt" "cloudlow5.txt"  "cloudlow50.txt" "cloudlow51.txt" "cloudlow52.txt" "cloudlow53.txt"
+[50] "cloudlow54.txt" "cloudlow55.txt" "cloudlow56.txt" "cloudlow57.txt" "cloudlow58.txt" "cloudlow59.txt" "cloudlow6.txt" 
+[57] "cloudlow60.txt" "cloudlow61.txt" "cloudlow62.txt" "cloudlow63.txt" "cloudlow64.txt" "cloudlow65.txt" "cloudlow66.txt"
+[64] "cloudlow67.txt" "cloudlow68.txt" "cloudlow69.txt" "cloudlow7.txt"  "cloudlow70.txt" "cloudlow71.txt" "cloudlow72.txt"
+[71] "cloudlow8.txt"  "cloudlow9.txt" 
+
+$cloudmid
+ [1] "cloudmid1.txt"  "cloudmid10.txt" "cloudmid11.txt" "cloudmid12.txt" "cloudmid13.txt" "cloudmid14.txt" "cloudmid15.txt"
+ [8] "cloudmid16.txt" "cloudmid17.txt" "cloudmid18.txt" "cloudmid19.txt" "cloudmid2.txt"  "cloudmid20.txt" "cloudmid21.txt"
+[15] "cloudmid22.txt" "cloudmid23.txt" "cloudmid24.txt" "cloudmid25.txt" "cloudmid26.txt" "cloudmid27.txt" "cloudmid28.txt"
+[22] "cloudmid29.txt" "cloudmid3.txt"  "cloudmid30.txt" "cloudmid31.txt" "cloudmid32.txt" "cloudmid33.txt" "cloudmid34.txt"
+[29] "cloudmid35.txt" "cloudmid36.txt" "cloudmid37.txt" "cloudmid38.txt" "cloudmid39.txt" "cloudmid4.txt"  "cloudmid40.txt"
+[36] "cloudmid41.txt" "cloudmid42.txt" "cloudmid43.txt" "cloudmid44.txt" "cloudmid45.txt" "cloudmid46.txt" "cloudmid47.txt"
+[43] "cloudmid48.txt" "cloudmid49.txt" "cloudmid5.txt"  "cloudmid50.txt" "cloudmid51.txt" "cloudmid52.txt" "cloudmid53.txt"
+[50] "cloudmid54.txt" "cloudmid55.txt" "cloudmid56.txt" "cloudmid57.txt" "cloudmid58.txt" "cloudmid59.txt" "cloudmid6.txt" 
+[57] "cloudmid60.txt" "cloudmid61.txt" "cloudmid62.txt" "cloudmid63.txt" "cloudmid64.txt" "cloudmid65.txt" "cloudmid66.txt"
+[64] "cloudmid67.txt" "cloudmid68.txt" "cloudmid69.txt" "cloudmid7.txt"  "cloudmid70.txt" "cloudmid71.txt" "cloudmid72.txt"
+[71] "cloudmid8.txt"  "cloudmid9.txt" 
+
+$ozone
+ [1] "ozone1.txt"  "ozone10.txt" "ozone11.txt" "ozone12.txt" "ozone13.txt" "ozone14.txt" "ozone15.txt" "ozone16.txt" "ozone17.txt"
+[10] "ozone18.txt" "ozone19.txt" "ozone2.txt"  "ozone20.txt" "ozone21.txt" "ozone22.txt" "ozone23.txt" "ozone24.txt" "ozone25.txt"
+[19] "ozone26.txt" "ozone27.txt" "ozone28.txt" "ozone29.txt" "ozone3.txt"  "ozone30.txt" "ozone31.txt" "ozone32.txt" "ozone33.txt"
+[28] "ozone34.txt" "ozone35.txt" "ozone36.txt" "ozone37.txt" "ozone38.txt" "ozone39.txt" "ozone4.txt"  "ozone40.txt" "ozone41.txt"
+[37] "ozone42.txt" "ozone43.txt" "ozone44.txt" "ozone45.txt" "ozone46.txt" "ozone47.txt" "ozone48.txt" "ozone49.txt" "ozone5.txt" 
+[46] "ozone50.txt" "ozone51.txt" "ozone52.txt" "ozone53.txt" "ozone54.txt" "ozone55.txt" "ozone56.txt" "ozone57.txt" "ozone58.txt"
+[55] "ozone59.txt" "ozone6.txt"  "ozone60.txt" "ozone61.txt" "ozone62.txt" "ozone63.txt" "ozone64.txt" "ozone65.txt" "ozone66.txt"
+[64] "ozone67.txt" "ozone68.txt" "ozone69.txt" "ozone7.txt"  "ozone70.txt" "ozone71.txt" "ozone72.txt" "ozone8.txt"  "ozone9.txt" 
+
+$pressure
+ [1] "pressure1.txt"  "pressure10.txt" "pressure11.txt" "pressure12.txt" "pressure13.txt" "pressure14.txt" "pressure15.txt"
+ [8] "pressure16.txt" "pressure17.txt" "pressure18.txt" "pressure19.txt" "pressure2.txt"  "pressure20.txt" "pressure21.txt"
+[15] "pressure22.txt" "pressure23.txt" "pressure24.txt" "pressure25.txt" "pressure26.txt" "pressure27.txt" "pressure28.txt"
+[22] "pressure29.txt" "pressure3.txt"  "pressure30.txt" "pressure31.txt" "pressure32.txt" "pressure33.txt" "pressure34.txt"
+[29] "pressure35.txt" "pressure36.txt" "pressure37.txt" "pressure38.txt" "pressure39.txt" "pressure4.txt"  "pressure40.txt"
+[36] "pressure41.txt" "pressure42.txt" "pressure43.txt" "pressure44.txt" "pressure45.txt" "pressure46.txt" "pressure47.txt"
+[43] "pressure48.txt" "pressure49.txt" "pressure5.txt"  "pressure50.txt" "pressure51.txt" "pressure52.txt" "pressure53.txt"
+[50] "pressure54.txt" "pressure55.txt" "pressure56.txt" "pressure57.txt" "pressure58.txt" "pressure59.txt" "pressure6.txt" 
+[57] "pressure60.txt" "pressure61.txt" "pressure62.txt" "pressure63.txt" "pressure64.txt" "pressure65.txt" "pressure66.txt"
+[64] "pressure67.txt" "pressure68.txt" "pressure69.txt" "pressure7.txt"  "pressure70.txt" "pressure71.txt" "pressure72.txt"
+[71] "pressure8.txt"  "pressure9.txt" 
+
+$surftemp
+ [1] "surftemp1.txt"  "surftemp10.txt" "surftemp11.txt" "surftemp12.txt" "surftemp13.txt" "surftemp14.txt" "surftemp15.txt"
+ [8] "surftemp16.txt" "surftemp17.txt" "surftemp18.txt" "surftemp19.txt" "surftemp2.txt"  "surftemp20.txt" "surftemp21.txt"
+[15] "surftemp22.txt" "surftemp23.txt" "surftemp24.txt" "surftemp25.txt" "surftemp26.txt" "surftemp27.txt" "surftemp28.txt"
+[22] "surftemp29.txt" "surftemp3.txt"  "surftemp30.txt" "surftemp31.txt" "surftemp32.txt" "surftemp33.txt" "surftemp34.txt"
+[29] "surftemp35.txt" "surftemp36.txt" "surftemp37.txt" "surftemp38.txt" "surftemp39.txt" "surftemp4.txt"  "surftemp40.txt"
+[36] "surftemp41.txt" "surftemp42.txt" "surftemp43.txt" "surftemp44.txt" "surftemp45.txt" "surftemp46.txt" "surftemp47.txt"
+[43] "surftemp48.txt" "surftemp49.txt" "surftemp5.txt"  "surftemp50.txt" "surftemp51.txt" "surftemp52.txt" "surftemp53.txt"
+[50] "surftemp54.txt" "surftemp55.txt" "surftemp56.txt" "surftemp57.txt" "surftemp58.txt" "surftemp59.txt" "surftemp6.txt" 
+[57] "surftemp60.txt" "surftemp61.txt" "surftemp62.txt" "surftemp63.txt" "surftemp64.txt" "surftemp65.txt" "surftemp66.txt"
+[64] "surftemp67.txt" "surftemp68.txt" "surftemp69.txt" "surftemp7.txt"  "surftemp70.txt" "surftemp71.txt" "surftemp72.txt"
+[71] "surftemp8.txt"  "surftemp9.txt" 
+
+$temperature
+ [1] "temperature1.txt"  "temperature10.txt" "temperature11.txt" "temperature12.txt" "temperature13.txt" "temperature14.txt"
+ [7] "temperature15.txt" "temperature16.txt" "temperature17.txt" "temperature18.txt" "temperature19.txt" "temperature2.txt" 
+[13] "temperature20.txt" "temperature21.txt" "temperature22.txt" "temperature23.txt" "temperature24.txt" "temperature25.txt"
+[19] "temperature26.txt" "temperature27.txt" "temperature28.txt" "temperature29.txt" "temperature3.txt"  "temperature30.txt"
+[25] "temperature31.txt" "temperature32.txt" "temperature33.txt" "temperature34.txt" "temperature35.txt" "temperature36.txt"
+[31] "temperature37.txt" "temperature38.txt" "temperature39.txt" "temperature4.txt"  "temperature40.txt" "temperature41.txt"
+[37] "temperature42.txt" "temperature43.txt" "temperature44.txt" "temperature45.txt" "temperature46.txt" "temperature47.txt"
+[43] "temperature48.txt" "temperature49.txt" "temperature5.txt"  "temperature50.txt" "temperature51.txt" "temperature52.txt"
+[49] "temperature53.txt" "temperature54.txt" "temperature55.txt" "temperature56.txt" "temperature57.txt" "temperature58.txt"
+[55] "temperature59.txt" "temperature6.txt"  "temperature60.txt" "temperature61.txt" "temperature62.txt" "temperature63.txt"
+[61] "temperature64.txt" "temperature65.txt" "temperature66.txt" "temperature67.txt" "temperature68.txt" "temperature69.txt"
+[67] "temperature7.txt"  "temperature70.txt" "temperature71.txt" "temperature72.txt" "temperature8.txt"  "temperature9.txt" 
+
+[47:29] 181>
