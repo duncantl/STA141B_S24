@@ -9,7 +9,6 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 + [Canvas](https://canvas.ucdavis.edu/courses/877218)
 
 
-
 + [Bonus Idiom](Lectures/Day7/cumsum.md)
    + cumsum() and grouping lines
    + Related to and might be useful for assignment 2 - Spam Email.
@@ -46,6 +45,28 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [Wifi/Mannheim data]()
  	     + [Familiar, small examples of regular expressions](Lectures/Day5/examples.md)
 
+     + [Day 7](Lectures/Day7) 
+	     + [Weblog Regexp explanation figure](Lectures/Day7/weblog.pdf)
+ 	     + [Familiar, small examples of regular expressions](Lectures/Day5/examples.md)         
+	     + [R session/code](Lectures/Day7/Day7.session)
+		 
+<!-- 
+
+     + [Day 8](Lectures/Day8)
+     + [Day 9](Lectures/Day9)
+     + [Day 10](Lectures/Day10)
+     + [Day 11](Lectures/Day11)
+     + [Day 12](Lectures/Day12)
+     + [Day 13](Lectures/Day13)
+     + [Day 14](Lectures/Day14)
+     + [Day 15](Lectures/Day15)
+     + [Day 16](Lectures/Day16)
+     + [Day 17](Lectures/Day17)
+     + [Day 18](Lectures/Day18)
+     + [Day 19](Lectures/Day19)
+     + [Day 20](Lectures/Day20)
 
 
+mdList(sprintf("[Day %d](Lectures/Day%d)", 7:20, 7:20), "     + ")
+-->
     
