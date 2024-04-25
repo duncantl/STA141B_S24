@@ -1,0 +1,7 @@
+easy_ham = list.files("easy_ham", full.names = TRUE)
+hard_ham = list.files("hard_ham")
+
+dirs = c("easy_ham", "hard_ham", "spam", "spam2")
+ff = lapply(dirs, list.files)
+names(ff) = dirs
+

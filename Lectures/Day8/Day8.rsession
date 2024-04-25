@@ -1,0 +1,178 @@
+]0;Day8~/sta141b/Public/Lectures/Day8> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 27140 
+Time = 2024-04-25 10:30:54 
+Dir = /Users/duncan/Classes/Davis/STA141B_23_24/Public/Lectures/Day8 
+1> q()
+Save workspace image? [y/n/c]: n
+]0;Day8~/sta141b/Public/Lectures/Day8> cd 
+]0;duncan~> cd Data/SpamAssassin/
+]0;SpamAssassin~/Data/SpamAssassin> ls
+20021010_easy_ham.tar.bz2    CheckCode                 easy_ham/            hard_ham/        readMessages.R
+20021010_hard_ham.tar.bz2    CheckCode.R               easy_ham_2/          kwasie           readSA.R
+20021010_spam.tar.bz2        SpamAssassinTest.tar.gz   email1.R             kwasie~          readSA.R~
+20030228_easy_ham.tar.bz2    SpamAssassinTrain.tar.gz  eric                 perverseEmail    spam/
+20030228_easy_ham_2.tar.bz2  TestFilenames             eric~                perverseEmail~   spam_2/
+20030228_hard_ham.tar.bz2    Train/                    findIncludedMsg.R    read7.R          tmp.eml
+20030228_spam.tar.bz2        TrainFilenames            findNonEmailFiles.R  read7.R~         trainingMessages.rda
+20030228_spam_2.tar.bz2      checkHeader.R             foo.R                readEncoding.R
+20050311_spam_2.tar.bz2      checkHeader.R~            foo.R~               readEncoding.R~
+]0;SpamAssassin~/Data/SpamAssassin> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 27881 
+Time = 2024-04-25 11:13:31 
+Dir = /Users/duncan/Data/SpamAssassin 
+1> list.files()
+*** output flushed ***
+[13:37] 2> options(width = 70)
+[13:43] 3> list.files()
+ [1] "20021010_easy_ham.tar.bz2"   "20021010_hard_ham.tar.bz2"  
+ [3] "20021010_spam.tar.bz2"       "20030228_easy_ham_2.tar.bz2"
+ [5] "20030228_easy_ham.tar.bz2"   "20030228_hard_ham.tar.bz2"  
+ [7] "20030228_spam_2.tar.bz2"     "20030228_spam.tar.bz2"      
+ [9] "20050311_spam_2.tar.bz2"     "CheckCode"                  
+[11] "CheckCode.R"                 "checkHeader.R"              
+[13] "checkHeader.R~"              "easy_ham"                   
+[15] "easy_ham_2"                  "email1.R"                   
+[17] "eric"                        "eric~"                      
+[19] "findIncludedMsg.R"           "findNonEmailFiles.R"        
+[21] "foo.R"                       "foo.R~"                     
+[23] "hard_ham"                    "kwasie"                     
+[25] "kwasie~"                     "perverseEmail"              
+[27] "perverseEmail~"              "read7.R"                    
+[29] "read7.R~"                    "readEncoding.R"             
+[31] "readEncoding.R~"             "readMessages.R"             
+[33] "readSA.R"                    "readSA.R~"                  
+[35] "spam"                        "spam_2"                     
+[37] "SpamAssassinTest.tar.gz"     "SpamAssassinTrain.tar.gz"   
+[39] "TestFilenames"               "tmp.eml"                    
+[41] "Train"                       "TrainFilenames"             
+[43] "trainingMessages.rda"       
+[13:45] 4> ff = list.files()
+[13:48] 5> file.info(ff)$idir
+NULL
+[14:02] 6> file.info(ff)$isdir
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[23]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[34] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+[14:03] 7> ff[file.info(ff)$isdir]
+[1] "easy_ham"   "easy_ham_2" "hard_ham"   "spam"       "spam_2"    
+[6] "Train"     
+[14:07] 8> dirs = ff[file.info(ff)$isdir]
+[14:09] 9> grep("^[a-z]", dirs, value = TRUE)
+[1] "easy_ham"   "easy_ham_2" "hard_ham"   "spam"       "spam_2"    
+[14:47] 10> 
+[14:47] 10> dirs = grep("^[a-z]", dirs, value = TRUE)
+[15:31] 11> ff = lapply(dirs, list.files, full = TRUE)
+[15:52] 12> length(ff)
+[1] 5
+[15:55] 13> sapply(ff, length)
+[1] 5052 1403  501 1002 1398
+[16:02] 14> ff2 = unlist(ff)
+[16:15] 15> length(ff2)
+[1] 9356
+[16:18] 16> ff3 = list.files( recursive = TRUE, full = TRUE)
+[17:20] 17> length(ff3)
+[1] 15935
+[17:24] 18> head(ff3)
+[1] "./20021010_easy_ham.tar.bz2"   "./20021010_hard_ham.tar.bz2"  
+[3] "./20021010_spam.tar.bz2"       "./20030228_easy_ham_2.tar.bz2"
+[5] "./20030228_easy_ham.tar.bz2"   "./20030228_hard_ham.tar.bz2"  
+[17:46] 19> table(substring(ff3, 1, 2))
+
+   ./ 
+15935 
+[18:18] 20> table(grepl("^./", ff3))
+
+ TRUE 
+15935 
+[18:41] 21> table(grepl("^\\./", ff3))
+
+ TRUE 
+15935 
+[19:15] 22> ff4 = grep("^\\./(easy|hard|spam)", ff3, value = TRUE)
+[20:01] 23> length(ff4)
+[1] 9356
+[20:07] 24> names(ff) = dirs
+[20:44] 25> sapply(ff, length)
+  easy_ham easy_ham_2   hard_ham       spam     spam_2 
+      5052       1403        501       1002       1398 
+[20:48] 26> head(dirname(ff4))
+[1] "./easy_ham_2" "./easy_ham_2" "./easy_ham_2" "./easy_ham_2"
+[5] "./easy_ham_2" "./easy_ham_2"
+[21:04] 27> table(dirname(ff4))
+
+  ./easy_ham ./easy_ham_2   ./hard_ham       ./spam     ./spam_2 
+        5052         1403          501         1002         1398 
+[21:54] 28> tt = table(dirname(ff4))
+[22:32] 29> gsub("^./", "", names(tt))
+[1] "easy_ham"   "easy_ham_2" "hard_ham"   "spam"       "spam_2"    
+[22:41] 30> "this is the first of many words! There aren't many other characters. But how many are there? Hopefully some!"
+[1] "this is the first of many words! There aren't many other characters. But how many are there? Hopefully some!"
+[33:40] 31> 
+[33:40] 31> x = "this is the first of many words! There aren't many other characters. But how many are there? Hopefully some!"a
+Error: unexpected symbol in "x = "this is the first of many words! There aren't many other characters. But how many are there? Hopefully some!"a"
+No suitable frames for recover()
+[33:40] 31> x = "this is the first of many words! There aren't many other characters. But how many are there? Hopefully some!"
+[34:00] 32> gsub( "[a-zA-Z0-9]", "", x)
+[1] "      !  '   .     ?  !"
+[35:34] 33> 
+[35:34] 33> strsplit(gsub( "[a-zA-Z0-9]", "", x), "|")
+[[1]]
+ [1] " " " " " " " " " " " " "!" " " " " "'" " " " " " " "." " " " "
+[17] " " " " " " "?" " " " " "!"
+
+[36:02] 34> gsub( "[a-zA-Z0-9 ]", "", x)
+[1] "!'.?!"
+[37:04] 35> 
+[37:04] 35> 
+[37:04] 35> # gsub("[$][0-9,][Kk]?", o
+[37:04] 35> z = readLines("~/sta141b/Public/Lectures/Day8/bar")
+Warning message:
+In readLines("~/sta141b/Public/Lectures/Day8/bar") :
+  incomplete final line found on '~/sta141b/Public/Lectures/Day8/bar'
+[48:08] 36> gsub(".*[$]([0-9,]+[Kk]?).*", "\\1", z)
+[1] "120,000"                                                    
+[2] "120K"                                                       
+[3] "120"                                                        
+[4] "120K"                                                       
+[5] "60k"                                                        
+[6] "The salary range is between 172,500 and 320,300 with no ..."
+[50:02] 37> 
