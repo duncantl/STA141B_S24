@@ -1,0 +1,265 @@
+]0;SpamAssassin~/Data/SpamAssassin> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 42606 
+Time = 2024-04-25 15:19:43 
+Dir = /Users/duncan/Data/SpamAssassin 
+1> ff3 = list.files( recursive = TRUE, full = TRUE)
+[19:54] 2> ff4 = grep("^\\./(easy|hard|spam)", ff3, value = TRUE)
+[20:02] 3> length(ff4)
+[1] 9356
+[20:04] 4> w = sapply(ff4, function(x) !("" %in% readLines(x) ))
+Warning messages:
+1: In readLines(x) : incomplete final line found on './easy_ham_2/#zeeva#'
+2: In readLines(x) :
+  incomplete final line found on './hard_ham/00228.0eaef7857bbbf3ebf5edbbdae2b30493'
+3: In readLines(x) :
+  incomplete final line found on './hard_ham/0231.7c6cc716ce3f3bfad7130dd3c8d7b072'
+4: In readLines(x) :
+  incomplete final line found on './hard_ham/0250.7c6cc716ce3f3bfad7130dd3c8d7b072'
+[20:40] 5> class(w)
+[1] "logical"
+[20:47] 6> table(w)
+w
+FALSE  TRUE 
+ 9350     6 
+[20:50] 7> which(w)
+                           ./easy_ham_2/cmds                              ./easy_ham/cmds                              ./hard_ham/cmds                                ./spam_2/cmds ./spam/0000.7b1b73cf36cf9dbc3d64e3f2ee2b91f1 
+                                        1403                                         6455                                         6956                                         8354                                         8355 
+                                 ./spam/cmds 
+                                        9356 
+[20:57] 8> ff4[w]
+[1] "./easy_ham_2/cmds"                            "./easy_ham/cmds"                              "./hard_ham/cmds"                              "./spam_2/cmds"                               
+[5] "./spam/0000.7b1b73cf36cf9dbc3d64e3f2ee2b91f1" "./spam/cmds"                                 
+[21:00] 9> readLines("~/sta141b/Public/Lectures/Day8/jasper")
+Error in file(con, "r") : cannot open the connection
+In addition: Warning message:
+In file(con, "r") :
+  cannot open file '/Users/duncan/sta141b/Public/Lectures/Day8/jasper': No such file or directory
+
+Enter a frame number, or 0 to exit   
+
+1: readLines("~/sta141b/Public/Lectures/Day8/jasper")
+2: file(con, "r")
+
+Selection: 0
+[21:00] 9> readLines("~/sta141b/Public/Lectures/Day8/jasper")
+ [1] "Return-Path: <felicity@kluge.net>"                                              "Delivered-To: yyyy@localhost.spamassassin.taint.org"                           
+ [3] "Received: from localhost (unknown [127.0.0.1])"                                 "\tby jmason.org (Postfix) with ESMTP id 3768416F38"                            
+ [5] "\tfor <jm@localhost>; Mon,  2 Sep 2002 23:14:08 +0100 (IST)"                    "Received: from jalapeno [127.0.0.1]"                                           
+ [7] "\tby localhost with IMAP (fetchmail-5.9.0)"                                     "\tfor jm@localhost (single-drop); Mon, 02 Sep 2002 23:14:08 +0100 (IST)"       
+ [9] "Received: from eclectic.kluge.net"                                              "    (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221])"
+[11] "    by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for"      "    <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100"                           
+[13] "    "                                                                          
+Warning message:
+In readLines("~/sta141b/Public/Lectures/Day8/jasper") :
+  incomplete final line found on '~/sta141b/Public/Lectures/Day8/jasper'
+[40:15] 10> j = readLines("~/sta141b/Public/Lectures/Day8/jasper")
+Warning message:
+In readLines("~/sta141b/Public/Lectures/Day8/jasper") :
+  incomplete final line found on '~/sta141b/Public/Lectures/Day8/jasper'
+[40:18] 11> j
+*** output flushed ***
+[41:12] 12> options(width = 70)
+[41:19] 13> j
+ [1] "Return-Path: <felicity@kluge.net>"                                             
+ [2] "Delivered-To: yyyy@localhost.spamassassin.taint.org"                           
+ [3] "Received: from localhost (unknown [127.0.0.1])"                                
+ [4] "\tby jmason.org (Postfix) with ESMTP id 3768416F38"                            
+ [5] "\tfor <jm@localhost>; Mon,  2 Sep 2002 23:14:08 +0100 (IST)"                   
+ [6] "Received: from jalapeno [127.0.0.1]"                                           
+ [7] "\tby localhost with IMAP (fetchmail-5.9.0)"                                    
+ [8] "\tfor jm@localhost (single-drop); Mon, 02 Sep 2002 23:14:08 +0100 (IST)"       
+ [9] "Received: from eclectic.kluge.net"                                             
+[10] "    (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221])"
+[11] "    by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for"     
+[12] "    <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100"                           
+[13] "    "                                                                          
+[41:21] 14> j[9:13]
+[1] "Received: from eclectic.kluge.net"                                             
+[2] "    (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221])"
+[3] "    by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for"     
+[4] "    <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100"                           
+[5] "    "                                                                          
+[43:50] 15> paste(j[9:13], collapse =  " ")
+[1] "Received: from eclectic.kluge.net     (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221])     by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for     <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100     "
+[44:02] 16> paste(trimws(j[9:13]), collapse =  " ")
+[1] "Received: from eclectic.kluge.net (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221]) by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100 "
+[44:24] 17> j
+ [1] "Return-Path: <felicity@kluge.net>"                                             
+ [2] "Delivered-To: yyyy@localhost.spamassassin.taint.org"                           
+ [3] "Received: from localhost (unknown [127.0.0.1])"                                
+ [4] "\tby jmason.org (Postfix) with ESMTP id 3768416F38"                            
+ [5] "\tfor <jm@localhost>; Mon,  2 Sep 2002 23:14:08 +0100 (IST)"                   
+ [6] "Received: from jalapeno [127.0.0.1]"                                           
+ [7] "\tby localhost with IMAP (fetchmail-5.9.0)"                                    
+ [8] "\tfor jm@localhost (single-drop); Mon, 02 Sep 2002 23:14:08 +0100 (IST)"       
+ [9] "Received: from eclectic.kluge.net"                                             
+[10] "    (IDENT:tK7m7Ybxp1pyihrA4nx2xIdU0iOnCnis@eclectic.kluge.net [66.92.69.221])"
+[11] "    by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g82KebZ20178 for"     
+[12] "    <jm@jmason.org>; Mon, 2 Sep 2002 21:40:37 +0100"                           
+[13] "    "                                                                          
+[50:57] 18> grepl("^[ \\t]", j)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[12]  TRUE  TRUE
+[51:20] 19> grepl("^[ \t]", j)
+ [1] FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
+[12]  TRUE  TRUE
+[51:45] 20> !grepl("^[ \t]", j)
+ [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
+[12] FALSE FALSE
+[52:29] 21> cumsum(!grepl("^[ \t]", j))
+ [1] 1 2 3 3 3 4 4 4 5 5 5 5 5
+[53:05] 22> grepl("^[a-zA-Z]", j)
+ [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
+[12] FALSE FALSE
+[55:19] 23> cumsum(grepl("^[a-zA-Z]", j))
+ [1] 1 2 3 3 3 4 4 4 5 5 5 5 5
+[55:22] 24> cumsum(grepl("^[^ \t]", j))
+ [1] 1 2 3 3 3 4 4 4 5 5 5 5 5
+[55:35] 25> x = "00:14:bf:b1:97:8a=-38,2437000000,3"
+[25:03] 26> strsplit(x, "=")[[1]]
+[1] "00:14:bf:b1:97:8a" "-38,2437000000,3" 
+[28:42] 27> y = strsplit(x, "=")[[1]]
+[28:47] 28> y[1]
+[1] "00:14:bf:b1:97:8a"
+[28:49] 29> strsplit(y[2], ",")
+[[1]]
+[1] "-38"        "2437000000" "3"         
+
+[29:00] 30> strsplit(y[2], ",")[[1]]
+[1] "-38"        "2437000000" "3"         
+[29:03] 31> c(y[1], strsplit(y[2], ",")[[1]])
+[1] "00:14:bf:b1:97:8a" "-38"               "2437000000"       
+[4] "3"                
+[29:10] 32> y = strsplit(x, "=|,")[[1]]
+[31:38] 33> y
+[1] "00:14:bf:b1:97:8a" "-38"               "2437000000"       
+[4] "3"                
+[31:40] 34> x2 = "00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3"
+[32:41] 35> y = strsplit(x2, "=|,")[[1]]
+[32:56] 36> class(y)
+[1] "character"
+[33:04] 37> length(y)
+[1] 7
+[33:21] 38> y
+[1] "00:14:bf:b1:97:8a"   "-38"                 "2437000000"         
+[4] "3;00:14:bf:b1:97:90" "-56"                 "2427000000"         
+[7] "3"                  
+[33:28] 39>  strsplit(x2, ";")
+[[1]]
+[1] "00:14:bf:b1:97:8a=-38,2437000000,3"
+[2] "00:14:bf:b1:97:90=-56,2427000000,3"
+
+[34:10] 40>  strsplit(x2, ";")[[1]]
+[1] "00:14:bf:b1:97:8a=-38,2437000000,3"
+[2] "00:14:bf:b1:97:90=-56,2427000000,3"
+[34:16] 41> strsplit( strsplit(x2, ";")[[1]], "[=,]")
+[[1]]
+[1] "00:14:bf:b1:97:8a" "-38"               "2437000000"       
+[4] "3"                
+
+[[2]]
+[1] "00:14:bf:b1:97:90" "-56"               "2427000000"       
+[4] "3"                
+
+[34:26] 42> y = strsplit(x2, "[;,=")[[1]]
+Error in strsplit(x2, "[;,=") : 
+  invalid regular expression '[;,=', reason 'Missing ']''
+In addition: Warning message:
+In strsplit(x2, "[;,=") : TRE pattern compilation error 'Missing ']''
+
+Enter a frame number, or 0 to exit   
+
+1: strsplit(x2, "[;,=")
+
+Selection: 0
+[34:26] 42> y = strsplit(x2, "[;,=]")[[1]]
+[35:08] 43> length(y )
+[1] 8
+[35:21] 44> y
+[1] "00:14:bf:b1:97:8a" "-38"               "2437000000"       
+[4] "3"                 "00:14:bf:b1:97:90" "-56"              
+[7] "2427000000"        "3"                
+[35:24] 45> ll = readLines("../Mannheim/offline")
+[35:58] 46> length(ll)
+[1] 151392
+[36:02] 47> ll2 = ll[ !grepl("^#", ll) ]
+[36:29] 48> length(ll2)
+[1] 146080
+[36:31] 49> head(ll2)
+[1] "t=1139643118358;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:0f:a3:39:e1:c0=-53,2462000000,3;00:14:bf:b1:97:8d=-65,2442000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:3b:c7:c6=-66,2432000000,3;00:0f:a3:39:dd:cd=-75,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-87,2437000000,3;02:64:fb:68:52:e6=-88,2447000000,1;02:00:42:55:31:00=-84,2457000000,1"
+[2] "t=1139643118744;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:14:bf:3b:c7:c6=-67,2432000000,3;00:14:bf:b1:97:81=-66,2422000000,3;00:14:bf:b1:97:8d=-70,2442000000,3;00:0f:a3:39:e0:4b=-79,2462000000,3;00:0f:a3:39:dd:cd=-73,2412000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;02:00:42:55:31:00=-85,2457000000,1"                                   
+[3] "t=1139643119002;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:90=-57,2427000000,3;00:14:bf:b1:97:81=-66,2422000000,3;00:14:bf:3b:c7:c6=-69,2432000000,3;00:14:bf:b1:97:8d=-70,2442000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;00:0f:a3:39:dd:cd=-65,2412000000,3;02:64:fb:68:52:e6=-90,2447000000,1"                                   
+[4] "t=1139643119263;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-52,2427000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:81=-64,2422000000,3;00:14:bf:3b:c7:c6=-68,2432000000,3;00:14:bf:b1:97:8d=-74,2442000000,3;00:0f:a3:39:dd:cd=-78,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;02:00:42:55:31:00=-84,2457000000,1;02:64:fb:68:52:e6=-87,2447000000,1"
+[5] "t=1139643119538;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-46,2437000000,3;00:0f:a3:39:e1:c0=-55,2462000000,3;00:14:bf:b1:97:90=-57,2427000000,3;00:14:bf:3b:c7:c6=-67,2432000000,3;00:0f:a3:39:dd:cd=-66,2412000000,3;00:0f:a3:39:e0:4b=-80,2462000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;00:14:bf:b1:97:81=-66,2422000000,3;02:00:42:55:31:00=-87,2457000000,1"                                                                      
+[6] "t=1139643119818;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-37,2437000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:b1:97:8d=-67,2442000000,3;00:14:bf:3b:c7:c6=-67,2432000000,3;00:0f:a3:39:e0:4b=-79,2462000000,3;00:0f:a3:39:dd:cd=-67,2412000000,3;00:0f:a3:39:e2:10=-89,2437000000,3;02:00:42:55:31:00=-86,2457000000,1;02:64:fb:68:52:e6=-90,2447000000,1"                                   
+[37:08] 50> y
+[1] "00:14:bf:b1:97:8a" "-38"               "2437000000"       
+[4] "3"                 "00:14:bf:b1:97:90" "-56"              
+[7] "2427000000"        "3"                
+[38:06] 51> matrix(y,  , 4, byrow = TRUE)
+     [,1]                [,2]  [,3]         [,4]
+[1,] "00:14:bf:b1:97:8a" "-38" "2437000000" "3" 
+[2,] "00:14:bf:b1:97:90" "-56" "2427000000" "3" 
+[39:22] 52> x
+[1] "00:14:bf:b1:97:8a=-38,2437000000,3"
+[41:54] 53> x2
+[1] "00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3"
+[41:55] 54> x3 = c(x, x2)
+[42:02] 55> yc = strsplit(x3, "[;=,]")
+[42:32] 56> length(yc)
+[1] 2
+[42:57] 57> sapply(yc, length)
+[1] 4 8
+[44:30] 58> matrix(yc, , 4, byrow = TRUE)
+     [,1]        [,2]        [,3]        [,4]       
+[1,] character,4 character,8 character,4 character,8
+[45:02] 59> matrix(unlist(yc), , 4, byrow = TRUE)
+     [,1]                [,2]  [,3]         [,4]
+[1,] "00:14:bf:b1:97:8a" "-38" "2437000000" "3" 
+[2,] "00:14:bf:b1:97:8a" "-38" "2437000000" "3" 
+[3,] "00:14:bf:b1:97:90" "-56" "2427000000" "3" 
+[45:11] 60> ll2[1]
+[1] "t=1139643118358;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:0f:a3:39:e1:c0=-53,2462000000,3;00:14:bf:b1:97:8d=-65,2442000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:3b:c7:c6=-66,2432000000,3;00:0f:a3:39:dd:cd=-75,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-87,2437000000,3;02:64:fb:68:52:e6=-88,2447000000,1;02:00:42:55:31:00=-84,2457000000,1"
+[45:51] 61> gsub(".*degree=[0-9.]+;", "", ll2[1])
+[1] "00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:0f:a3:39:e1:c0=-53,2462000000,3;00:14:bf:b1:97:8d=-65,2442000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:3b:c7:c6=-66,2432000000,3;00:0f:a3:39:dd:cd=-75,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-87,2437000000,3;02:64:fb:68:52:e6=-88,2447000000,1;02:00:42:55:31:00=-84,2457000000,1"
+[46:14] 62> ll2[1]
+[1] "t=1139643118358;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:0f:a3:39:e1:c0=-53,2462000000,3;00:14:bf:b1:97:8d=-65,2442000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:3b:c7:c6=-66,2432000000,3;00:0f:a3:39:dd:cd=-75,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-87,2437000000,3;02:64:fb:68:52:e6=-88,2447000000,1;02:00:42:55:31:00=-84,2457000000,1"
+[47:08] 63> strsplit(ll2[1], "[;,=]")[[1]]
+ [1] "t"                 "1139643118358"     "id"               
+ [4] "00:02:2D:21:0F:33" "pos"               "0.0"              
+ [7] "0.0"               "0.0"               "degree"           
+[10] "0.0"               "00:14:bf:b1:97:8a" "-38"              
+[13] "2437000000"        "3"                 "00:14:bf:b1:97:90"
+[16] "-56"               "2427000000"        "3"                
+[19] "00:0f:a3:39:e1:c0" "-53"               "2462000000"       
+[22] "3"                 "00:14:bf:b1:97:8d" "-65"              
+[25] "2442000000"        "3"                 "00:14:bf:b1:97:81"
+[28] "-65"               "2422000000"        "3"                
+[31] "00:14:bf:3b:c7:c6" "-66"               "2432000000"       
+[34] "3"                 "00:0f:a3:39:dd:cd" "-75"              
+[37] "2412000000"        "3"                 "00:0f:a3:39:e0:4b"
+[40] "-78"               "2462000000"        "3"                
+[43] "00:0f:a3:39:e2:10" "-87"               "2437000000"       
+[46] "3"                 "02:64:fb:68:52:e6" "-88"              
+[49] "2447000000"        "1"                 "02:00:42:55:31:00"
+[52] "-84"               "2457000000"        "1"                
+[47:33] 64> 
