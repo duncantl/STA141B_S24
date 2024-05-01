@@ -49,11 +49,14 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	     + [Weblog Regexp explanation figure](Lectures/Day7/weblog.pdf)
  	     + [Familiar, small examples of regular expressions](Lectures/Day5/examples.md)         
 	     + [R session/code](Lectures/Day7/Day7.session)
-		 
+     + [Day 8](Lectures/Day8)
+	      + [R session](Lectures/Day8/Day8.rsession)
+     + [Day 9 README](Lectures/Day9/README.md)
+	 
 <!-- 
 
      + [Day 8](Lectures/Day8)
-     + [Day 9](Lectures/Day9)
+
      + [Day 10](Lectures/Day10)
      + [Day 11](Lectures/Day11)
      + [Day 12](Lectures/Day12)
