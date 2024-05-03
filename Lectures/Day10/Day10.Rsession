@@ -1,0 +1,123 @@
+]0;Day9~/sta141b/Public/Lectures/Day9> 
+]0;Day9~/sta141b/Public/Lectures/Day9> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 60867 
+Time = 2024-05-02 10:32:52 
+Dir = /Users/duncan/Classes/Davis/STA141B_23_24/Public/Lectures/Day9 
+1> ll = readLines("../../Data/offline")
+[32:53] 2> ll[4:6]
+[1] "t=1139643118358;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:0f:a3:39:e1:c0=-53,2462000000,3;00:14:bf:b1:97:8d=-65,2442000000,3;00:14:bf:b1:97:81=-65,2422000000,3;00:14:bf:3b:c7:c6=-66,2432000000,3;00:0f:a3:39:dd:cd=-75,2412000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-87,2437000000,3;02:64:fb:68:52:e6=-88,2447000000,1;02:00:42:55:31:00=-84,2457000000,1"
+[2] "t=1139643118744;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:90=-56,2427000000,3;00:14:bf:3b:c7:c6=-67,2432000000,3;00:14:bf:b1:97:81=-66,2422000000,3;00:14:bf:b1:97:8d=-70,2442000000,3;00:0f:a3:39:e0:4b=-79,2462000000,3;00:0f:a3:39:dd:cd=-73,2412000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;02:00:42:55:31:00=-85,2457000000,1"                                   
+[3] "t=1139643119002;id=00:02:2D:21:0F:33;pos=0.0,0.0,0.0;degree=0.0;00:14:bf:b1:97:8a=-38,2437000000,3;00:0f:a3:39:e1:c0=-54,2462000000,3;00:14:bf:b1:97:90=-57,2427000000,3;00:14:bf:b1:97:81=-66,2422000000,3;00:14:bf:3b:c7:c6=-69,2432000000,3;00:14:bf:b1:97:8d=-70,2442000000,3;00:0f:a3:39:e0:4b=-78,2462000000,3;00:0f:a3:39:e2:10=-83,2437000000,3;00:0f:a3:39:dd:cd=-65,2412000000,3;02:64:fb:68:52:e6=-90,2447000000,1"                                   
+[36:14] 3> ff = "~/Data/SpamAssassin/easy_ham/00009.371eca25b0169ce5cb4f71d3e07b9e2d"
+[16:41] 4> ll = readLines(ff)
+[16:49] 5> nchar(ll)
+Error in nchar(ll) : invalid multibyte string, element 61
+
+Enter a frame number, or 0 to exit   
+
+1: nchar(ll)
+
+Selection: 0
+[16:49] 5> which(ll == "")[1]
+[1] 50
+[17:27] 6> h = ll[2:which(ll == "")[1]]
+[17:35] 7> grep("^From:", h)
+[1] 35
+[17:50] 8> 
+[17:50] 8> r = ll[ - (2:which(ll == "")[1] ) ]
+[18:25] 9> length(r)
+[1] 127
+[18:27] 10> grep("bob", r)
+integer(0)
+There were 19 warnings (use warnings() to see them)
+[18:36] 11> warnings()
+*** output flushed ***
+[18:47] 12> nchar(r)
+Error in nchar(r) : invalid multibyte string, element 12
+
+Enter a frame number, or 0 to exit   
+
+1: nchar(r)
+
+Selection: 0
+[18:47] 12> nchar
+function (x, type = "chars", allowNA = FALSE, keepNA = NA) 
+.Internal(nchar(x, type, allowNA, keepNA))
+<bytecode: 0x1291167c0>
+<environment: namespace:base>
+[19:05] 13> nchar(r, "bytes")
+  [1] 55 12  0 17  0 22  1 15  1  1 77 79 72 74 15  1 79 78 78 75 20  1 77 74 78 20  1 79 78 56  1 77 76 72 72  1 78 75 73 73 79 76 78 21  1 77 72 69 75 78 75 18  1 79 75 77 30  1 69 78 77 74 25  1 75 73 43  1 74 75 72  1 75
+ [74] 78 35  1 77 78  8  1 77 77 74 78 73 78 31  1 73 76 79 74  1 72 73 78 78 73  1 76 75 76 77 61  1 77 16  1  1 79 49  0  0 72 25 56 72  0 49 32  0  1  0 74  0  0  0
+[19:11] 14> ll2 = readLines(ff, encoding = "latin1")
+[19:44] 15> nchar(ll)
+Error in nchar(ll) : invalid multibyte string, element 61
+
+Enter a frame number, or 0 to exit   
+
+1: nchar(ll)
+
+Selection: 0
+[19:44] 15> 
+*** output flushed ***
+[20:04] 16> nchar(ll2)
+  [1]  55  39  43  48  65  60  33  41  72  59  72  83 102  67  30  34  42  57  72  74  30  68  64  71  69  69  69  28  76  31  29  46  16  42  38  49  17  53  34  52  16  64  37  41  35  44  31  74  19   0  12   0  17   0  22
+ [56]   1  15   1   1  77  79  72  74  15   1  79  78  78  75  20   1  77  74  78  20   1  79  78  56   1  77  76  72  72   1  78  75  73  73  79  76  78  21   1  77  72  69  75  78  75  18   1  79  75  77  30   1  69  78  77
+[111]  74  25   1  75  73  43   1  74  75  72   1  75  78  35   1  77  78   8   1  77  77  74  78  73  78  31   1  73  76  79  74   1  72  73  78  78  73   1  76  75  76  77  61   1  77  16   1   1  79  49   0   0  72  25  56
+[166]  72   0  49  32   0   1   0  74   0   0   0
+[20:10] 17> ll2[79]
+[1] " me a criminal!\" You can’t help feeling he has a point. "
+[22:52] 18> [19:44] 15> 
+Error: unexpected '[' in "["
+No suitable frames for recover()
+[22:52] 18> ll3 = readLines(ff, encoding = "ISO-8859-1")
+[28:08] 19> nchar(ll3)
+Error in nchar(ll3) : invalid multibyte string, element 61
+
+Enter a frame number, or 0 to exit   
+
+1: nchar(ll3)
+
+Selection: 0
+[28:08] 19> ll[79]
+[1] " me a criminal!\" You can\x92t help feeling he has a point. "
+[28:41] 20> iconv
+function (x, from = "", to = "", sub = NA, mark = TRUE, toRaw = FALSE) 
+{
+    if (!(is.character(x) || (is.list(x) && is.null(oldClass(x))))) 
+        x <- as.character(x)
+    .Internal(iconv(x, from, to, as.character(sub), mark, toRaw))
+}
+<bytecode: 0x109eab7b0>
+<environment: namespace:base>
+[28:55] 21> iconv(ll[79], "UTF8", "latin1")
+[1] NA
+[29:13] 22> iconv(ll[79], "latin1", "UTF8")
+[1] " me a criminal!\" You can\u0092t help feeling he has a point. "
+[29:23] 23> grep("feeling", ll[79])
+integer(0)
+Warning messages:
+1: In grep("feeling", ll[79]) :
+  unable to translate ' me a criminal!" You can<92>t help feeling he has a point. ' to a wide string
+2: In grep("feeling", ll[79]) : input string 1 is invalid
+[30:13] 24> iconv(ll[79], "latin1", "utf8")
+[1] " me a criminal!\" You can\u0092t help feeling he has a point. "
+[41:55] 25> 
