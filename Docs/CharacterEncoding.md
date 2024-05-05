@@ -155,7 +155,7 @@ If I open this in my text editor, I see
 
 ![foo2.png](foo2.png)
 
-Emacs allows me to change the encoding of a selected subset/region of the buffer
+My text editor Emacs allows me to change the encoding of a selected subset/region of the buffer
 (with its recode-region function.)
 When I save that to foo3, it is then an IS0-8559 file and all characters have been correctly
 switched to that encoding.
