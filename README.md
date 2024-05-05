@@ -19,6 +19,8 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 + [Note on Character Encoding](Docs/CharacterEncoding.md)
    + [foo](Docs/foo), [foo1](Docs/foo1), [foo2](Docs/foo2), [foo3](Docs/foo3)
    
++ [New Note on Character Encoding and Content-Type](Docs/CharacterEncoding3.md)
+   
 + [Brief Git Tutorial](GitBasics.md)
 
 + Lectures
