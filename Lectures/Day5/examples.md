@@ -178,6 +178,8 @@ gsub(".*([NS])", "\\1", lat)
 
 ## Deal with "paragraphs" of text
 
+See ../Day7/cumsum.md for explanation.
+
 When data come in free-form text, we have to find the elements above within the other words.
 
 Consider the [following part of a job posting from indeed](jobPost.md):
@@ -188,9 +190,10 @@ Consider the [following part of a job posting from indeed](jobPost.md):
   + Academic qualifications
      + required 
 	 + preferred
-  + 
 
 
+
++ Can use this for finding and extracting all the tables in the ../Day3/USA_CA_Bodega.Bay.CG.Light.Station.724995_TMYx.stat files
 
 
 ## Find email addresses
@@ -238,11 +241,58 @@ grep("173.234.31.186", ll)
       + They don't understand the value, just the text.
 
 
+We can use a simple regular expression
+```
+x = gregexpr("[0-9.]+", ll)
+```
+
+But this matches "10" in "Dec 10 06:55:46...."
+
+So let's be more precise/specific in matching an IP adress
+
++ We want 1 to 3  digits followed by a .
++ Then the same pattern again 3 times.
++ But we don't want a . at the end of the 4th match.
+
+```
+x = gregexpr("(([0-9]+\\.){3}([0-9]+))", ll)
+x[[1]]
+```
+```
+[1] 101
+attr(,"match.length")
+[1] 14
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+```
+
+```
+regmatches(ll[1], x[[1]])
+```
+```
+[1] "173.234.31.186"
+```
+
+
+We could further refine this to match only 1 to 3 digits in the last position and not
+any number of digits, e.g., 
+1.2.3.456789.
+
+```
+rx = "([0-9]{1,3}\\.){3}([0-9]{1,3})"
+x = gregexpr(rx, ll)
+```
+
+
+
 
 
 # Web Server Log
 
 + ../../Data/eeyore.log
++ See ../Day6/weblog.md
 
 ```
 114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /stat141/Code/Session1.txt HTTP/1.1" 404 223 "https://www.google.co.jp/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
