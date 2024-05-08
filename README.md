@@ -59,7 +59,8 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	    + [R session](Lectures/Day10/Day10.Rsession)	 
 	    + [Notes on R Code](Lectures/Day10/NotesRCodeAssignment1.md)	 		
 	    + [Reading Wifi data](Lectures/Day10/wifi.R)	 		
-		
+     + [Day 11](Lectures/Day11/README.md)		
+	    
 <!-- 
 
      + [Day 8](Lectures/Day8)
