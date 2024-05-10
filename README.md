@@ -59,7 +59,12 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	    + [R session](Lectures/Day10/Day10.Rsession)	 
 	    + [Notes on R Code](Lectures/Day10/NotesRCodeAssignment1.md)	 		
 	    + [Reading Wifi data](Lectures/Day10/wifi.R)	 		
-     + [Day 11](Lectures/Day11/README.md)		
+     + [Day 11 README](Lectures/Day11/README.md)		
+     + [Day 12](Lectures/Day12/)
+         + [Slides on SQL](Lectures/Day11/dbms2.html)
+         + [moz_cookies/cookies3.slite DB](Lectures/Day11/cookies3.sqlite)		 
+         + [HAVING example and exploration](Lectures/Day11/havingEg.sql) 
+         + [R session](Lectures/Day11/Day12.rsession)
 	    
 <!-- 
 

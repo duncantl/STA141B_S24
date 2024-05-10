@@ -167,6 +167,11 @@ while (n <= length(z1)){
 
 + Convert the 
 
+138.2W 36.8W
+
+128.2N
+1.2S
+
 ```
 w_convert <- function(x) {
   i = 1
