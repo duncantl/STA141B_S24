@@ -1,0 +1,1281 @@
+]0;Day8~/sta141b/Public/Lectures/Day8> ls
+'#Day8.rsession#'   Day8.rsession   Outline.md   Outline.md~   Reminder.md   bar   bar~   foo   jasper   jasper2   jasper2~   jasper3   jasper3~
+]0;Day8~/sta141b/Public/Lectures/Day8> cd ../Day9
+]0;Day9~/sta141b/Public/Lectures/Day9> ls
+Day9.rsession
+]0;Day9~/sta141b/Public/Lectures/Day9> git add Day9.rsession 
+]0;Day9~/sta141b/Public/Lectures/Day9> git commit -m "..."
+[main 91a3a57] ...
+ 1 file changed, 265 insertions(+)
+ create mode 100644 Lectures/Day9/Day9.rsession
+]0;Day9~/sta141b/Public/Lectures/Day9> ls
+Day9.rsession
+]0;Day9~/sta141b/Public/Lectures/Day9> git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 3.79 KiB | 3.79 MiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   32cc5f4..91a3a57  main -> main
+]0;Day9~/sta141b/Public/Lectures/Day9> ls
+Day9.rsession
+]0;Day9~/sta141b/Public/Lectures/Day9> head -n 1000 ~/Data/Mannheim/offline > ../../Data/
+bash: ../../Data/: Is a directory
+]0;Day9~/sta141b/Public/Lectures/Day9> head -n 1000 ~/Data/Mannheim/offline > ../../Data/offline
+]0;Day9~/sta141b/Public/Lectures/Day9> mv ../Day8/jasper* .
+]0;Day9~/sta141b/Public/Lectures/Day9> ls
+Day9.rsession  jasper  jasper2  jasper2~  jasper3  jasper3~
+]0;Day9~/sta141b/Public/Lectures/Day9> git add jasper{,2,3}
+]0;Day9~/sta141b/Public/Lectures/Day9> rmb
+]0;Day9~/sta141b/Public/Lectures/Day9> ls
+Day9.rsession  README.md  jasper  jasper2  jasper3
+]0;Day9~/sta141b/Public/Lectures/Day9> git commit -m "jasper files"
+[main 5659ee4] jasper files
+ 3 files changed, 32 insertions(+)
+ create mode 100644 Lectures/Day9/jasper
+ create mode 100644 Lectures/Day9/jasper2
+ create mode 100644 Lectures/Day9/jasper3
+]0;Day9~/sta141b/Public/Lectures/Day9> git add README.md 
+]0;Day9~/sta141b/Public/Lectures/Day9> git commit -m "...
+> "
+[main d3229a8] ...
+ 1 file changed, 17 insertions(+)
+ create mode 100644 Lectures/Day9/README.md
+]0;Day9~/sta141b/Public/Lectures/Day9> git add README.md 
+]0;Day9~/sta141b/Public/Lectures/Day9> git add wifi.R
+]0;Day9~/sta141b/Public/Lectures/Day9> git commit -m "show how to read the mannheim data"
+[main fb7c8e6] show how to read the mannheim data
+ 2 files changed, 60 insertions(+), 1 deletion(-)
+ create mode 100644 Lectures/Day9/wifi.R
+]0;Day9~/sta141b/Public/Lectures/Day9> git push
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (18/18), 2.78 KiB | 2.78 MiB/s, done.
+Total 18 (delta 11), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (11/11), completed with 2 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   91a3a57..fb7c8e6  main -> main
+]0;Day9~/sta141b/Public/Lectures/Day9> cd ../Day8
+]0;Day8~/sta141b/Public/Lectures/Day8> ls
+Day8.rsession  Outline.md  Outline.md~  Reminder.md  bar  bar~  foo
+]0;Day8~/sta141b/Public/Lectures/Day8> git add Day8.rsession 
+]0;Day8~/sta141b/Public/Lectures/Day8> git commit -m "..."
+*** output flushed ***
+]0;Day8~/sta141b/Public/Lectures/Day8> git status .
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Outline.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Reminder.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Day8~/sta141b/Public/Lectures/Day8> git add Reminder.md 
+]0;Day8~/sta141b/Public/Lectures/Day8> git commit -m "reminder about elements of regular expression language"
+[main 9addbc5] reminder about elements of regular expression language
+ 1 file changed, 42 insertions(+)
+ create mode 100644 Lectures/Day8/Reminder.md
+]0;Day8~/sta141b/Public/Lectures/Day8> git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 928 bytes | 928.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   fb7c8e6..9addbc5  main -> main
+]0;Day8~/sta141b/Public/Lectures/Day8> git add ../../README.md 
+]0;Day8~/sta141b/Public/Lectures/Day8> git commit -m "day 9 in top-level readme"
+[main c12a8a5] day 9 in top-level readme
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+]0;Day8~/sta141b/Public/Lectures/Day8> gitp ush
+bash: gitp: command not found
+]0;Day8~/sta141b/Public/Lectures/Day8> git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 379 bytes | 379.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   9addbc5..c12a8a5  main -> main
+]0;Day8~/sta141b/Public/Lectures/Day8> cd ../../..
+]0;sta141b~/sta141b> cd Private/Lectures/Day1/
+]0;Day1~/sta141b/Private/Lectures/Day1> ls
+Day1.key  Outline.md  Outline.md~
+]0;Day1~/sta141b/Private/Lectures/Day1> open Day1.key 
+]0;Day1~/sta141b/Private/Lectures/Day1> cd ~/sta141b_23/Public/Lectures/Day10/
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls -asltr ~/Downloads/ |tail
+   1688 -rw-r--r--     1 duncan staff    1725357 May  1 16:55 ccga-handbook-3.pdf
+    328 -rw-r--r--     1 duncan staff     335323 May  1 16:58 gc2009_02-1.pdf
+   1408 -rw-r--r--     1 duncan staff    1438670 May  1 17:04 compendium_sept2014-2.pdf
+   1688 -rw-r--r--     1 duncan staff    1725357 May  1 17:06 ccga-handbook-4.pdf
+   1688 -rw-r--r--     1 duncan staff    1725357 May  1 17:14 ccga-handbook-5.pdf
+     16 -rw-r--r--     1 duncan staff      15733 May  1 17:40 E-Form Release 1.0 & Legacy & eDocs - GRAD-266 - 2024-05-01_1739.zip
+    384 -rw-r--r--     1 duncan staff     391006 May  1 19:49 Reconstitution of Committee Membership Request-2.pdf
+   1712 -rw-r--r--     1 duncan staff    1752132 May  1 20:05 Report on Qualification Examination for Admission to Candidacy - Philosophy .pdf
+      0 drwxr-xr-x+  479 duncan staff      15328 May  2 09:03 ../
+      0 drwx------+ 3129 duncan staff     100128 May  2 09:03 ./
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls -asltr ~/duncan | tail
+ls: cannot access '/Users/duncan/duncan': No such file or directory
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls -asltr ~/ | tail
+      0 drwxr-xr-x    33 duncan staff       1056 May  1 17:41 AppianPackages/
+      0 drwxr-xr-x   430 duncan staff      13760 May  2 05:33 Rpackages4/
+     20 -rw-r--r--     1 duncan staff      19999 May  2 05:57 anital.xlsx
+     28 -rw-r--r--     1 duncan staff      26745 May  2 06:06 anita.xlsx
+      4 -rw-------     1 duncan staff         20 May  2 06:28 .lesshst
+      8 -rw-------     1 duncan staff       6960 May  2 07:38 .bash_history
+     36 -rw-r--r--     1 duncan staff      32772 May  2 09:01 .DS_Store
+    132 -rw-r--r--     1 duncan staff     134239 May  2 09:03 database-diagram-of-stack-exchange-model.html
+      0 drwx------+ 3129 duncan staff     100128 May  2 09:03 Downloads/
+      0 drwxr-xr-x+  479 duncan staff      15328 May  2 09:03 ./
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls -asltr ~/ | tail
+      0 drwxr-xr-x   430 duncan staff      13760 May  2 05:33 Rpackages4/
+     20 -rw-r--r--     1 duncan staff      19999 May  2 05:57 anital.xlsx
+     28 -rw-r--r--     1 duncan staff      26745 May  2 06:06 anita.xlsx
+      4 -rw-------     1 duncan staff         20 May  2 06:28 .lesshst
+      8 -rw-------     1 duncan staff       6960 May  2 07:38 .bash_history
+     36 -rw-r--r--     1 duncan staff      32772 May  2 09:01 .DS_Store
+    132 -rw-r--r--     1 duncan staff     134239 May  2 09:03 database-diagram-of-stack-exchange-model.html
+      0 drwx------+ 3129 duncan staff     100128 May  2 09:03 Downloads/
+      0 drwxr-xr-x+  480 duncan staff      15360 May  2 09:04 ./
+    136 -rw-r--r--     1 duncan staff     138353 May  2 09:04 SOSchema.png
+]0;Day10~/sta141b_23/Public/Lectures/Day10> mv ~/SOSchema.png .
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls
+BBall.md      SQL             bball.R   cookies.sqlite      cookies2.sqlite-shm  f1.sqlite    mom
+BBall.md~     SQLiteSession   bball.R~  cookies.sqlite-shm  cookies2.sqlite-wal  fang.sqlite  mom~
+Outline       baseball.html   bob       cookies.sqlite-wal  dbms.html            joins.html
+SOSchema.png  baseball.html~  bob~      cookies2.sqlite     dbms2.html           joins.html~
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls
+BBall.md   SOSchema.png   baseball.html   bball.R~  cookies.sqlite      cookies2.sqlite      dbms.html   fang.sqlite  mom
+BBall.md~  SQL            baseball.html~  bob       cookies.sqlite-shm  cookies2.sqlite-shm  dbms2.html  joins.html   mom~
+Outline    SQLiteSession  bball.R         bob~      cookies.sqlite-wal  cookies2.sqlite-wal  f1.sqlite   joins.html~
+]0;Day10~/sta141b_23/Public/Lectures/Day10> cd
+]0;duncan~> cd sta141b/Public/Lectures/Day10
+]0;Day10~/sta141b/Public/Lectures/Day10> ls
+Day10.Rsession  NotesRCodeAssignment1.md  Outline.md  Outline.md~
+]0;Day10~/sta141b/Public/Lectures/Day10> git add Day10.Rsession  NotesRCodeAssignment1.md Outline.md
+]0;Day10~/sta141b/Public/Lectures/Day10> git commit -m "from Day 10.  went over assignment 2, R code from assignment 1, wifi/mannheim example."
+[main 59562ec] from Day 10.  went over assignment 2, R code from assignment 1, wifi/mannheim example.
+ 3 files changed, 314 insertions(+)
+ create mode 100644 Lectures/Day10/Day10.Rsession
+ create mode 100644 Lectures/Day10/NotesRCodeAssignment1.md
+ create mode 100644 Lectures/Day10/Outline.md
+]0;Day10~/sta141b/Public/Lectures/Day10> ls ../Day9
+Day9.rsession  Day9.rsession~  README.md  encoding.R  encoding.R~  jasper  jasper2  jasper3  wifi.R  wifi.R~
+]0;Day10~/sta141b/Public/Lectures/Day10> git status ../Day9/wifi.R
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+]0;Day10~/sta141b/Public/Lectures/Day10> git log ../Day9/wifi.R
+commit fb7c8e6b1aaa40674659fa11e2087b3995c15eae
+Author: Duncan Temple Lang <duncan@r-project.org>
+Date:   Tue Apr 30 19:59:46 2024 -0700
+
+    show how to read the mannheim data
+]0;Day10~/sta141b/Public/Lectures/Day10> git mv ../Day9/wifi.R .
+]0;Day10~/sta141b/Public/Lectures/Day10> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   wifi.R
+
+]0;Day10~/sta141b/Public/Lectures/Day10> git commit -m "wifi/mannheim"
+[main 53c0e7a] wifi/mannheim
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename Lectures/{Day9 => Day10}/wifi.R (100%)
+]0;Day10~/sta141b/Public/Lectures/Day10> git push
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 4.63 KiB | 4.63 MiB/s, done.
+Total 12 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (6/6), completed with 3 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   c12a8a5..53c0e7a  main -> main
+]0;Day10~/sta141b/Public/Lectures/Day10> git status .
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+]0;Day10~/sta141b/Public/Lectures/Day10> cd ../..
+]0;Public~/sta141b/Public> git add README.md 
+]0;Public~/sta141b/Public> git commit -m "Day 10 links"
+[main 23bca98] Day 10 links
+ 1 file changed, 5 insertions(+)
+]0;Public~/sta141b/Public> git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 419 bytes | 419.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   53c0e7a..23bca98  main -> main
+]0;Public~/sta141b/Public> ls
+Data/  Docs/  GitBasics.md  Lectures/  README.md
+]0;Public~/sta141b/Public> cd Lectures/Day10
+]0;Day10~/sta141b/Public/Lectures/Day10> ls
+Day10.Rsession  NotesRCodeAssignment1.md  Outline.md  Outline.md~  wifi.R
+]0;Day10~/sta141b/Public/Lectures/Day10> rmb
+]0;Day10~/sta141b/Public/Lectures/Day10> ls
+Day10.Rsession  NotesRCodeAssignment1.md  Outline.md  wifi.R
+]0;Day10~/sta141b/Public/Lectures/Day10> git status .
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+]0;Day10~/sta141b/Public/Lectures/Day10> cd ../
+]0;Lectures~/sta141b/Public/Lectures> cd ..
+]0;Public~/sta141b/Public> ls
+Data/  Docs/  GitBasics.md  Lectures/  README.md
+]0;Public~/sta141b/Public> cd
+]0;duncan~> cd sta141b_23/
+]0;sta141b_23~/sta141b_23> ls
+'#ShaneGao.R#'                                     ComplexFile/   Grading/              Piazza.md           Roster_HW1.xlsx             Todo.md                 enmian
+ 2023-06-20T1251_Grades-STA_141B_A01_SQ_2023.xls   Data/          HW1FinalScores.xlsx   Private/            STA141B_22_23@              URLs                    locale.R
+ A_Spring2023                                      Dates          LearningGoals.md      Public/             Scrape/                     Viz/                    marineTraffic.R
+ Accommodations/                                   Examples/      LectureCapture        README.md           ShaneGao.R                  WilliamDoctorNote.jpg   mergeNumViews.R
+ Assignments/                                      Examples.md    OfficeHours/          ReadingDate.md      TAGrading/                  WritingRCode/           sara.R
+ Canvas                                            Filip/         OfficeHours.md        Roster/             ThingsToRemindStudents.md   ben.html                submissions.zip
+ CheckList.md                                      GNUmakefile    Photos/               RosterGrades.xlsx   ToTAs                       chronicleDiversity.R
+]0;sta141b_23~/sta141b_23> cd Assignments/
+]0;Assignments~/sta141b_23/Assignments> ls
+DBMS/  FEC/  Logs/  RProgramming/  Scrape/  Solar/
+]0;Assignments~/sta141b_23/Assignments> cd DBMS/
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls
+'#Q23.R#'          NewQuestions.md   Q25               StackExchange.pdf              answers.Rmd    hazan.sql                 q21.R                  stats.stackexchange.Rds
+ DBMSSpring23.md   PossibleData      Q25.Rmd           StackExchange.tex              benQ23.R       init.R                    q23_2.sql              stats.stackexchange.db*
+ GNUmakefile@      Q13.R             Questions.md      StackExchangeSolutions.Rmd     benQ23_dtl.R   lahman_1871-2022.sqlite   quesTotals.sql         stats.stackexchange0.db*
+ IMDB/             Q18.png           SOSolutions.Rmd   StatsStackExchangeSearch.png   downloads/     q11.sql                   stats.stackexchange    tmp.db*
+ Lahman/           Q23.R             SOSolutions.pdf   Wikipedia/                     funs.R         q13.sql                   stats.stackexchange.
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls *.pdf
+SOSolutions.pdf  StackExchange.pdf
+]0;DBMS~/sta141b_23/Assignments/DBMS> open StackExchange.pdf 
+]0;DBMS~/sta141b_23/Assignments/DBMS> cd
+]0;duncan~> cd sta141b/Public/
+]0;Public~/sta141b/Public> ls
+Data/  Docs/  GitBasics.md  Lectures/  README.md
+]0;Public~/sta141b/Public> git status 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Lectures/Day10/NotesRCodeAssignment1.md
+	modified:   Lectures/Day5/examples.md
+	modified:   Lectures/Day7/Outline.md
+	modified:   Lectures/Day8/Outline.md
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Data/2c
+	Data/degree
+	Data/line4
+	Data/mixedText
+	Data/offline
+	Docs/bar
+	Docs/emacs.md
+	Docs/foo4
+	Docs/matt
+	Lectures/Day11/cookies.sqlite
+	Lectures/Day11/cookies2.sqlite
+	Lectures/Day11/fang.sqlite
+	Lectures/Day3/out
+	Lectures/Day5/Outline.md
+	Lectures/Day5/lefei.R
+	Lectures/Day5/log1.txt
+	Lectures/Day6/mannheim.R
+	Lectures/Day7/cumsum2.md
+	Lectures/Day9/encoding.R
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Public~/sta141b/Public> git diff README.md 
+diff --git a/README.md b/README.md
+index 4ab7bdb..f087a16 100644
+--- a/README.md
++++ b/README.md
+@@ -59,7 +59,8 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
+ 	    + [R session](Lectures/Day10/Day10.Rsession)	 
+ 	    + [Notes on R Code](Lectures/Day10/NotesRCodeAssignment1.md)	 		
+ 	    + [Reading Wifi data](Lectures/Day10/wifi.R)	 		
+-		
++     + [Day 11](Lectures/Day11/README.md)		
++	    
+ <!-- 
+ 
+      + [Day 8](Lectures/Day8)
+]0;Public~/sta141b/Public> git add README.md 
+]0;Public~/sta141b/Public> git commit -m "Day 11"
+[main 076c59e] Day 11
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+]0;Public~/sta141b/Public> git diff Lectures/Day10/NotesRCodeAssignment1.md 
+*** output flushed ***
+]0;Public~/sta141b/Public> cd Lectures/
+]0;Lectures~/sta141b/Public/Lectures> git diff Day5/examples.md 
+diff --git a/Lectures/Day5/examples.md b/Lectures/Day5/examples.md
+index eda4414..1f4e7b4 100644
+--- a/Lectures/Day5/examples.md
++++ b/Lectures/Day5/examples.md
+@@ -178,6 +178,8 @@ gsub(".*([NS])", "\\1", lat)
+ 
+ ## Deal with "paragraphs" of text
+ 
++See ../Day7/cumsum.md for explanation.
++
+ When data come in free-form text, we have to find the elements above within the other words.
+ 
+ Consider the [following part of a job posting from indeed](jobPost.md):
+@@ -188,10 +190,11 @@ Consider the [following part of a job posting from indeed](jobPost.md):
+   + Academic qualifications
+      + required 
+ 	 + preferred
+-  + 
+ 
+ 
+ 
+++ Can use this for finding and extracting all the tables in the ../Day3/USA_CA_Bodega.Bay.CG.Light.Station.724995_TMYx.stat files
++
+ 
+ ## Find email addresses
+ 
+@@ -238,11 +241,58 @@ grep("173.234.31.186", ll)
+       + They don't understand the value, just the text.
+ 
+ 
++We can use a simple regular expression
++```
++x = gregexpr("[0-9.]+", ll)
++```
++
++But this matches "10" in "Dec 10 06:55:46...."
++
++So let's be more precise/specific in matching an IP adress
++
+++ We want 1 to 3  digits followed by a .
+++ Then the same pattern again 3 times.
+++ But we don't want a . at the end of the 4th match.
++
++```
++x = gregexpr("(([0-9]+\\.){3}([0-9]+))", ll)
++x[[1]]
++```
++```
++[1] 101
++attr(,"match.length")
++[1] 14
++attr(,"index.type")
++[1] "chars"
++attr(,"useBytes")
++[1] TRUE
++```
++
++```
++regmatches(ll[1], x[[1]])
++```
++```
++[1] "173.234.31.186"
++```
++
++
++We could further refine this to match only 1 to 3 digits in the last position and not
++any number of digits, e.g., 
++1.2.3.456789.
++
++```
++rx = "([0-9]{1,3}\\.){3}([0-9]{1,3})"
++x = gregexpr(rx, ll)
++```
++
++
++
+ 
+ 
+ # Web Server Log
+ 
+ + ../../Data/eeyore.log
+++ See ../Day6/weblog.md
+ 
+ ```
+ 114.188.183.88 - - [01/Nov/2015:03:41:50 -0800] "GET /stat141/Code/Session1.txt HTTP/1.1" 404 223 "https://www.google.co.jp/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+]0;Lectures~/sta141b/Public/Lectures> git add Day5/examples.md 
+]0;Lectures~/sta141b/Public/Lectures> git commit -m "..."
+[main 62952a3] ...
+ 1 file changed, 51 insertions(+), 1 deletion(-)
+]0;Lectures~/sta141b/Public/Lectures> git push
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 1.29 KiB | 1.29 MiB/s, done.
+Total 8 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (6/6), completed with 5 local objects.        
+To github.com:duncantl/STA141B_S24.git
+   650b70b..62952a3  main -> main
+]0;Lectures~/sta141b/Public/Lectures> cd ..
+]0;Public~/sta141b/Public> ls
+Data/  Docs/  GitBasics.md  Lectures/  README.md
+]0;Public~/sta141b/Public> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Lectures/Day10/NotesRCodeAssignment1.md
+	modified:   Lectures/Day7/Outline.md
+	modified:   Lectures/Day8/Outline.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Data/2c
+	Data/degree
+	Data/line4
+	Data/mixedText
+	Data/offline
+	Docs/bar
+	Docs/emacs.md
+	Docs/foo4
+	Docs/matt
+	Lectures/Day11/cookies.sqlite
+	Lectures/Day11/cookies2.sqlite
+	Lectures/Day11/fang.sqlite
+	Lectures/Day3/out
+	Lectures/Day5/Outline.md
+	Lectures/Day5/lefei.R
+	Lectures/Day5/log1.txt
+	Lectures/Day6/mannheim.R
+	Lectures/Day7/cumsum2.md
+	Lectures/Day9/encoding.R
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Public~/sta141b/Public> cd ../Assignments/
+]0;Assignments~/sta141b/Assignments> ls
+DBMS_projects  GNUmakefile  NASA/  NASA.md  NASA.pdf  Regexp_projects  Spam/
+]0;Assignments~/sta141b/Assignments> mkdir StackOverflow
+]0;Assignments~/sta141b/Assignments> cd
+]0;duncan~> cd sta141b_23/Assignments/
+]0;Assignments~/sta141b_23/Assignments> ls
+DBMS/  FEC/  Logs/  RProgramming/  Scrape/  Solar/
+]0;Assignments~/sta141b_23/Assignments> cd DBMS/
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls
+'#Q23.R#'          Q18.png             StackExchange.tex              funs.R                    quesTotals.sql
+ DBMSSpring23.md   Q23.R               StackExchangeSolutions.Rmd     hazan.sql                 stats.stackexchange
+ GNUmakefile@      Q25                 StatsStackExchangeSearch.png   init.R                    stats.stackexchange.
+ IMDB/             Q25.Rmd             Wikipedia/                     lahman_1871-2022.sqlite   stats.stackexchange.Rds
+ Lahman/           Questions.md        answers.Rmd                    q11.sql                   stats.stackexchange.db*
+ NewQuestions.md   SOSolutions.Rmd     benQ23.R                       q13.sql                   stats.stackexchange0.db*
+ PossibleData      SOSolutions.pdf     benQ23_dtl.R                   q21.R                     tmp.db*
+ Q13.R             StackExchange.pdf   downloads/                     q23_2.sql
+]0;DBMS~/sta141b_23/Assignments/DBMS> cd ..
+]0;Assignments~/sta141b_23/Assignments> cp -r DBMS ~/sta141b/Assignments/StackOverflow
+]0;Assignments~/sta141b_23/Assignments> last
+/Users/duncan/Downloads/lahman_1871-2022(1).sqlite
+]0;Assignments~/sta141b_23/Assignments> sqlite3 '/Users/duncan/Downloads/lahman_1871-2022(1).sqlite'
+-- Loading resources from /Users/duncan/.sqliterc
+SQLite version 3.41.2 2023-03-22 11:56:21
+Enter ".help" for usage hints.
+sqlite> .tables
+AllstarFull          Fielding             People             
+Appearances          FieldingOF           Pitching           
+AwardsManagers       FieldingOFsplit      PitchingPost       
+AwardsPlayers        FieldingPost         Salaries           
+AwardsShareManagers  HallOfFame           Schools            
+AwardsSharePlayers   HomeGames            SeriesPost         
+Batting              Managers             Teams              
+BattingPost          ManagersHalf         TeamsFranchises    
+CollegePlaying       Parks                TeamsHalf          
+sqlite> .schema
+*** output flushed ***
+sqlite> 
+]0;Assignments~/sta141b_23/Assignments> cd DBMS/
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls
+'#Q23.R#'          Q18.png             StackExchange.tex              funs.R                    quesTotals.sql
+ DBMSSpring23.md   Q23.R               StackExchangeSolutions.Rmd     hazan.sql                 stats.stackexchange
+ GNUmakefile@      Q25                 StatsStackExchangeSearch.png   init.R                    stats.stackexchange.
+ IMDB/             Q25.Rmd             Wikipedia/                     lahman_1871-2022.sqlite   stats.stackexchange.Rds
+ Lahman/           Questions.md        answers.Rmd                    q11.sql                   stats.stackexchange.db*
+ NewQuestions.md   SOSolutions.Rmd     benQ23.R                       q13.sql                   stats.stackexchange0.db*
+ PossibleData      SOSolutions.pdf     benQ23_dtl.R                   q21.R                     tmp.db*
+ Q13.R             StackExchange.pdf   downloads/                     q23_2.sql
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls -asltr
+*** output flushed ***
+]0;DBMS~/sta141b_23/Assignments/DBMS> ls -asltr stats.stackexchange*
+2590064 -rwx------ 1 duncan staff 2650038272 May  6  2023 stats.stackexchange0.db*
+2589696 -rwx------ 1 duncan staff 2648715264 May  7  2023 stats.stackexchange.db*
+ 636324 -rw-r--r-- 1 duncan staff  651595413 May  7  2023 stats.stackexchange.Rds
+      0 -rw-r--r-- 1 duncan staff          0 May 11  2023 stats.stackexchange
+      0 -rw-r--r-- 1 duncan staff          0 May 15  2023 stats.stackexchange.
+]0;DBMS~/sta141b_23/Assignments/DBMS> sqlite3 stats.stackexchange.db 
+-- Loading resources from /Users/duncan/.sqliterc
+SQLite version 3.41.2 2023-03-22 11:56:21
+Enter ".help" for usage hints.
+sqlite> .tables
+BadgeClassMap      LinkTypeMap        PostTypeIdMap      VoteTypeMap      
+Badges             PostHistory        Posts              Votes            
+CloseReasonMap     PostHistoryTypeId  TagPosts         
+Comments           PostLinks          Users            
+sqlite> .schema Posts
+CREATE TABLE Posts(
+  Id INTEGER PRIMARY KEY,
+  PostTypeId INTEGER,
+  AcceptedAnswerId INTEGER DEFAULT NULL,
+  CreationDate TEXT,
+  Score INTEGER,
+  ViewCount INTEGER DEFAULT NULL,
+  Body TEXT,
+  OwnerUserId INTEGER,
+  LastActivityDate TEXT,
+  Title TEXT,
+  Tags TEXT,
+  AnswerCount INTEGER DEFAULT NULL,
+  CommentCount INTEGER DEFAULT NULL,
+  ContentLicense TEXT,
+  LastEditorDisplayName TEXT,
+  LastEditDate TEXT,
+  LastEditorUserId INTEGER DEFAULT NULL,
+  CommunityOwnedDate TEXT,
+  ParentId  INTEGER DEFAULT NULL,
+  OwnerDisplayName TEXT,
+  ClosedDate  TEXT,
+  FavoriteCount INTEGER DEFAULT NULL  
+);
+sqlite> SELECT MIN(CreationDate) FROM Posts;
+MIN(CreationDate)      
+-----------------------
+2009-02-02T14:21:12.103
+sqlite> ^D
+]0;DBMS~/sta141b_23/Assignments/DBMS> cd
+]0;duncan~> cd sta141b/Assignments/
+]0;Assignments~/sta141b/Assignments> ls
+DBMS_projects  GNUmakefile  NASA/  NASA.md  NASA.pdf  Regexp_projects  Spam/  StackOverflow/
+]0;Assignments~/sta141b/Assignments> cd StackOverflow/
+]0;StackOverflow~/sta141b/Assignments/StackOverflow> ls
+DBMS/
+]0;StackOverflow~/sta141b/Assignments/StackOverflow> cd DBMS/
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> ls
+'#Q23.R#'          Q18.png             StackExchange.tex              downloads/                q23_2.sql
+ DBMSSpring23.md   Q23.R               StackExchange.tex~             funs.R                    quesTotals.sql
+ GNUmakefile@      Q25                 StackExchangeSolutions.Rmd     hazan.sql                 stats.stackexchange
+ IMDB/             Q25.Rmd             StatsStackExchangeSearch.png   init.R                    stats.stackexchange.
+ Lahman/           Questions.md        Wikipedia/                     lahman_1871-2022.sqlite   stats.stackexchange.Rds
+ NewQuestions.md   SOSolutions.Rmd     answers.Rmd                    q11.sql                   stats.stackexchange.db*
+ PossibleData      SOSolutions.pdf     benQ23.R                       q13.sql                   stats.stackexchange0.db*
+ Q13.R             StackExchange.pdf   benQ23_dtl.R                   q21.R                     tmp.db*
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> pdflatex StackExchange
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./StackExchange.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/preprint/fullpage.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2022/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+No file StackExchange.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty))
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1pcr.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Excluding 'comment' comment. [4] (./StackExchange.aux)
+
+Package rerunfilecheck Warning: File `StackExchange.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2022/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/
+type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/ur
+w/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb>
+Output written on StackExchange.pdf (4 pages, 54309 bytes).
+Transcript written on StackExchange.log.
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> open StackExchange.pdf 
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> ls
+'#Q23.R#'          Q23.R               StackExchange.pdf              downloads/                quesTotals.sql
+ DBMSSpring23.md   Q25                 StackExchange.tex              funs.R                    stats.stackexchange
+ GNUmakefile@      Q25.Rmd             StackExchange.tex~             hazan.sql                 stats.stackexchange.
+ IMDB/             Questions.md        StackExchangeSolutions.Rmd     init.R                    stats.stackexchange.Rds
+ Lahman/           SOSolutions.Rmd     StatsStackExchangeSearch.png   lahman_1871-2022.sqlite   stats.stackexchange.db*
+ NewQuestions.md   SOSolutions.pdf     Wikipedia/                     q11.sql                   stats.stackexchange0.db*
+ PossibleData      StackExchange.aux   answers.Rmd                    q13.sql                   tmp.db*
+ Q13.R             StackExchange.log   benQ23.R                       q21.R
+ Q18.png           StackExchange.out   benQ23_dtl.R                   q23_2.sql
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> ls -aslh stats.stackexchange.db 
+2.5G -rwx------ 1 duncan staff 2.5G May  8 16:48 stats.stackexchange.db*
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> open .
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> pdflatex StackExchange
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./StackExchange.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/preprint/fullpage.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2022/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./StackExchange.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (./StackExchange.out) (./StackExchange.out)
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1pcr.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Excluding 'comment' comment. [4] (./StackExchange.aux) )
+(see the transcript file for additional information){/usr/local/texlive/2022/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/
+type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/ur
+w/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb>
+Output written on StackExchange.pdf (4 pages, 54709 bytes).
+Transcript written on StackExchange.log.
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> open .
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> mv StackExchange.pdf HW3.pdf
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> ls
+'#Q23.R#'          Q18.png             StackExchange.out              downloads/                quesTotals.sql
+ DBMSSpring23.md   Q23.R               StackExchange.tex              funs.R                    stats.stackexchange
+ GNUmakefile@      Q25                 StackExchange.tex~             hazan.sql                 stats.stackexchange.
+ HW3.pdf           Q25.Rmd             StackExchangeSolutions.Rmd     init.R                    stats.stackexchange.Rds
+ IMDB/             Questions.md        StatsStackExchangeSearch.png   lahman_1871-2022.sqlite   stats.stackexchange.db*
+ Lahman/           SOSolutions.Rmd     Wikipedia/                     q11.sql                   stats.stackexchange0.db*
+ NewQuestions.md   SOSolutions.pdf     answers.Rmd                    q13.sql                   tmp.db*
+ PossibleData      StackExchange.aux   benQ23.R                       q21.R
+ Q13.R             StackExchange.log   benQ23_dtl.R                   q23_2.sql
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> git add StackExchange.tex
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> git commit -m "slight modifications"
+[main 25167fe] slight modifications
+ 1 file changed, 246 insertions(+)
+ create mode 100644 Assignments/StackOverflow/DBMS/StackExchange.tex
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> pdflatex StackExchange
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./StackExchange.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/preprint/fullpage.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2022/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./StackExchange.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (./StackExchange.out) (./StackExchange.out)
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1pcr.fd)
+Overfull \hbox (147.2743pt too wide) in paragraph at lines 54--57
+[]\OT1/ptm/m/n/10.95 The SQLite3 database is avail-able from the Box folder []$
+\OT1/pcr/m/n/10.95 https : / / ucdavis . box . com / s / i07snhsqr66pnw9wk119uu
+aj32n6xa0l$[]
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Excluding 'comment' comment. [4] (./StackExchange.aux) )
+(see the transcript file for additional information){/usr/local/texlive/2022/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/
+type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/ur
+w/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb>
+Output written on StackExchange.pdf (4 pages, 55226 bytes).
+Transcript written on StackExchange.log.
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> open .
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> mv StackExchange.pdf  HW3.pdf 
+mv: overwrite 'HW3.pdf'? y
+]0;DBMS~/sta141b/Assignments/StackOverflow/DBMS> cd
+]0;duncan~> cd sta141
+bash: cd: sta141: No such file or directory
+]0;duncan~> cd sta141b
+]0;sta141b~/sta141b> ls
+141BSyllabus_S24_DTL.pdf  Data/          Extensions  Public/     Session2                   craigslist/  noheader~
+Assignments/              DataSources    Jobs/       README.md   Submissions/               jasper       rubric2
+CanvasInfo                Emily/         Piazza      README.md~  TAAppointments/            jasper~      rubric2~
+CanvasInfo~               Exceptions.md  Private/    Roster/     ThingsToRemindStudents.md  noheader
+]0;sta141b~/sta141b> rmb
+]0;sta141b~/sta141b> ls
+141BSyllabus_S24_DTL.pdf  Data/        Exceptions.md  Piazza    README.md  Submissions/               craigslist/  rubric2
+Assignments/              DataSources  Extensions     Private/  Roster/    TAAppointments/            jasper
+CanvasInfo                Emily/       Jobs/          Public/   Session2   ThingsToRemindStudents.md  noheader
+]0;sta141b~/sta141b> cd ../
+]0;duncan~> sta141b_23/Public/Lectures/Day10
+bash: sta141b_23/Public/Lectures/Day10: is a directory
+]0;duncan~> sta141b_23/Public/Lectures/
+bash: sta141b_23/Public/Lectures/: is a directory
+]0;duncan~> sta141b_23
+bash: sta141b_23: command not found
+]0;duncan~> cd stat141b_23/
+bash: cd: stat141b_23/: No such file or directory
+]0;duncan~> 
+]0;duncan~> cd sta141b_23/Public/Lectures/Day10
+]0;Day10~/sta141b_23/Public/Lectures/Day10> 
+]0;Day10~/sta141b_23/Public/Lectures/Day10> ls
+BBall.md   SOSchema.png   baseball.html   bball.R~  cookies.sqlite      cookies2.sqlite      dbms.html   fang.sqlite  mom
+BBall.md~  SQL            baseball.html~  bob       cookies.sqlite-shm  cookies2.sqlite-shm  dbms2.html  joins.html   mom~
+Outline    SQLiteSession  bball.R         bob~      cookies.sqlite-wal  cookies2.sqlite-wal  f1.sqlite   joins.html~
+]0;Day10~/sta141b_23/Public/Lectures/Day10> open dbms2.html 
+]0;Day10~/sta141b_23/Public/Lectures/Day10> cd
+]0;duncan~> cd
+]0;duncan~> cd sta141b/Public/Lectures/Day11/
+]0;Day11~/sta141b/Public/Lectures/Day11> ls
+README.md   cookies.sqlite   cookies3.sqlite  dbms2.html   fang.sqlite  havingEg.sql
+README.md~  cookies2.sqlite  dbms.html        dbms2.html~  foo
+]0;Day11~/sta141b/Public/Lectures/Day11> open dbms2.html
+]0;Day11~/sta141b/Public/Lectures/Day11> git cookies3.sqlite 
+git: 'cookies3.sqlite' is not a git command. See 'git --help'.
+]0;Day11~/sta141b/Public/Lectures/Day11> sqlite3 cookies3.sqlite 
+-- Loading resources from /Users/duncan/.sqliterc
+SQLite version 3.41.2 2023-03-22 11:56:21
+Enter ".help" for usage hints.
+sqlite> .help
+.archive ...             Manage SQL archives
+.auth ON|OFF             Show authorizer callbacks
+.backup ?DB? FILE        Backup DB (default "main") to FILE
+.bail on|off             Stop after hitting an error.  Default OFF
+.binary on|off           Turn binary output on or off.  Default OFF
+.cd DIRECTORY            Change the working directory to DIRECTORY
+.changes on|off          Show number of rows changed by SQL
+.check GLOB              Fail if output since .testcase does not match
+.clone NEWDB             Clone data into NEWDB from the existing database
+.connection [close] [#]  Open or close an auxiliary database connection
+.databases               List names and files of attached databases
+.dbconfig ?op? ?val?     List or change sqlite3_db_config() options
+.dbinfo ?DB?             Show status information about the database
+.dump ?OBJECTS?          Render database content as SQL
+.echo on|off             Turn command echo on or off
+.eqp on|off|full|...     Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                   Display the output of next command in spreadsheet
+.exit ?CODE?             Exit this program with return-code CODE
+.expert                  EXPERIMENTAL. Suggest indexes for queries
+.explain ?on|off|auto?   Change the EXPLAIN formatting mode.  Default: auto
+.filectrl CMD ...        Run various sqlite3_file_control() operations
+.fullschema ?--indent?   Show schema and the content of sqlite_stat tables
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.import FILE TABLE       Import data from FILE into TABLE
+.imposter INDEX TABLE    Create imposter table TABLE on index INDEX
+.indexes ?TABLE?         Show names of indexes
+.limit ?LIMIT? ?VAL?     Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS            Report potential schema issues.
+.load FILE ?ENTRY?       Load an extension library
+.log FILE|off            Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?OPTIONS?     Set output mode
+.nonce STRING            Suspend safe mode for one command if nonce matches
+.nullvalue STRING        Use STRING in place of NULL values
+.once ?OPTIONS? ?FILE?   Output for the next SQL command only to FILE
+.open ?OPTIONS? ?FILE?   Close existing database and reopen FILE
+.output ?FILE?           Send output to FILE or stdout if FILE is omitted
+.parameter CMD ...       Manage SQL parameter bindings
+.print STRING...         Print literal STRING
+.progress N              Invoke progress handler after every N opcodes
+.prompt MAIN CONTINUE    Replace the standard prompts
+.quit                    Stop interpreting input stream, exit if primary.
+.read FILE               Read input from FILE or command output
+.recover                 Recover as much data as possible from corrupt db.
+.restore ?DB? FILE       Restore content of DB (default "main") from FILE
+.save ?OPTIONS? FILE     Write database to FILE (an alias for .backup ...)
+.scanstats on|off|est    Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.selftest ?OPTIONS?      Run tests defined in the SELFTEST table
+.separator COL ?ROW?     Change the column and row separators
+.sha3sum ...             Compute a SHA3 hash of database content
+.shell CMD ARGS...       Run CMD ARGS... in a system shell
+.show                    Show the current values for various settings
+.stats ?ARG?             Show stats or turn stats on or off
+.system CMD ARGS...      Run CMD ARGS... in a system shell
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+.testcase NAME           Begin redirecting output to 'testcase-out.txt'
+.testctrl CMD ...        Run various sqlite3_test_control() operations
+.timeout MS              Try opening locked tables for MS milliseconds
+.timer on|off            Turn SQL timer on or off
+.trace ?OPTIONS?         Output each SQL statement as it is run
+.version                 Show source, library and compiler versions
+.vfsinfo ?AUX?           Information about the top-level VFS
+.vfslist                 List all available VFSes
+.vfsname ?AUX?           Print the name of the VFS stack
+.width NUM1 NUM2 ...     Set minimum column widths for columnar output
+sqlite> D
+   ...> ^D
+Parse error: near "D": syntax error
+  D
+  ^--- error here
+]0;Day11~/sta141b/Public/Lectures/Day11> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 4611 
+Time = 2024-05-09 09:56:38 
+Dir = /Users/duncan/Classes/Davis/STA141B_23_24/Public/Lectures/Day11 
+1> library(RSQLite)
+[56:42] 2> db = dbConnect(SQLite(), "cookies.sqlite")
+[56:51] 3> dbListTables(db)
+[1] "moz_cookies"
+[56:57] 4> dbListFields(db, "moz_cookies")
+ [1] "id"               "originAttributes" "name"             "value"            "host"             "path"            
+ [7] "expiry"           "lastAccessed"     "creationTime"     "isSecure"         "isHttpOnly"       "inBrowserElement"
+[13] "sameSite"         "rawSameSite"      "schemeMap"       
+[57:07] 5> q()
+Save workspace image? [y/n/c]: n
+]0;Day11~/sta141b/Public/Lectures/Day11> sqlite3 cookies3.sqlite 
+-- Loading resources from /Users/duncan/.sqliterc
+SQLite version 3.41.2 2023-03-22 11:56:21
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE moz_cookies (id INTEGER PRIMARY KEY, originAttributes TEXT NOT NULL DEFAULT '', name TEXT, value TEXT, host TEXT, path TEXT, expiry INTEGER, lastAccessed INTEGER, creationTime INTEGER, isSecure INTEGER, isHttpOnly INTEGER, inBrowserElement INTEGER DEFAULT 0, sameSite INTEGER DEFAULT 0, rawSameSite INTEGER DEFAULT 0, schemeMap INTEGER DEFAULT 0, CONSTRAINT moz_uniqueid UNIQUE (name, host, path, originAttributes));
+sqlite> select COUNT(*) FROM moz_cookies WHERE sameSite IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select COUNT(*) FROM moz_cookies WHERE isHttpOnly IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select COUNT(*) FROM moz_cookies WHERE path IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select COUNT(*) FROM moz_cookies WHERE host IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select COUNT(*) FROM moz_cookies WHERE name IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select COUNT(*) FROM moz_cookies WHERE value IS NULL;
+COUNT(*)
+--------
+0       
+sqlite> select * FROM moz_cookies;
+*** output flushed ***
+sqlite> select COUNT(*) FROM moz_cookies WHERE host LIKE '%.org';
+COUNT(*)
+--------
+33      
+sqlite> select host FROM moz_cookies WHERE host LIKE '%.org';
+host                 
+---------------------
+.www.usenix.org      
+commons.wikimedia.org
+en.wikipedia.org     
+en.wiktionary.org    
+login.wikimedia.org  
+login.wikimedia.org  
+login.wikimedia.org  
+login.wikimedia.org  
+meta.wikimedia.org   
+meta.wikimedia.org   
+www.wikidata.org     
+.wikidata.org        
+.wikipedia.org       
+.wiktionary.org      
+.geeksforgeeks.org   
+.ieee-dataport.org   
+.ieee.org            
+.kqed.org            
+www.statology.org    
+www.statology.org    
+.kqed.org            
+commons.wikimedia.org
+commons.wikimedia.org
+phys.org             
+en.wikipedia.org     
+en.wikipedia.org     
+en.wiktionary.org    
+en.wiktionary.org    
+meta.wikimedia.org   
+meta.wikimedia.org   
+en.wiktionary.org    
+www.wikidata.org     
+www.wikidata.org     
+sqlite> select host, COUNT(*) FROM moz_cookies WHERE host LIKE '%.org' GROUP BY host;
+host                   COUNT(*)
+---------------------  --------
+.geeksforgeeks.org     1       
+.ieee-dataport.org     1       
+.ieee.org              1       
+.kqed.org              2       
+.wikidata.org          1       
+.wikipedia.org         1       
+.wiktionary.org        1       
+.www.usenix.org        1       
+commons.wikimedia.org  3       
+en.wikipedia.org       3       
+en.wiktionary.org      4       
+login.wikimedia.org    4       
+meta.wikimedia.org     4       
+phys.org               1       
+www.statology.org      2       
+www.wikidata.org       3       
+sqlite> ^D
+]0;Day11~/sta141b/Public/Lectures/Day11> 
+]0;Day11~/sta141b/Public/Lectures/Day11> ls
+README.md   cookies.sqlite      cookies.sqlite-wal  cookies3.sqlite  dbms2.html   fang.sqlite  havingEg.sql
+README.md~  cookies.sqlite-shm  cookies2.sqlite     dbms.html        dbms2.html~  foo
+]0;Day11~/sta141b/Public/Lectures/Day11> sqlite3 cookies3.sqlite 
+-- Loading resources from /Users/duncan/.sqliterc
+SQLite version 3.41.2 2023-03-22 11:56:21
+Enter ".help" for usage hints.
+sqlite> .help
+.archive ...             Manage SQL archives
+.auth ON|OFF             Show authorizer callbacks
+.backup ?DB? FILE        Backup DB (default "main") to FILE
+.bail on|off             Stop after hitting an error.  Default OFF
+.binary on|off           Turn binary output on or off.  Default OFF
+.cd DIRECTORY            Change the working directory to DIRECTORY
+.changes on|off          Show number of rows changed by SQL
+.check GLOB              Fail if output since .testcase does not match
+.clone NEWDB             Clone data into NEWDB from the existing database
+.connection [close] [#]  Open or close an auxiliary database connection
+.databases               List names and files of attached databases
+.dbconfig ?op? ?val?     List or change sqlite3_db_config() options
+.dbinfo ?DB?             Show status information about the database
+.dump ?OBJECTS?          Render database content as SQL
+.echo on|off             Turn command echo on or off
+.eqp on|off|full|...     Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                   Display the output of next command in spreadsheet
+.exit ?CODE?             Exit this program with return-code CODE
+.expert                  EXPERIMENTAL. Suggest indexes for queries
+.explain ?on|off|auto?   Change the EXPLAIN formatting mode.  Default: auto
+.filectrl CMD ...        Run various sqlite3_file_control() operations
+.fullschema ?--indent?   Show schema and the content of sqlite_stat tables
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.import FILE TABLE       Import data from FILE into TABLE
+.imposter INDEX TABLE    Create imposter table TABLE on index INDEX
+.indexes ?TABLE?         Show names of indexes
+.limit ?LIMIT? ?VAL?     Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS            Report potential schema issues.
+.load FILE ?ENTRY?       Load an extension library
+.log FILE|off            Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?OPTIONS?     Set output mode
+.nonce STRING            Suspend safe mode for one command if nonce matches
+.nullvalue STRING        Use STRING in place of NULL values
+.once ?OPTIONS? ?FILE?   Output for the next SQL command only to FILE
+.open ?OPTIONS? ?FILE?   Close existing database and reopen FILE
+.output ?FILE?           Send output to FILE or stdout if FILE is omitted
+.parameter CMD ...       Manage SQL parameter bindings
+.print STRING...         Print literal STRING
+.progress N              Invoke progress handler after every N opcodes
+.prompt MAIN CONTINUE    Replace the standard prompts
+.quit                    Stop interpreting input stream, exit if primary.
+.read FILE               Read input from FILE or command output
+.recover                 Recover as much data as possible from corrupt db.
+.restore ?DB? FILE       Restore content of DB (default "main") from FILE
+.save ?OPTIONS? FILE     Write database to FILE (an alias for .backup ...)
+.scanstats on|off|est    Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.selftest ?OPTIONS?      Run tests defined in the SELFTEST table
+.separator COL ?ROW?     Change the column and row separators
+.sha3sum ...             Compute a SHA3 hash of database content
+.shell CMD ARGS...       Run CMD ARGS... in a system shell
+.show                    Show the current values for various settings
+.stats ?ARG?             Show stats or turn stats on or off
+.system CMD ARGS...      Run CMD ARGS... in a system shell
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+.testcase NAME           Begin redirecting output to 'testcase-out.txt'
+.testctrl CMD ...        Run various sqlite3_test_control() operations
+.timeout MS              Try opening locked tables for MS milliseconds
+.timer on|off            Turn SQL timer on or off
+.trace ?OPTIONS?         Output each SQL statement as it is run
+.version                 Show source, library and compiler versions
+.vfsinfo ?AUX?           Information about the top-level VFS
+.vfslist                 List all available VFSes
+.vfsname ?AUX?           Print the name of the VFS stack
+.width NUM1 NUM2 ...     Set minimum column widths for columnar output
+sqlite> .tables
+moz_cookies
+sqlite> .schema
+CREATE TABLE moz_cookies (id INTEGER PRIMARY KEY, originAttributes TEXT NOT NULL DEFAULT '', name TEXT, value TEXT, host TEXT, path TEXT, expiry INTEGER, lastAccessed INTEGER, creationTime INTEGER, isSecure INTEGER, isHttpOnly INTEGER, inBrowserElement INTEGER DEFAULT 0, sameSite INTEGER DEFAULT 0, rawSameSite INTEGER DEFAULT 0, schemeMap INTEGER DEFAULT 0, CONSTRAINT moz_uniqueid UNIQUE (name, host, path, originAttributes));
+sqlite> SELECT COUNT(*) FROM moz_cookies;
+COUNT(*)
+--------
+567     
+sqlite> SELECT * FROM moz_cookies LIMIT 20;
+*** output flushed ***
+sqlite> SELECT host FROM moz_cookies LIMIT 20;
+host                                
+------------------------------------
+www.cro.ie                          
+.google.com                         
+.gstatic.com                        
+.aniview.com                        
+sync.aniview.com                    
+www.bhphotovideo.com                
+.cbssports.com                      
+.mlb.com                            
+.google.com                         
+.linkedin.com                       
+.eventbrite.com                     
+10709.global.siteimproveanalytics.io
+77251.global.siteimproveanalytics.io
+ai.ocelotbot.com                    
+edigitalsurvey.com                  
+piazza.com                          
+push.piazza.com                     
+sam.nrel.gov                        
+uk-script.dotmetrics.net            
+www.g2.com                          
+sqlite> ^D
+]0;Day11~/sta141b/Public/Lectures/Day11> R
+
+R Under development (unstable) (2024-04-19 r86451) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin22.2.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 5848 
+Time = 2024-05-09 10:44:15 
+Dir = /Users/duncan/Classes/Davis/STA141B_23_24/Public/Lectures/Day11 
+1> library(RSQLite)
+[44:22] 2> db = dbConnect(SQLite(), "cookies3.sqlite")
+[44:41] 3> db
+<SQLiteConnection>
+  Path: /Users/duncan/Classes/Davis/STA141B_23_24/Public/Lectures/Day11/cookies3.sqlite
+  Extensions: TRUE
+[44:44] 4> dbListTables(db)
+[1] "moz_cookies"
+[45:16] 5> f = dbListFields(db, "moz_cookies")
+[46:02] 6> f
+ [1] "id"               "originAttributes" "name"             "value"            "host"             "path"             "expiry"           "lastAccessed"     "creationTime"     "isSecure"         "isHttpOnly"      
+[12] "inBrowserElement" "sameSite"         "rawSameSite"      "schemeMap"       
+[46:03] 7> dbListTables(db)
+[1] "moz_cookies"
+[50:00] 8> sprintf("SELECT COUNT(*) FROM %s", dbListTables(db))
+[1] "SELECT COUNT(*) FROM moz_cookies"
+[50:21] 9> sql = sprintf("SELECT COUNT(*) FROM %s", dbListTables(db))
+[50:35] 10> sapply(sql, function(q) dbGetQuery(db, q))
+$`SELECT COUNT(*) FROM moz_cookies.COUNT(*)`
+[1] 567
+
+[51:33] 11> q()
+Save workspace image? [y/n/c]: n
+]0;Day11~/sta141b/Public/Lectures/Day11> 
