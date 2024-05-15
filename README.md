@@ -68,7 +68,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 
      + [Day 13](Lectures/Day13)
 	     + [slides](Lectures/Day11/dbms2.html)	 
-		       + we started on page [25](Lectures/Day11/dbms2.html#25).
+		    + we started on page [25](Lectures/Day11/dbms2.html#25).
 	     + [R session](Lectures/Day13/Rsession)
 <!-- 
 
