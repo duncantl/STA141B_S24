@@ -1,0 +1,147 @@
+bb = dbConnect(SQLite(), "/Users/duncan/Downloads/lahman_1871-2022.sqlite")
+
+tbls = dbListTables(bb)
+
+
+go = function(qry, db = bb) dbGetQuery(db, qry)
+
+
+
+
+[36:41] 42> go("SELECT * FROM Series LIMIT 10;")
+[36:41] 42> dbListTables(bb)
+ [1] "AllstarFull"         "Appearances"         "AwardsManagers"      "AwardsPlayers"       "AwardsShareManagers"
+ [6] "AwardsSharePlayers"  "Batting"             "BattingPost"         "CollegePlaying"      "Fielding"           
+[11] "FieldingOF"          "FieldingOFsplit"     "FieldingPost"        "HallOfFame"          "HomeGames"          
+[16] "Managers"            "ManagersHalf"        "Parks"               "People"              "Pitching"           
+[21] "PitchingPost"        "Salaries"            "Schools"             "SeriesPost"          "Teams"              
+[26] "TeamsFranchises"     "TeamsHalf"          
+[36:57] 43> go("SELECT * FROM SeriesPost LIMIT 10;")
+   yearID round teamIDwinner lgIDwinner teamIDloser lgIDloser wins losses ties
+1    1884    WS          PRO         NL         NY4        AA    3      0    0
+2    1885    WS          CHN         NL         SL4        AA    3      3    1
+3    1886    WS          SL4         AA         CHN        NL    4      2    0
+4    1887    WS          DTN         NL         SL4        AA   10      5    0
+5    1888    WS          NY1         NL         SL4        AA    6      4    0
+6    1889    WS          NY1         NL         BR3        AA    6      3    0
+7    1890    WS          BRO         NL         LS2        AA    3      3    1
+8    1892    CS          BSN         NL         CL4        NL    5      0    1
+9    1903    WS          BOS         AL         PIT        NL    5      3    0
+10   1905    WS          NY1         NL         PHA        AL    4      1    0
+[37:09] 44> head(data$Series)
+  yearID round teamIDwinner lgIDwinner teamIDloser lgIDloser wins losses ties
+1   1884    WS          PRO         NL         NY4        AA    3      0    0
+2   1885    WS          CHN         NL         SL4        AA    3      3    1
+3   1886    WS          SL4         AA         CHN        NL    4      2    0
+4   1887    WS          DTN         NL         SL4        AA   10      5    0
+5   1888    WS          NY1         NL         SL4        AA    6      4    0
+6   1889    WS          NY1         NL         BR3        AA    6      3    0
+[37:19] 45> go("SELECT DISTINCT round FROM SeriesPost;")
+   round
+1     WS
+2     CS
+3   ALCS
+4   NLCS
+5  AEDIV
+6  AWDIV
+7  NEDIV
+8  NWDIV
+9  ALDS1
+10 ALDS2
+11 NLDS1
+12 NLDS2
+13  ALWC
+14  NLWC
+15 ALWC1
+16 ALWC2
+17 ALWC3
+18 ALWC4
+19 NLWC1
+20 NLWC2
+21 NLWC3
+22 NLWC4
+[38:49] 46> go("SELECT * WHERE round = WS AND yearID = 2010")
+*** output flushed ***
+Selection: 0
+[38:49] 46> go("SELECT * WHERE round = WS AND yearID = 2010;")
+Error: no tables specified
+
+Enter a frame number, or 0 to exit   
+
+ 1: go("SELECT * WHERE round = WS AND yearID = 2010;")
+ 2: #1: dbGetQuery(db, qry)
+ 3: dbGetQuery(db, qry)
+ 4: .local(conn, statement, ...)
+ 5: dbSendQuery(conn, statement, ...)
+ 6: dbSendQuery(conn, statement, ...)
+ 7: .local(conn, statement, ...)
+ 8: new("SQLiteResult", sql = statement, ptr = result_create(conn@ptr, statement), conn = conn, bigint = conn@bigint)
+ 9: initialize(value, ...)
+10: initialize(value, ...)
+11: result_create(conn@ptr, statement)
+
+
+###  Need a FROM in the SQL to identify the table.
+
+
+Selection: 0
+[38:49] 46> go("SELECT * FROM SeriesPost WHERE round = WS AND yearID = 2010;")
+Error: no such column: WS
+
+Enter a frame number, or 0 to exit   
+
+ 1: go("SELECT * FROM SeriesPost WHERE round = WS AND yearID = 2010;")
+ 2: #1: dbGetQuery(db, qry)
+ 3: dbGetQuery(db, qry)
+ 4: .local(conn, statement, ...)
+ 5: dbSendQuery(conn, statement, ...)
+ 6: dbSendQuery(conn, statement, ...)
+ 7: .local(conn, statement, ...)
+ 8: new("SQLiteResult", sql = statement, ptr = result_create(conn@ptr, statement), conn = conn, bigint = conn@bigint)
+ 9: initialize(value, ...)
+10: initialize(value, ...)
+11: result_create(conn@ptr, statement)
+
+Selection: 0
+
+
+###  Treating WS as a variable name to be found in the table.  Need to quote it  "WS" or 'WS'
+
+[38:49] 46> go("SELECT * FROM SeriesPost WHERE round = 'WS' AND yearID = 2010;")
+  yearID round teamIDwinner lgIDwinner teamIDloser lgIDloser wins losses ties
+1   2010    WS          SFN         NL         TEX        AL    4      1    0
+[45:48] 47> go("SELECT  * FROM Teams LIMIT 10;")
+   yearID lgID teamID franchID divID Rank  G Ghome  W  L DivWin WCWin LgWin WSWin   R   AB   H  2B 3B HR BB SO SB CS HBP SF  RA
+1    1871   NA    BS1      BNA  <NA>    3 31    NA 20 10   <NA>  <NA>     N  <NA> 401 1372 426  70 37  3 60 19 73 16  NA NA 303
+2    1871   NA    CH1      CNA  <NA>    2 28    NA 19  9   <NA>  <NA>     N  <NA> 302 1196 323  52 21 10 60 22 69 21  NA NA 241
+3    1871   NA    CL1      CFC  <NA>    8 29    NA 10 19   <NA>  <NA>     N  <NA> 249 1186 328  35 40  7 26 25 18  8  NA NA 341
+4    1871   NA    FW1      KEK  <NA>    7 19    NA  7 12   <NA>  <NA>     N  <NA> 137  746 178  19  8  2 33  9 16  4  NA NA 243
+5    1871   NA    NY2      NNA  <NA>    5 33    NA 16 17   <NA>  <NA>     N  <NA> 302 1404 403  43 21  1 33 15 46 15  NA NA 313
+6    1871   NA    PH1      PNA  <NA>    1 28    NA 21  7   <NA>  <NA>     Y  <NA> 376 1281 410  66 27  9 46 23 56 12  NA NA 266
+7    1871   NA    RC1      ROK  <NA>    9 25    NA  4 21   <NA>  <NA>     N  <NA> 231 1036 274  44 25  3 38 30 53 10  NA NA 287
+8    1871   NA    TRO      TRO  <NA>    6 29    NA 13 15   <NA>  <NA>     N  <NA> 351 1248 384  51 34  6 49 19 62 24  NA NA 362
+9    1871   NA    WS3      OLY  <NA>    4 32    NA 15 15   <NA>  <NA>     N  <NA> 310 1353 375  54 26  6 48 13 48 13  NA NA 303
+10   1872   NA    BL1      BLC  <NA>    2 58    NA 35 19   <NA>  <NA>     N  <NA> 617 2571 753 106 31 14 29 28 53 18  NA NA 434
+    ER  ERA CG SHO SV IPouts  HA HRA BBA SOA   E DP    FP                    name                              park attendance
+1  109 3.55 22   1  3    828 367   2  42  23 243 24 0.834    Boston Red Stockings               South End Grounds I         NA
+2   77 2.76 25   0  1    753 308   6  28  22 229 16 0.829 Chicago White Stockings           Union Base-Ball Grounds         NA
+3  116 4.11 23   0  0    762 346  13  53  34 234 15 0.818  Cleveland Forest Citys      National Association Grounds         NA
+4   97 5.17 19   1  0    507 261   5  21  17 163  8 0.803    Fort Wayne Kekiongas                    Hamilton Field         NA
+5  121 3.72 32   1  0    879 373   7  42  22 235 14 0.840        New York Mutuals          Union Grounds (Brooklyn)         NA
+6  137 4.95 27   0  0    747 329   3  53  16 194 13 0.845  Philadelphia Athletics          Jefferson Street Grounds         NA
+7  108 4.30 23   1  0    678 315   3  34  16 220 14 0.821   Rockford Forest Citys Agricultural Society Fair Grounds         NA
+8  153 5.51 28   0  0    750 431   4  75  12 198 22 0.845          Troy Haymakers                Haymakers' Grounds         NA
+9  137 4.37 32   0  0    846 371   4  45  13 218 20 0.850     Washington Olympics                  Olympics Grounds         NA
+10 166 2.90 48   1  1   1548 573   3  63  77 432 22 0.830      Baltimore Canaries                    Newington Park         NA
+   BPF PPF teamIDBR teamIDlahman45 teamIDretro
+1  103  98      BOS            BS1         BS1
+2  104 102      CHI            CH1         CH1
+3   96 100      CLE            CL1         CL1
+4  101 107      KEK            FW1         FW1
+5   90  88      NYU            NY2         NY2
+6  102  98      ATH            PH1         PH1
+7   97  99      ROK            RC1         RC1
+8  101 100      TRO            TRO         TRO
+9   94  98      OLY            WS3         WS3
+10 106 102      BAL            BL1         BL1
+[47:17] 48> 
