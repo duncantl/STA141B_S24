@@ -65,7 +65,11 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [moz_cookies/cookies3.slite DB](Lectures/Day11/cookies3.sqlite)		 
          + [HAVING example and exploration](Lectures/Day11/havingEg.sql) 
          + [R session](Lectures/Day11/Day12.rsession)
-	    
+
+     + [Day 13](Lectures/Day13)
+	     + [slides](Lectures/Day11/dbms2.html)	 
+		       + we started on page [25](Lectures/Day11/dbms2.html#25).
+	     + [R session](Lectures/Day13/Rsession)
 <!-- 
 
      + [Day 8](Lectures/Day8)

@@ -30,8 +30,7 @@ class: center, middle
 
 <!-- <hr width="50%"/> -->
 
-<!--
-
+---
 # Previously.....
 
 + Motivation for relational databases
@@ -40,94 +39,50 @@ class: center, middle
 + dbConnect()
 + `SELECT  variables FROM table`
 + dbGetQuery()
-   -->
 
----
-# sqlite3 console
 
-+ In a shell/command line console
-
-```
-sqlite3 cookies3.sqlite
-```
-
-```
-.tables
-```
-
-```
-.schema
-```
-
----
-# sqlite3 console
-
-```
-SELECT COUNT(*)
-FROM moz_cookies;
-```
-
----
-# SQL and R
-
-+ **Install** the DBI and RSQLite packages.
-+ DBI provides a common interface to many different database servers/engines
-   + Same commands but implemented differently for different DBMS engines
-   + MySQL, Postgres, SQLite, Oracle, ...
-
-+  Load the package
-```r
-library(RSQLite)
-```
-
-+ Connect to the database
-```r
-db = dbConnect(SQLite(), "cookies.sqlite")
-```
 
 ---
 # dbListTables() & dbListFields()
 
 + Names of the tables in the database
-```r
+```
 dbListTables(db)
 ```
 
 + Names of the fields in a table
-```r
+```
 dbListFields(db, "moz_cookies")
 ```
-  + names of columns in table
+  + name of table
 
 
-+ Generally, list fields for all tables in the database
-```r
++ List fields of all tables
+```
 lapply(dbListTables(db), function(tbl) dbListFields(db, tbl))
 ```
 
 
 ---
-# SELECT Query
-### Number of rows
+# SELECT Query - number of rows
 
 
 + R Command dbGetQuery()
-```r
+```
 dbGetQuery(db, "SELECT COUNT(*) FROM moz_cookies")
 ```
 
 + 1st Argument - Connection to the database
   + Created one time
-```r
+```
 db = dbConnect(SQLite(), "/path/to/sqlite/database/file")
-db = dbConnect(SQLite(), "cookies.sqlite")
 ```
 
 + 2nd Argument is SQL command as a string
-  + Analogous to regular expression `rx` in `grep(rx, str)`
+  + Analogous to regular expression in `grep(rx, str)`
      + interpreted by regular expression engine.
      + not interpreted by R
-     + Can programmatically create the SQL command in R.
+
 
 ---
 # Single Table versus Two or more tables
@@ -559,6 +514,36 @@ SELECT COUNT(*) FROM OrgCookies;
 DROP VIEW OrgCookies
 ```
 
+---
+# Assignment
+
++ If performing the SQL queries in R, I suggest the following approach for your report
+
+```
+qry = "
+SELECT *
+FROM table
+WHERE var = condition;
+"
+
+dbGetQuery(db, qry)
+```
+
++ Separate the query from the dbGetQuery
++ Format for maximum readability
+   + for you and grader.
+
++ Also use sqlite3 to get additional information about errors
+   + e.g., syntax errors.
+
+---
+# Assignment
+
++ Provide the question number and the text of the question
+
++ Then your solution.
+
++ And the results that demonstrate the results are what we expect.
 
 ---
 # Relational Databases
@@ -568,7 +553,7 @@ DROP VIEW OrgCookies
 
 + Simple example
 
-+ 2 tables
++ 3 tables
 
 + Company name, stock ticker string, income and SIC code(?)
 
@@ -596,6 +581,75 @@ DROP VIEW OrgCookies
 3 5961          Catalog and Mail-Order Houses
 4 7841                      Video Tape Rental
 ```
+
+
+---
+
++ Stock prices for the companies on multiple days
+
+```
+ticker  date        high   
+------  ----------  -------
+AMZN    2018-02-07  1460.99
+FB      2018-02-07  185.08 
+GOOGLE  2018-02-07  1086.53
+NFLX    2018-02-07  272.45 
+AMZN    2018-02-06  1443.99
+FB      2018-02-06  185.77 
+GOOGLE  2018-02-06  1087.38
+NFLX    2018-02-06  266.7  
+AMZN    2018-02-05  1458.98
+FB      2018-02-05  190.61 
+```
+
+---
+
+<table>
+    <tr>
+	<td>
+<pre style="font-size: 18px;">
+  ticker   company_name sic_code  net_income
+1   AMZN AMAZON COM INC     5961  2371000000
+2 GOOGLE  ALPHABET INC.     7370 19478000000
+3     FB   FACEBOOK INC     7370 10188000000
+4   NFLX    NETFLIX INC     7841   186678000
+</pre>
+        </td>
+<td><font color="red">fang_info</font></td>
+    </tr>
+
+    <tr>
+	<td>
+	    <pre style="font-size: 18px;">
+   ticker       date    high
+1    AMZN 2018-02-07 1460.99
+2      FB 2018-02-07  185.08
+3  GOOGLE 2018-02-07 1086.53
+4    NFLX 2018-02-07  272.45
+5    AMZN 2018-02-06 1443.99
+6      FB 2018-02-06  185.77
+7  GOOGLE 2018-02-06 1087.38
+8    NFLX 2018-02-06  266.70
+9    AMZN 2018-02-05 1458.98
+10     FB 2018-02-05  190.61
+</pre>
+        </td>
+<td><font color="red">fang_prices</font></td>	
+    </tr>
+    <tr>
+	<td>
+<pre style="font-size: 18px;">
+   SIC                            Description
+1 3292                       Abestos Products
+2 5182 Wine and Distilled Alcoholic Beverages
+3 5961          Catalog and Mail-Order Houses
+4 7841                      Video Tape Rental
+</pre>
+        </td>
+<td><font color="red">fang_sic</font></td>	
+</tr>        
+</table>    
+
 
 ---
 # Goal
@@ -633,7 +687,7 @@ DROP VIEW OrgCookies
 
 ---
 # Cartesian Product - OUTER JOIN
-```
+<pre style="font-size: 14px">
    ticker   company_name sic_code  net_income  SIC                            Description
 1    AMZN AMAZON COM INC     5961  2371000000 3292                       Abestos Products
 2    AMZN AMAZON COM INC     5961  2371000000 5182 Wine and Distilled Alcoholic Beverages
@@ -651,14 +705,18 @@ DROP VIEW OrgCookies
 14   NFLX    NETFLIX INC     7841   186678000 5182 Wine and Distilled Alcoholic Beverages
 15   NFLX    NETFLIX INC     7841   186678000 5961          Catalog and Mail-Order Houses
 16   NFLX    NETFLIX INC     7841   186678000 7841                      Video Tape Rental
-```
+</pre>
 
 + Obtain with
 ```sql
 SELECT * FROM fang_info
-JOIN fang_sic
+JOIN fang_sic;
 ```
 
++ Or
+```sql
+SELECT * FROM fang_info, fang_sic;
+```
 ---
 # Queries with 2 or More Tables
 
@@ -679,9 +737,17 @@ WHERE fang_info.sic_code = fang_sic.SIC;
 2   NFLX    NETFLIX INC     7841  186678000 7841             Video Tape Rental
 ```
 
++ INNER JOIN
+```sql
+SELECT *
+FROM fang_info
+INNER JOIN fang_sic
+ON fang_info.sic_code = fang_sic.SIC;
+```
+
 ---
 
-+ Can drop tableName in tableName.columnName if unambiguous
++ Can drop tableName in `tableName.columnName` if column names are unambiguous
    + i.e. name not in two or more tables
 ```sql
 SELECT *
@@ -689,11 +755,18 @@ FROM fang_info, fang_sic
 WHERE sic_code = SIC;
 ```
 
-+ Can also use AS to give short name for table
++ Can also use AS to give short name for table 
 ```sql
 SELECT *
 FROM fang_info AS fi, fang_sic AS sic
 WHERE fi.sic_code = sic.SIC;
+```
+
++ Also saw using AS for name of column in result fields/variables/attributes
+```sql
+SELECT  COUNT(*) AS Number
+        width*height AS Area
+FROM ...
 ```
 
 ---
@@ -733,12 +806,19 @@ LEFT JOIN fang_sic
 ON fang_info.sic_code = fang_sic.SIC;
 ```
 
+```
+ticker   company_name sic_code  net_income  SIC                   Description
+1   AMZN AMAZON COM INC     5961  2371000000 5961 Catalog and Mail-Order Houses
+2 GOOGLE  ALPHABET INC.     7370 19478000000   NA                          <NA>
+3     FB   FACEBOOK INC     7370 10188000000   NA                          <NA>
+4   NFLX    NETFLIX INC     7841   186678000 7841             Video Tape Rental
+```
+
 
 ---
 # Tuple Matches Many Tuples
 
 + Matches don't have to match one tuple to a single tuple
-
 
 + Consider table fang_prices
 ```
@@ -757,7 +837,7 @@ ON fang_info.sic_code = fang_sic.SIC;
 
 + Join fang_info with fang_prices to merge each company with several stock prices for that company
 
-```
+```sql
 SELECT *
 FROM fang_info AS i
 INNER JOIN fang_prices AS p
@@ -806,6 +886,15 @@ SELECT * FROM fang_info AS i
     ticker   company_name sic_code  net_income ticker       date    high
 ```
 
++ Can select which columns to keep
+  + also use `AS` to rename one or both of them
+
+```sql    
+SELECT i.*, p.date, p.high AS "Daily Maximum"
+FROM fang_info AS i
+INNER JOIN fang_prices AS p
+ON i.ticker = p.ticker;
+```    
 ---
 # Order of Evaluation of SQL Query
 
@@ -850,8 +939,7 @@ SELECT  PostTypeId, value, COUNT(PostTypeId)
 
 + They are evaluated according to the same order as above.
 
-+ Whatever step in which the nested query occurs
-
++ Whatever step in which the nested query occurs.
 
 
 
