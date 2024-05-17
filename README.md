@@ -70,6 +70,12 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	     + [slides](Lectures/Day11/dbms2.html)	 
 		    + we started on page [25](Lectures/Day11/dbms2.html#25).
 	     + [R session](Lectures/Day13/Rsession)
+		 
+     + [Day 14](Lectures/Day14)
+	     + [Slides](Lectures/Day14/BBall.html)
+	     + [SQL session](Lectures/Day14/SQLSession)		 
+	     + [helper functions](Lectures/Day14/dbFuns.R)		 		 
+
 <!-- 
 
      + [Day 8](Lectures/Day8)
