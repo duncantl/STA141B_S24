@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Relational Databases Examples</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Relational Databases 
+
+
+### Duncan Temple Lang
+
+<div style="clear: both"/>
+
+<!-- <hr width="50%"/> -->
+
+---
+# Note
+
++  go() is just a shorthand function for sending SQL queries to the baseball database.
+```{r}
+go = function(qry) dbGetQuery(bb, qry)
+```
+
++ Connection to database
+```{r}
+bb = dbConnect(SQLite(), "/Users/duncan/Downloads/lahman_1871-2022.sqlite")
+```
+
+---
+# Question
+
++ **What team won the World Series in 2010? Include the name of the team, the league and division.**
+
+
++ Explore which tables we need and which columns from these.
++ Figure out how the result should be structured
+    + 1 row
+    + name of team
+    + league
+    + division
+    + can include year and possibly the total number of games in the world series.
+
+---
+
++ SeriesPost table is for the post season games
+   + Includes World series and all conference and division series and
+   + For all years
+
++ Look at the first few rows to get a sense of the values
+
+```
+go("SELECT * FROM SeriesPost LIMIT 10")
+```
+
+```
+   yearID round teamIDwinner lgIDwinner teamIDloser lgIDloser wins losses ties
+1    1884    WS          PRO         NL         NY4        AA    3      0    0
+2    1885    WS          CHN         NL         SL4        AA    3      3    1
+3    1886    WS          SL4         AA         CHN        NL    4      2    0
+4    1887    WS          DTN         NL         SL4        AA   10      5    0
+5    1888    WS          NY1         NL         SL4        AA    6      4    0
+6    1889    WS          NY1         NL         BR3        AA    6      3    0
+7    1890    WS          BRO         NL         LS2        AA    3      3    1
+8    1892    CS          BSN         NL         CL4        NL    5      0    1
+9    1903    WS          BOS         AL         PIT        NL    5      3    0
+10   1905    WS          NY1         NL         PHA        AL    4      1    0
+```
+
+---
+
++ What are the possible values for round
+
+```
+go("
+SELECT round, COUNT(*) AS num
+FROM SeriesPost
+GROUP BY round
+ORDER BY num DESC
+")
+```
+```
+   round num
+1     WS 125
+2   NLCS  53
+3   ALCS  53
+4  NLDS2  28
+5  NLDS1  28
+6  ALDS2  28
+7  ALDS1  28
+8   NLWC   9
+9   ALWC   9
+10 NLWC2   2
+11 NLWC1   2
+12 ALWC2   2
+13 ALWC1   2
+14 NWDIV   1
+15 NLWC4   1
+16 NLWC3   1
+17 NEDIV   1
+18    CS   1
+19 AWDIV   1
+20 ALWC4   1
+21 ALWC3   1
+22 AEDIV   1
+```
+
+
+---
+# First Steps from last class
+
+```
+go("SELECT * FROM SeriesPost WHERE round = 'WS' AND yearID = 2010;")
+```
+
+```
+  yearID round teamIDwinner lgIDwinner teamIDloser lgIDloser wins losses ties
+1   2010    WS          SFN         NL         TEX        AL    4      1    0
+```
+
++ In the first attempts,
+   + Didn't have FROM SeriesPost and got `no table specified`
+   + didn't quote WS and got an error `no such column: WS`
+
+
+---
+# Find full name of team
+
++ Names of all the tables
+```
+dbListTables(bb)
+```
+<pre style="font-size: 14pt">
+ [ 1] "AllstarFull"         "Appearances"         "AwardsManagers"     
+ [ 4] "AwardsPlayers"       "AwardsShareManagers" "AwardsSharePlayers" 
+ [ 7] "Batting"             "BattingPost"         "CollegePlaying"     
+[10] "Fielding"            "FieldingOF"          "FieldingOFsplit"    
+[13] "FieldingPost"        "HallOfFame"          "HomeGames"          
+[16] "Managers"            "ManagersHalf"        "Parks"              
+[19] "People"              "Pitching"            "PitchingPost"       
+[22] "Salaries"            "Schools"             "SeriesPost"         
+[25] <font color="red">"Teams"</font>               <font color="red">"TeamsFranchises"</font>     "TeamsHalf"          
+</pre>
+
++ only Teams and TeamsFranchises seem relevant.
+
++ Look at the entity relationship [diagram](https://github.com/cdalzell/Lahman/blob/master/man/figures/Lahnan-db-diagram.jpg)
+
+---
+# View "Head" of each table
+
+```r
+source("dbFuns.R")
+tbls = dbListTables(bb)
+structure(lapply(tbls, Head), names = tbls)
+```
+---
+# Teams
+<pre style="font-size: 9pt">
+  yearID lgID teamID franchID divID Rank  G Ghome  W  L DivWin WCWin LgWin WSWin   R   AB   H 2B 3B
+1   1871   NA    BS1      BNA  &lt;NA&gt;    3 31    NA 20 10   &lt;NA&gt;  &lt;NA&gt;     N  &lt;NA&gt; 401 1372 426 70 37
+2   1871   NA    CH1      CNA  &lt;NA&gt;    2 28    NA 19  9   &lt;NA&gt;  &lt;NA&gt;     N  &lt;NA&gt; 302 1196 323 52 21
+3   1871   NA    CL1      CFC  &lt;NA&gt;    8 29    NA 10 19   &lt;NA&gt;  &lt;NA&gt;     N  &lt;NA&gt; 249 1186 328 35 40
+4   1871   NA    FW1      KEK  &lt;NA&gt;    7 19    NA  7 12   &lt;NA&gt;  &lt;NA&gt;     N  &lt;NA&gt; 137  746 178 19  8
+5   1871   NA    NY2      NNA  &lt;NA&gt;    5 33    NA 16 17   &lt;NA&gt;  &lt;NA&gt;     N  &lt;NA&gt; 302 1404 403 43 21
+6   1871   NA    PH1      PNA  &lt;NA&gt;    1 28    NA 21  7   &lt;NA&gt;  &lt;NA&gt;     Y  &lt;NA&gt; 376 1281 410 66 27
+  HR BB SO SB CS HBP SF  RA  ER  ERA CG SHO SV IPouts  HA HRA BBA SOA   E DP    FP
+1  3 60 19 73 16  NA NA 303 109 3.55 22   1  3    828 367   2  42  23 243 24 0.834
+2 10 60 22 69 21  NA NA 241  77 2.76 25   0  1    753 308   6  28  22 229 16 0.829
+3  7 26 25 18  8  NA NA 341 116 4.11 23   0  0    762 346  13  53  34 234 15 0.818
+4  2 33  9 16  4  NA NA 243  97 5.17 19   1  0    507 261   5  21  17 163  8 0.803
+5  1 33 15 46 15  NA NA 313 121 3.72 32   1  0    879 373   7  42  22 235 14 0.840
+6  9 46 23 56 12  NA NA 266 137 4.95 27   0  0    747 329   3  53  16 194 13 0.845
+                     name                         park attendance BPF PPF teamIDBR teamIDlahman45
+1    Boston Red Stockings          South End Grounds I         NA 103  98      BOS            BS1
+2 Chicago White Stockings      Union Base-Ball Grounds         NA 104 102      CHI            CH1
+3  Cleveland Forest Citys National Association Grounds         NA  96 100      CLE            CL1
+4    Fort Wayne Kekiongas               Hamilton Field         NA 101 107      KEK            FW1
+5        New York Mutuals     Union Grounds (Brooklyn)         NA  90  88      NYU            NY2
+6  Philadelphia Athletics     Jefferson Street Grounds         NA 102  98      ATH            PH1
+  teamIDretro
+1         BS1
+2         CH1
+3         CL1
+4         FW1
+5         NY2
+6         PH1
+</pre>
+
+---
+# TeamsFranchises
+
+```
+  franchID                    franchName active NAassoc
+1      ALT         Altoona Mountain City      N    &lt;NA&gt;
+2      ANA Los Angeles Angels of Anaheim      Y    &lt;NA&gt;
+3      ARI          Arizona Diamondbacks      Y    &lt;NA&gt;
+4      ATH        Philadelphia Athletics      N     PNA
+```
+   
+---
+# 
+
++ Get the name of the tame from `Teams.name`
++ Also Teams.lgId and teams.divId
+
+
++ Need to connect the row(s) in SeriesPost to Teams table.
+
++ Not concerned with dropping rows where no match between two tables.
+    + So can use an INNER JOIN
+    + Or simple FROM with 2 tables.
+    
+---
+#     
+```
+go("    
+SELECT t.yearID, t.name, t.lgID, t.divID, s.teamIDwinner
+FROM SeriesPost AS s, 
+     Teams AS t
+WHERE s.yearID = 2010
+  AND s.round = 'WS'
+  AND s.teamIDwinner = t.teamID    
+")
+```    
+```
+    yearID                 name lgID divID teamIDwinner
+1    1958 San Francisco Giants   NL  &lt;NA&gt;          SFN
+2    1959 San Francisco Giants   NL  &lt;NA&gt;          SFN
+3    1960 San Francisco Giants   NL  &lt;NA&gt;          SFN
+   ....
+   ....    
+```
+
++ Why multiple rows?    
+
+---
+
++ How many rows in Teams have teamID = 'SFN'
+```r
+go("
+SELECT COUNT(*)
+FROM Teams
+WHERE teamID = 'SFN'
+")
+```
+
++ 65
+
+```
+go("SELECT * FROM Teams WHERE teamID = 'SFN'")
+```
+
++ There is a row per year.
+
+---
+# Refine Query
+
++ Need to get the row in Teams for 2010
+
+<pre>
+SELECT t.yearID, t.name, t.lgID, t.divID, s.teamIDwinner
+FROM SeriesPost AS s, 
+     Teams AS t
+WHERE s.yearID = 2010
+  AND s.round = 'WS'
+  AND s.teamIDwinner = t.teamID    
+  <font color="red">AND t.yearID = 2010</font>
+</pre>
+
+```
+  yearID                 name lgID divID teamIDwinner
+1   2010 San Francisco Giants   NL     W          SFN
+```
+
+
+---
+
+# Question:  Add the name of the losing team, the league and division.
+
++ Consider a simpler question
+  + **What team LOST the World Series in 2010? Include the name of the team, the league and division.**
+
+
++ Switch our previous query from winner to loser
+<pre>
+SELECT t.yearID, t.name, t.lgID, t.divID, s.teamIDloser
+FROM SeriesPost AS s, 
+     Teams AS t
+WHERE s.yearID = 2010
+  AND s.round = 'WS'
+  AND s.<font color="red">teamIDloser</font> = t.teamID    
+  AND t.yearID = 2010
+</pre>
+
+```
+  yearID          name lgID divID teamIDloser
+1   2010 Texas Rangers   AL     W         TEX
+```
+
+---
+# Possible Solution
+
++ We could try to combine the results from the winner and the loser queries
+   + How?
+
++ Can't use cbind() in SQL.
+
+
+```
+  yearID                 name lgID divID teamIDwinner
+1   2010 San Francisco Giants   NL     W          SFN
+```
+
+
+
+---
+# Better Approach
+
++ Join SeriesPost with Teams and Teams
+   + First Teams for the winner information
+   + Second Teams for the loser information
+
+<pre>
+SELECT t.yearID, t.name, t.lgID, t.divID, s.teamIDwinner,
+<font color="red">       t2.name, t2.lgId, t2.divID, s.teamIDloser</font>
+FROM SeriesPost AS s,
+     Teams AS t,
+<font color="red"> Teams AS t2</font>
+WHERE s.yearID = 2010
+  AND s.round = "WS"
+  AND s.teamIDwinner = t.teamID    
+  AND t.yearID = 2010
+<font color="red">  AND s.teamIDloser = t2.teamID    
+  AND t2.yearID = 2010</font>
+<pre>
+
+```
+  yearID                 name lgID divID teamIDwinner          name lgID divID teamIDloser
+1   2010 San Francisco Giants   NL     W          SFN Texas Rangers   AL     W         TEX
+```
+
+
+---
+# New Question
+
+
++ Get this information for each year
+
+```
+yearID   name   lgID   divID   teamIDwinner   name   lgID   divID   teamIDloser   
+```
+
++ Ideas?
+
+---
+
+
++ Match the yearID in Teams and SeriesPosts
+   + for both Teams tables.
+
+```
+SELECT t.yearID, t.name, t.lgID, t.divID, s.teamIDwinner,
+       t2.name, t2.lgId, t2.divID, s.teamIDloser
+FROM SeriesPost AS s,
+     Teams AS t,
+     Teams AS t2
+WHERE s.round = "WS"
+  AND s.teamIDwinner = t.teamID    
+  AND t.yearID = s.yearId   --  replace 2010 with t.yearID = s.yearID
+  AND s.teamIDloser = t2.teamID    
+  AND t2.yearID = s.yearId;  -- replace 2010 with t2.yearId = s.yearID
+```
+
+---
+# For 2016, compute the total payroll of each of the different teams. 
+
+
+```
+SELECT t.name, SUM(s.salary) AS payroll, s.yearID, t.teamID
+FROM Salaries AS s,
+     Teams AS t
+WHERE s.yearID = 2016
+  AND t.yearID = 2016
+  AND t.teamID = s.teamID
+GROUP BY s.teamID  
+ORDER BY payroll DESC;
+```
+
+
+---
+# Compute the total payroll of each of the different teams for each year. 
+
+```
+SELECT t.name, SUM(s.salary) AS payroll, s.yearID, t.teamID
+FROM Salaries AS s,
+     Teams AS t
+WHERE  t.teamID = s.teamID
+GROUP BY s.teamID, s.yearID;
+```
+
++ Results seems wrong
+
+---
+# Next try
+
+```
+SELECT t.name, SUM(s.salary) AS payroll, s.yearID AS year, t.teamID
+FROM Salaries AS s,
+     Teams AS t
+WHERE  t.teamID = s.teamID
+  AND  t.yearID = s.yearID     
+GROUP BY s.teamID, s.yearID
+ORDER BY year, payroll DESC;
+```
+
+
++ To Check
+   + Compute the total for a given year and team
+
+---
+# New Question
+
++ **How many players are there in each year, from 2000 to 2022?**
+
++ Which table(s)?
+
+
+---
+
+```sql
+SELECT yearID, COUNT(DISTINCT playerID) AS numPlayers 
+FROM Appearances
+WHERE yearID BETWEEN 2000 and 2022
+GROUP BY yearID;
+```
+
+
+
+    <!--
+
+SELECT t.name, SUM(s.salary) AS payroll, s.yearID, t.teamID
+FROM Salaries AS s,
+     Teams AS t
+WHERE s.yearID = 2016
+  AND t.yearID = 2016
+  AND t.teamID = s.teamID
+GROUP BY s.teamID  
+ORDER BY payroll DESC;
+	 
+       -->
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="remark-toc/index.js">     </script>   
+    <script>
+     var slideshow = remark.create();
+//     var toc = require('remark-toc');
+//     slideshow.use(toc);
+    </script>
+  </body>
+</html>
