@@ -88,7 +88,9 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [Stats StackExchange](https://stats.stackexchange.com)
 		    + static HTML content in Question summary front page
 			+ Get links to page for each question.
+         + [Firefox Developer Tools](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/)			
          + [Rsession](Lectures/Day15/Rsession)			
+		 
 <!-- 
      + [Day 15](Lectures/Day15)
 
