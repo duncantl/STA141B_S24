@@ -1,0 +1,1705 @@
+[15:38] 250> z = readLines("https://static01.nyt.com/newsgraphics/2015/04/21/county-mobility/0360769d17a8ef66ee331b8cf7d1a1f02c88c70b/Countycausalestimates25Apr2015smaller.csv")
+Warning message:
+In readLines("https://static01.nyt.com/newsgraphics/2015/04/21/county-mobility/0360769d17a8ef66ee331b8cf7d1a1f02c88c70b/Countycausalestimates25Apr2015smaller.csv") :
+  incomplete final line found on 'https://static01.nyt.com/newsgraphics/2015/04/21/county-mobility/0360769d17a8ef66ee331b8cf7d1a1f02c88c70b/Countycausalestimates25Apr2015smaller.csv'
+[17:18] 251> z = readLines("https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0")
+Error in file(con, "r") : 
+  cannot open the connection to 'https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0'
+In addition: Warning message:
+In file(con, "r") :
+  cannot open URL 'https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0': HTTP status was '403 Forbidden'
+
+Enter a frame number, or 0 to exit   
+
+1: readLines("https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0")
+2: file(con, "r")
+
+Selection: 0
+[17:18] 251> z = getURLContent("https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0", verbose = TRUE)
+*   Trying 172.64.149.230:443...
+* Connected to www.marinetraffic.com (172.64.149.230) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=marinetraffic.com
+*  start date: Apr  4 01:59:21 2024 GMT
+*  expire date: Jul  3 01:59:20 2024 GMT
+*  subjectAltName: host "www.marinetraffic.com" matched cert's "*.marinetraffic.com"
+*  issuer: C=US; O=Google Trust Services LLC; CN=GTS CA 1P5
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: GET]
+* h2h3 [:path: /getData/get_data_json_4/z:10/X:82/Y:199/station:0]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: www.marinetraffic.com]
+* h2h3 [accept: */*]
+* Using Stream ID: 1 (easy handle 0x13d380200)
+> GET /getData/get_data_json_4/z:10/X:82/Y:199/station:0 HTTP/2
+Host: www.marinetraffic.com
+accept: */*
+
+* old SSL session ID is stale, removing
+< HTTP/2 403 
+< date: Tue, 21 May 2024 18:29:07 GMT
+< content-type: text/html; charset=UTF-8
+< x-frame-options: SAMEORIGIN
+< referrer-policy: same-origin
+< cache-control: max-age=15
+< expires: Tue, 21 May 2024 18:29:22 GMT
+< set-cookie: __cf_bm=OiUsvN7oWL8hSO5aVGM5.pp7ONX..0Fng3eZnTf.UUc-1716316147-1.0.1.1-oOy8cLgWIsLtqIXaEIIFp9a4ZFNlDfnESy69mTOx.LPSmfDbsLtPL90uBtFcZrooZ6d0Q_CLSzvQ4B7j9W.tjw; path=/; expires=Tue, 21-May-24 18:59:07 GMT; domain=.marinetraffic.com; HttpOnly; Secure
+< strict-transport-security: max-age=15552000; includeSubDomains
+< server: cloudflare
+< cf-ray: 8876a151bbb2f983-SJC
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host www.marinetraffic.com left intact
+Error: 
+
+Enter a frame number, or 0 to exit   
+
+1: getURLContent("https://www.marinetraffic.com/getData/get_data_json_4/z:10/X:82/Y:199/station:0", verbose = TRUE)
+2: stop.if.HTTP.error(http.header, header$value())
+
+Selection: 0
+[17:18] 251> z = readLines("https://stats.stackexchange.com/")
+[49:31] 252> substring(z, 1, 100)
+   [1] ""                                                                                                                       
+   [2] "<!DOCTYPE html>"                                                                                                        
+   [3] ""                                                                                                                       
+   [4] ""                                                                                                                       
+   [5] "    <html class=\"html__responsive \" lang=\"en\">"                                                                     
+   [6] ""                                                                                                                       
+   [7] "    <head>"                                                                                                             
+   [8] ""                                                                                                                       
+   [9] "        <title>Cross Validated</title>"                                                                                 
+  [10] "        <link rel=\"shortcut icon\" href=\"https://cdn.sstatic.net/Sites/stats/Img/favicon.ico?v=8f7a5a"                
+  [11] "        <link rel=\"apple-touch-icon\" href=\"https://cdn.sstatic.net/Sites/stats/Img/apple-touch-icon."                
+  [12] "        <link rel=\"image_src\" href=\"https://cdn.sstatic.net/Sites/stats/Img/apple-touch-icon.png?v=8"                
+  [13] "        <link rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"Cross Validated\" href"             
+  [14] "        <meta name=\"description\" content=\"Q&amp;A for people interested in statistics, machine learn"                
+  [15] "    <meta name=\"viewport\" content=\"width=device-width, height=device-height, initial-scale=1.0, mini"                
+  [16] "        <meta property=\"og:type\" content= \"website\" />"                                                             
+  [17] "        <meta property=\"og:url\" content=\"https://stats.stackexchange.com/\"/>"                                       
+  [18] "        <meta property=\"og:site_name\" content=\"Cross Validated\" />"                                                 
+  [19] "        <meta property=\"og:image\" itemprop=\"image primaryImageOfPage\" content=\"https://cdn.sstatic.n"              
+  [20] "        <meta name=\"twitter:card\" content=\"summary\"/>"                                                              
+  [21] "        <meta name=\"twitter:domain\" content=\"stats.stackexchange.com\"/>"                                            
+  [22] "        <meta name=\"twitter:title\" property=\"og:title\" itemprop=\"name\" content=\"Cross Validated\" />"            
+  [23] "        <meta name=\"twitter:description\" property=\"og:description\" itemprop=\"description\" content=\"Q"            
+  [24] "    <script id=\"webpack-public-path\" type=\"text/uri-list\">https://cdn.sstatic.net/</script>"                        
+  [25] "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>"                        
+  [26] "    <script defer src=\"https://cdn.sstatic.net/Js/third-party/npm/@stackoverflow/stacks/dist/js/stac"                  
+  [27] "    <script src=\"https://cdn.sstatic.net/Js/stub.en.js?v=01af928a07d1\"></script>"                                     
+  [28] ""                                                                                                                       
+  [29] "    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.sstatic.net/Shared/stacks.css?v=f01880d"              
+  [30] "    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.sstatic.net/Sites/stats/primary.css?v=2"              
+  [31] ""                                                                                                                       
+  [32] ""                                                                                                                       
+  [33] "    "                                                                                                                   
+  [34] "        <link rel=\"alternate\" type=\"application/atom+xml\" title=\"Feed of recent questions\" href=\"/fe"            
+  [35] "        <script>"                                                                                                       
+  [36] "            StackExchange.ready(function() {"                                                                           
+  [37] "                StackExchange.realtime.subscribeToActiveQuestions('65', 'home-active');"                                
+  [38] "            });"                                                                                                        
+  [39] "        </script>"                                                                                                      
+  [40] ""                                                                                                                       
+  [41] "        "                                                                                                               
+  [42] "        "                                                                                                               
+  [43] "        "                                                                                                               
+  [44] "        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.sstatic.net/Shared/Channels/channel"              
+  [45] ""                                                                                                                       
+  [46] "        "                                                                                                               
+  [47] "        "                                                                                                               
+  [48] ""                                                                                                                       
+  [49] ""                                                                                                                       
+  [50] "            <script type=\"text/x-mathjax-config\">"                                                                    
+  [51] "                MathJax.Hub.Config({\"HTML-CSS\": { preferredFont: \"TeX\", availableFonts: [\"STIX\",\"TeX"            
+  [52] "                    tex2jax: { inlineMath: [ [\"$\", \"$\"], [\"\\\\\\\\(\",\"\\\\\\\\)\"] ], displayMath: [ [\"$$\",\""
+  [53] "                    TeX: {"                                                                                             
+  [54] "                        extensions: [\"begingroup.js\"],"                                                               
+  [55] "                        noUndefined: { attributes: { mathcolor: \"red\", mathbackground: \"#FFEEEE\", ma"               
+  [56] "                        Macros: { href: \"{}\" }"                                                                       
+  [57] "                    },"                                                                                                 
+  [58] "                    messageStyle: \"none\","                                                                            
+  [59] "                    styles: { \".MathJax_Display, .MathJax_Preview, .MathJax_Preview > *\": { \"backgro"                
+  [60] "                    SEEditor: \"mathjaxEditing\""                                                                       
+  [61] "            });"                                                                                                        
+  [62] "            </script>"                                                                                                  
+  [63] "            <script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-"                  
+  [64] "    <script>"                                                                                                           
+  [65] "        StackExchange.ready(function () {"                                                                              
+  [66] "            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com');"                                         
+  [67] "                StackExchange.realtime.subscribeToReputationNotifications('65');"                                       
+  [68] "        StackExchange.realtime.subscribeToTopBarNotifications('65');"                                                   
+  [69] "        });"                                                                                                            
+  [70] "    </script>"                                                                                                          
+  [71] "    <script type=\"application/json\" data-role=\"module-args\" data-module-name=\"Shared/options.mod\">{\""            
+  [72] "<script type=\"application/json\" data-role=\"module-args\" data-module-name=\"Shared/settings.mod\">{\"set"            
+  [73] "<script>StackExchange.init();</script>"                                                                                 
+  [74] ""                                                                                                                       
+  [75] "    <script>"                                                                                                           
+  [76] "        StackExchange.using.setCacheBreakers({\"Js/adops.en.js\":\"6da43f5e0a84\",\"Js/ask.en.js\":\"\",\"Js/"          
+  [77] "        StackExchange.using(\"gps\", function() {"                                                                      
+  [78] "             StackExchange.gps.init(false);"                                                                            
+  [79] "        });"                                                                                                            
+  [80] "    </script>"                                                                                                          
+  [81] "    <noscript id=\"noscript-css\"><style>body,.s-topbar{margin-top:1.9em}</style></noscript>"                           
+  [82] "    </head>"                                                                                                            
+  [83] "    <body class=\"home-page unified-theme\">"                                                                           
+  [84] ""                                                                                                                       
+  [85] "        "                                                                                                               
+  [86] "<div id=\"signup-modal-container\"></div>"                                                                              
+  [87] "<script type=\"application/json\" data-role=\"module-args\" data-module-name=\"islands/signup-modal/index"              
+  [88] "<script defer src=\"https://cdn.sstatic.net/Js/webpack-chunks/71.en.js?v=df900d976cca\"></script><scri"                 
+  [89] ""                                                                                                                       
+  [90] "<script defer>"                                                                                                         
+  [91] "    dispatchEvent(new CustomEvent(\"openSignupModal\"));"                                                               
+  [92] "</script>"                                                                                                              
+  [93] "    "                                                                                                                   
+  [94] "    <div id=\"notify-container\"></div>"                                                                                
+  [95] "    <div id=\"custom-header\"></div>"                                                                                   
+  [96] "        "                                                                                                               
+  [97] ""                                                                                                                       
+  [98] "<header class=\"s-topbar ps-fixed t0 l0 js-top-bar\">"                                                                  
+  [99] "    <a href=\"#content\" class=\"s-topbar--skip-link\">Skip to main content</a>"                                        
+ [100] "\t<div class=\"s-topbar--container\">"                                                                                  
+ [101] "\t\t\t<a href=\"#\" class=\"s-topbar--menu-btn js-left-sidebar-toggle\" role=\"menuitem\" aria-haspopup=\"true"         
+ [102] "\t\t\t<div class=\"topbar-dialog leftnav-dialog js-leftnav-dialog dno\">"                                               
+ [103] "\t\t\t\t<div class=\"left-sidebar js-unpinned-left-sidebar\" data-can-be=\"left-sidebar\" data-is-here-when="           
+ [104] "\t\t\t</div>"                                                                                                           
+ [105] "\t\t\t<a href=\"#\" class=\"s-topbar--logo network-logo js-gps-track js-network-logo\""                                 
+ [106] "\t\t   data-gps-track=\"stack_exchange_popup.show\" role=\"menuitem\" aria-haspopup=\"true\" aria-controls=\""          
+ [107] "\t\t\t\t<svg aria-hidden=\"true\" class=\"native mtn1 svg-icon iconLogoSEAlternativeSm\" width=\"107\" height="         
+ [108] "\t\t\t</a>"                                                                                                             
+ [109] "\t\t\t<div class=\"topbar-dialog network-logo-dialog js-network-logo-dialog dno\" id=\"topbar-network-logo"             
+ [110] "\t\t\t\t<div class=\"dialog-content\">"                                                                                 
+ [111] "\t\t\t\t\t<h4 class=\"bold\" id=\"topbar-network-logo-dialog-title\">Stack Exchange Network</h4>"                       
+ [112] "\t\t\t\t\t<p id=\"topbar-network-logo-dialog-body\">"                                                                   
+ [113] "\t\t\t\t\t\tStack Exchange network consists of 183 Q&amp;A communities including <a href=\"https://stackove"            
+ [114] "\t\t\t\t\t</p>"                                                                                                         
+ [115] "\t\t\t\t\t<a class=\"s-btn s-btn__filled\" href=\"https://stackexchange.com\""                                          
+ [116] "\t\t\t\t   data-gps-track=\"stack_exchange_popup.click\">Visit Stack Exchange</a>"                                      
+ [117] "\t\t\t\t\t<button class=\"s-btn s-btn__muted p0 ps-absolute t16 r16 js-close-button\" aria-label=\"Close\"><s"          
+ [118] "\t\t\t\t</div>"                                                                                                         
+ [119] "\t\t\t</div>"                                                                                                           
+ [120] ""                                                                                                                       
+ [121] ""                                                                                                                       
+ [122] ""                                                                                                                       
+ [123] ""                                                                                                                       
+ [124] ""                                                                                                                       
+ [125] "\t\t        <form id=\"search\" role=\"search\" action=/search class=\"s-topbar--searchbar js-searchbar \" a"           
+ [126] "                        <div class=\"s-topbar--searchbar--input-group\">"                                               
+ [127] "                            <input name=\"q\""                                                                          
+ [128] "                                   type=\"text\""                                                                       
+ [129] "                                   role=\"combobox\""                                                                   
+ [130] "                                   placeholder=\"Search on Cross Validated&#x2026;\""                                   
+ [131] "                                   value=\"\""                                                                          
+ [132] "                                   autocomplete=\"off\""                                                                
+ [133] "                                   maxlength=\"240\""                                                                   
+ [134] "                                   class=\"s-input s-input__search js-search-field wmn1 \""                             
+ [135] "                                   aria-label=\"Search\""                                                               
+ [136] "                                   aria-controls=\"top-search\" "                                                       
+ [137] "                                   data-controller=\"s-popover\""                                                       
+ [138] "                                   data-action=\"focus->s-popover#show\""                                               
+ [139] "                                   data-s-popover-placement=\"bottom-start\" />"                                        
+ [140] "                            <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-ico"                
+ [141] "                            <div class=\"s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popove"                  
+ [142] "    <div class=\"s-popover--arrow\"></div>"                                                                             
+ [143] "    <div class=\"js-spinner p24 d-flex ai-center jc-center d-none\">"                                                   
+ [144] "        <div class=\"s-spinner s-spinner__sm fc-orange-400\">"                                                          
+ [145] "            <div class=\"v-visible-sr\">Loading&#x2026;</div>"                                                          
+ [146] "        </div>"                                                                                                         
+ [147] "    </div>"                                                                                                             
+ [148] ""                                                                                                                       
+ [149] "    <span class=\"v-visible-sr js-screen-reader-info\"></span>"                                                         
+ [150] "    <div class=\"js-ac-results overflow-y-auto hmx3 d-none\"></div>"                                                    
+ [151] ""                                                                                                                       
+ [152] "    <div class=\"js-search-hints\" aria-describedby=\"Tips for searching\"></div>"                                      
+ [153] "</div>"                                                                                                                 
+ [154] "                        </div>"                                                                                         
+ [155] "                </form>"                                                                                                
+ [156] "\t\t"                                                                                                                   
+ [157] ""                                                                                                                       
+ [158] "<nav class=\"h100 ml-auto overflow-x-auto pr12\">"                                                                      
+ [159] "    <ol class=\"s-topbar--content\" role=\"menubar\">"                                                                  
+ [160] "    "                                                                                                                   
+ [161] "        <li role=\"none\">"                                                                                             
+ [162] "            <a href=\"/help\" class=\"s-topbar--item js-help-button\" role=\"menuitem\" title=\"Help Center"            
+ [163] "           data-ga=\"[&quot;top navigation&quot;,&quot;help menu click&quot;,null,null,null]\"><svg ar"                 
+ [164] "        </li>"                                                                                                          
+ [165] "        <div class=\"topbar-dialog help-dialog js-help-dialog dno\" id=\"topbar-help-dialog\" role=\"menu"              
+ [166] "            <div class=\"modal-content\">"                                                                              
+ [167] "                <ul>"                                                                                                   
+ [168] "                        <li>"                                                                                           
+ [169] "                            <a href=\"/tour\" class=\"js-gps-track s-block-link\" data-gps-track=\"help_p"              
+ [170] "                       data-ga=\"[&quot;top navigation&quot;,&quot;tour submenu click&quot;,null,null"                  
+ [171] "                                Tour"                                                                                   
+ [172] "                                <span class=\"item-summary\">"                                                          
+ [173] "                                    Start here for a quick overview of the site"                                        
+ [174] "                                </span>"                                                                                
+ [175] "                            </a>"                                                                                       
+ [176] "                        </li>"                                                                                          
+ [177] "                    <li>"                                                                                               
+ [178] "                        <a href=\"/help\" class=\"js-gps-track s-block-link\""                                          
+ [179] "                       data-gps-track=\"help_popup.click({ item_type:4 })\""                                            
+ [180] "                       data-ga=\"[&quot;top navigation&quot;,&quot;help center&quot;,null,null,null]\""                 
+ [181] "                            Help Center"                                                                                
+ [182] "                            <span class=\"item-summary\">"                                                              
+ [183] "                                Detailed answers to any questions you might have"                                       
+ [184] "                            </span>"                                                                                    
+ [185] "                        </a>"                                                                                           
+ [186] "                    </li>"                                                                                              
+ [187] "                                <li>"                                                                                   
+ [188] "                                    <a href=\"https://stats.meta.stackexchange.com\" class=\"js-gps-tra"                
+ [189] "                       data-ga=\"[&quot;top navigation&quot;,&quot;meta submenu click&quot;,null,null"                  
+ [190] "                                        Meta"                                                                           
+ [191] "                                        <span class=\"item-summary\">"                                                  
+ [192] "                                            Discuss the workings and policies of this site"                             
+ [193] "                                        </span>"                                                                        
+ [194] "                                    </a>"                                                                               
+ [195] "                                </li>"                                                                                  
+ [196] "                            <li>"                                                                                       
+ [197] "                                <a href=\"https://stackoverflow.co/\" class=\"js-gps-track s-block-link"                
+ [198] "                       data-ga=\"[&quot;top navigation&quot;,&quot;about us submenu click&quot;,null,"                  
+ [199] "                                    About Us"                                                                           
+ [200] "                                    <span class=\"item-summary\">"                                                      
+ [201] "                                        Learn more about Stack Overflow the company, and our product"                   
+ [202] "                                    </span>"                                                                            
+ [203] "                                </a>"                                                                                   
+ [204] "                            </li>"                                                                                      
+ [205] "                </ul>"                                                                                                  
+ [206] "            </div>"                                                                                                     
+ [207] "        </div>"                                                                                                         
+ [208] "        <li role=\"none\">"                                                                                             
+ [209] "            <a href=\"https://stackexchange.com\" class=\"s-topbar--item js-site-switcher-button js-gps"                
+ [210] "           aria-label=\"Site switcher\""                                                                                
+ [211] "           role=\"menuitem\""                                                                                           
+ [212] "           title=\"A list of all 183 Stack Exchange sites\""                                                            
+ [213] "           aria-haspopup=\"true\" aria-expanded=\"false\""                                                              
+ [214] "           data-ga=\"[&quot;top navigation&quot;,&quot;stack exchange click&quot;,null,null,null]\">"                   
+ [215] "                <svg aria-hidden=\"true\" class=\"svg-icon iconStackExchange\" width=\"18\" height=\"18\"  v"           
+ [216] "            </a>"                                                                                                       
+ [217] "        </li>"                                                                                                          
+ [218] "    "                                                                                                                   
+ [219] "    "                                                                                                                   
+ [220] "        <li class=\"js-topbar-dialog-corral\" role=\"presentation\">"                                                   
+ [221] "                "                                                                                                       
+ [222] ""                                                                                                                       
+ [223] "    <div class=\"topbar-dialog siteSwitcher-dialog dno\" role=\"menu\">"                                                
+ [224] "        <div class=\"header fw-wrap\">"                                                                                 
+ [225] "            <h3 class=\"flex--item\">"                                                                                  
+ [226] "                <a href=\"https://stats.stackexchange.com\">current community</a>"                                      
+ [227] "            </h3>"                                                                                                      
+ [228] "            <div class=\"flex--item fl1\">"                                                                             
+ [229] "                <div class=\"ai-center d-flex jc-end\">"                                                                
+ [230] "                    <button"                                                                                            
+ [231] "                        class=\"js-close-button s-btn s-btn__muted p0 ml8 d-none sm:d-block\""                          
+ [232] "                        type=\"button\""                                                                                
+ [233] "                        aria-label=\"Close\""                                                                           
+ [234] "                    >"                                                                                                  
+ [235] "                        <svg aria-hidden=\"true\" class=\"svg-icon iconClear\" width=\"18\" height=\"18\"  v"           
+ [236] "                    </button>"                                                                                          
+ [237] "                </div>"                                                                                                 
+ [238] "            </div>"                                                                                                     
+ [239] "        </div>"                                                                                                         
+ [240] "        <div class=\"modal-content bg-blue-200 current-site-container\">"                                               
+ [241] "            <ul class=\"current-site\">"                                                                                
+ [242] "                    <li class=\"d-flex\">"                                                                              
+ [243] "                            <div class=\"fl1\">"                                                                        
+ [244] "                <a href=\"https://stats.stackexchange.com\"  "                                                          
+ [245] "       class=\"current-site-link d-flex gx8 site-link js-gps-track\""                                                   
+ [246] "       data-id=\"65\""                                                                                                  
+ [247] "       data-gps-track=\"site_switcher.click({ item_type:3 })\">"                                                        
+ [248] "        <div class=\"favicon favicon-stats site-icon flex--item\" title=\"Cross Validated\"></div>"                     
+ [249] "        <span class=\"flex--item fl1\">"                                                                                
+ [250] "            Cross Validated"                                                                                            
+ [251] "        </span>"                                                                                                        
+ [252] "    </a>"                                                                                                               
+ [253] ""                                                                                                                       
+ [254] "    </div>"                                                                                                             
+ [255] "    <div class=\"related-links\">"                                                                                      
+ [256] "            <a href=\"https://stats.stackexchange.com/help\" class=\"js-gps-track\" data-gps-track=\"site"              
+ [257] "            <a href=\"https://chat.stackexchange.com?tab=site&amp;host=stats.stackexchange.com\" class"                 
+ [258] "    </div>"                                                                                                             
+ [259] ""                                                                                                                       
+ [260] "                    </li>"                                                                                              
+ [261] "                    <li class=\"related-site d-flex\">"                                                                 
+ [262] "                            <div class=\"L-shaped-icon-container\">"                                                    
+ [263] "        <span class=\"L-shaped-icon\"></span>"                                                                          
+ [264] "    </div>"                                                                                                             
+ [265] ""                                                                                                                       
+ [266] "                            <a href=\"https://stats.meta.stackexchange.com\"  "                                         
+ [267] "       class=\"s-block-link px16 d-flex gx8 site-link js-gps-track\""                                                   
+ [268] "       data-id=\"66\""                                                                                                  
+ [269] "       data-gps-track=\"site.switch({ target_site:66, item_type:3 }),site_switcher.click({ item_type:"                  
+ [270] "        <div class=\"favicon favicon-statsmeta site-icon flex--item\" title=\"Cross Validated Meta\"></d"               
+ [271] "        <span class=\"flex--item fl1\">"                                                                                
+ [272] "            Cross Validated Meta"                                                                                       
+ [273] "        </span>"                                                                                                        
+ [274] "    </a>"                                                                                                               
+ [275] ""                                                                                                                       
+ [276] "                    </li>"                                                                                              
+ [277] "            </ul>"                                                                                                      
+ [278] "        </div>"                                                                                                         
+ [279] ""                                                                                                                       
+ [280] "        <div class=\"header\" id=\"your-communities-header\">"                                                          
+ [281] "            <h3>"                                                                                                       
+ [282] "your communities            </h3>"                                                                                      
+ [283] ""                                                                                                                       
+ [284] "        </div>"                                                                                                         
+ [285] "        <div class=\"modal-content\" id=\"your-communities-section\">"                                                  
+ [286] ""                                                                                                                       
+ [287] "                <div class=\"call-to-login\">"                                                                          
+ [288] "<a href=\"https://stats.stackexchange.com/users/signup?ssrc=site_switcher&amp;returnurl=https%3a%2f%2"                  
+ [289] "        </div>"                                                                                                         
+ [290] ""                                                                                                                       
+ [291] "        <div class=\"header\">"                                                                                         
+ [292] "            <h3><a href=\"https://stackexchange.com/sites\">more stack exchange communities</a>"                        
+ [293] "            </h3>"                                                                                                      
+ [294] "            <a href=\"https://stackoverflow.blog\" class=\"float-right\">company blog</a>"                              
+ [295] "        </div>"                                                                                                         
+ [296] "        <div class=\"modal-content\">"                                                                                  
+ [297] "                <div class=\"child-content\"></div>"                                                                    
+ [298] "        </div>        "                                                                                                 
+ [299] "    </div>"                                                                                                             
+ [300] ""                                                                                                                       
+ [301] "        </li>"                                                                                                          
+ [302] "    "                                                                                                                   
+ [303] "            <li role=\"none\"><button class=\"s-topbar--item s-btn s-btn__icon s-btn__muted d-none sm:d"                
+ [304] "                        <li role=\"none\">"                                                                             
+ [305] "                            <a href=\"https://stats.stackexchange.com/users/login?ssrc=head&returnurl"                  
+ [306] "                               data-gps-track=\"login.click\" data-ga=\"[&quot;top navigation&quot;,&qu"                
+ [307] "                        </li>"                                                                                          
+ [308] "                        <li role=\"none\"><a href=\"https://stats.stackexchange.com/users/signup?ssrc=h"                
+ [309] "    </ol>"                                                                                                              
+ [310] "</nav>"                                                                                                                 
+ [311] ""                                                                                                                       
+ [312] ""                                                                                                                       
+ [313] "\t</div>"                                                                                                               
+ [314] "</header>"                                                                                                              
+ [315] ""                                                                                                                       
+ [316] "\t<script>"                                                                                                             
+ [317] "\t\tStackExchange.ready(function () { StackExchange.topbar.init(); });"                                                 
+ [318] "\t\tStackExchange.scrollPadding.setPaddingTop(50, 10); "                                                                
+ [319] "\t</script>"                                                                                                            
+ [320] ""                                                                                                                       
+ [321] ""                                                                                                                       
+ [322] ""                                                                                                                       
+ [323] "            <div id=\"top-hero-div\">"                                                                                  
+ [324] "                    "                                                                                                   
+ [325] ""                                                                                                                       
+ [326] ""                                                                                                                       
+ [327] "            </div>"                                                                                                     
+ [328] ""                                                                                                                       
+ [329] "        <header class=\"site-header\">"                                                                                 
+ [330] "            <div class=\"site-header--container jc-space-between sm:fd-column sm:pt8 sm:pb8\">"                         
+ [331] "            <a class=\"site-header--link d-flex ai-center fs-headline1 fw-bold sm:mb8\" href=\"https://"                
+ [332] "                <img class=\"h-auto wmx100\" src=\"https://cdn.sstatic.net/Sites/stats/Img/logo.svg?v=6"                
+ [333] "            </a>"                                                                                                       
+ [334] ""                                                                                                                       
+ [335] "                <div class=\"d-flex ai-center gsx gs8\">"                                                               
+ [336] "<div class=\"js-zone-container zone-container-sidebar\">"                                                               
+ [337] "    <div id=\"dfp-sspon\" class=\"everyonelovesstackoverflow my4\"></div>"                                              
+ [338] "</div>"                                                                                                                 
+ [339] "                </div>"                                                                                                 
+ [340] "            </div>"                                                                                                     
+ [341] "        </header>"                                                                                                      
+ [342] ""                                                                                                                       
+ [343] "    <div class=\"container\">"                                                                                          
+ [344] "                "                                                                                                       
+ [345] ""                                                                                                                       
+ [346] ""                                                                                                                       
+ [347] "<div id=\"left-sidebar\" data-is-here-when=\"md lg\" class=\"left-sidebar js-pinned-left-sidebar ps-relat"              
+ [348] "    <div class=\"left-sidebar--sticky-container js-sticky-leftnav\">"                                                   
+ [349] "        <nav role=\"navigation\">"                                                                                      
+ [350] "            <ol class=\"nav-links\">"                                                                                   
+ [351] "                <li>"                                                                                                   
+ [352] "                    <ol class=\"nav-links\">"                                                                           
+ [353] "                        "                                                                                               
+ [354] ""                                                                                                                       
+ [355] "<li class=\"ps-relative  youarehere\"  aria-current=\"true\">"                                                          
+ [356] ""                                                                                                                       
+ [357] ""                                                                                                                       
+ [358] "    <a"                                                                                                                 
+ [359] "       href=\"/\""                                                                                                      
+ [360] "       class=\"s-block-link pl8 js-gps-track nav-links--link -link__with-icon\""                                        
+ [361] "       "                                                                                                                
+ [362] "       data-gps-track=\"top_nav.click({is_current: true, location:1, destination:8,  has_activity_not"                  
+ [363] "       aria-controls=\"\""                                                                                              
+ [364] "       data-controller=\" \""                                                                                           
+ [365] "       data-s-popover-placement=\"right\""                                                                              
+ [366] "       aria-current=\"page\""                                                                                           
+ [367] "       data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\""                                
+ [368] "    >"                                                                                                                  
+ [369] "        <div class=\"d-flex ai-center\">"                                                                               
+ [370] "<svg aria-hidden=\"true\" class=\"svg-icon iconHome\" width=\"18\" height=\"18\"  viewBox=\"0 0 18 18\"><path "         
+ [371] ""                                                                                                                       
+ [372] "        </div>"                                                                                                         
+ [373] "    </a>"                                                                                                               
+ [374] "</li>"                                                                                                                  
+ [375] ""                                                                                                                       
+ [376] ""                                                                                                                       
+ [377] ""                                                                                                                       
+ [378] "                        "                                                                                               
+ [379] ""                                                                                                                       
+ [380] "<li class=\"ps-relative\"  aria-current=\"false\">"                                                                     
+ [381] ""                                                                                                                       
+ [382] ""                                                                                                                       
+ [383] "    <a id=\"nav-questions\""                                                                                            
+ [384] "       href=\"/questions\""                                                                                             
+ [385] "       class=\"s-block-link pl8 js-gps-track nav-links--link -link__with-icon\""                                        
+ [386] "       "                                                                                                                
+ [387] "       data-gps-track=\"top_nav.click({is_current: false, location:1, destination:1,  has_activity_no"                  
+ [388] "       aria-controls=\"\""                                                                                              
+ [389] "       data-controller=\" \""                                                                                           
+ [390] "       data-s-popover-placement=\"right\""                                                                              
+ [391] "       aria-current=\"false\""                                                                                          
+ [392] "       data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\""                                
+ [393] "    >"                                                                                                                  
+ [394] "        <div class=\"d-flex ai-center\">"                                                                               
+ [395] "<svg aria-hidden=\"true\" class=\"svg-icon iconQuestion\" width=\"18\" height=\"18\"  viewBox=\"0 0 18 18\"><p"         
+ [396] ""                                                                                                                       
+ [397] "        </div>"                                                                                                         
+ [398] "    </a>"                                                                                                               
+ [399] "</li>"                                                                                                                  
+ [400] ""                                                                                                                       
+ [401] ""                                                                                                                       
+ [402] ""                                                                                                                       
+ [403] ""                                                                                                                       
+ [404] ""                                                                                                                       
+ [405] ""                                                                                                                       
+ [406] "                        "                                                                                               
+ [407] ""                                                                                                                       
+ [408] "<li class=\"ps-relative\"  aria-current=\"false\">"                                                                     
+ [409] ""                                                                                                                       
+ [410] ""                                                                                                                       
+ [411] "    <a"                                                                                                                 
+ [412] "       href=\"/tags\""                                                                                                  
+ [413] "       class=\"s-block-link pl8 js-gps-track nav-links--link -link__with-icon\""                                        
+ [414] "       "                                                                                                                
+ [415] "       data-gps-track=\"top_nav.click({is_current: false, location:1, destination:2,  has_activity_no"                  
+ [416] "       aria-controls=\"\""                                                                                              
+ [417] "       data-controller=\" \""                                                                                           
+ [418] "       data-s-popover-placement=\"right\""                                                                              
+ [419] "       aria-current=\"false\""                                                                                          
+ [420] "       data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\""                                
+ [421] "    >"                                                                                                                  
+ [422] "        <div class=\"d-flex ai-center\">"                                                                               
+ [423] "<svg aria-hidden=\"true\" class=\"svg-icon iconTags\" width=\"18\" height=\"18\"  viewBox=\"0 0 18 18\"><path "         
+ [424] ""                                                                                                                       
+ [425] "        </div>"                                                                                                         
+ [426] "    </a>"                                                                                                               
+ [427] "</li>"                                                                                                                  
+ [428] ""                                                                                                                       
+ [429] ""                                                                                                                       
+ [430] "                        "                                                                                               
+ [431] "                        <li class=\"pb24\"></li>"                                                                       
+ [432] ""                                                                                                                       
+ [433] ""                                                                                                                       
+ [434] "                        "                                                                                               
+ [435] ""                                                                                                                       
+ [436] "<li class=\"ps-relative\"  aria-current=\"false\">"                                                                     
+ [437] ""                                                                                                                       
+ [438] ""                                                                                                                       
+ [439] "    <a id=\"nav-users\""                                                                                                
+ [440] "       href=\"/users\""                                                                                                 
+ [441] "       class=\"s-block-link pl8 js-gps-track nav-links--link -link__with-icon\""                                        
+ [442] "       "                                                                                                                
+ [443] "       data-gps-track=\"top_nav.click({is_current: false, location:1, destination:3,  has_activity_no"                  
+ [444] "       aria-controls=\"\""                                                                                              
+ [445] "       data-controller=\" \""                                                                                           
+ [446] "       data-s-popover-placement=\"right\""                                                                              
+ [447] "       aria-current=\"false\""                                                                                          
+ [448] "       data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\""                                
+ [449] "    >"                                                                                                                  
+ [450] "        <div class=\"d-flex ai-center\">"                                                                               
+ [451] "<svg aria-hidden=\"true\" class=\"svg-icon iconPeople\" width=\"18\" height=\"18\"  viewBox=\"0 0 18 18\"><pat"         
+ [452] ""                                                                                                                       
+ [453] "        </div>"                                                                                                         
+ [454] "    </a>"                                                                                                               
+ [455] "</li>"                                                                                                                  
+ [456] ""                                                                                                                       
+ [457] ""                                                                                                                       
+ [458] ""                                                                                                                       
+ [459] "                            "                                                                                           
+ [460] ""                                                                                                                       
+ [461] "<li class=\"ps-relative\"  aria-current=\"false\">"                                                                     
+ [462] ""                                                                                                                       
+ [463] ""                                                                                                                       
+ [464] "    <a id=\"nav-unanswered\""                                                                                           
+ [465] "       href=\"/unanswered\""                                                                                            
+ [466] "       class=\"s-block-link pl8 js-gps-track nav-links--link -link__with-icon\""                                        
+ [467] "       "                                                                                                                
+ [468] "       data-gps-track=\"top_nav.click({is_current: false, location:1, destination:5,  has_activity_no"                  
+ [469] "       aria-controls=\"\""                                                                                              
+ [470] "       data-controller=\" \""                                                                                           
+ [471] "       data-s-popover-placement=\"right\""                                                                              
+ [472] "       aria-current=\"false\""                                                                                          
+ [473] "       data-s-popover-auto-show=\"true\" data-s-popover-hide-on-outside-click=\"never\""                                
+ [474] "    >"                                                                                                                  
+ [475] "        <div class=\"d-flex ai-center\">"                                                                               
+ [476] "<svg aria-hidden=\"true\" class=\"svg-icon iconAnswer\" width=\"18\" height=\"18\"  viewBox=\"0 0 18 18\"><pat"         
+ [477] ""                                                                                                                       
+ [478] "        </div>"                                                                                                         
+ [479] "    </a>"                                                                                                               
+ [480] "</li>"                                                                                                                  
+ [481] ""                                                                                                                       
+ [482] ""                                                                                                                       
+ [483] ""                                                                                                                       
+ [484] ""                                                                                                                       
+ [485] ""                                                                                                                       
+ [486] "                    </ol>"                                                                                              
+ [487] "                </li>"                                                                                                  
+ [488] "                "                                                                                                       
+ [489] "                "                                                                                                       
+ [490] ""                                                                                                                       
+ [491] "        "                                                                                                               
+ [492] ""                                                                                                                       
+ [493] "<li class=\"js-freemium-cta ps-relative mt32 mb8\">"                                                                    
+ [494] ""                                                                                                                       
+ [495] ""                                                                                                                       
+ [496] "    <div class=\"fs-fine tt-uppercase fc-black-600 fw-bold ml8 mt16 mb8\">Teams</div>"                                  
+ [497] ""                                                                                                                       
+ [498] "    <div class=\"px12 pt12 pb4 mb12 fc-medium overflow-hidden\">        "                                               
+ [499] "        <img class=\"wmx100 mx-auto mb12 h-auto d-block\" width=\"151\" height=\"24\" src=\"https://cdn.sst"            
+ [500] "        <p class=\"fs-fine\">"                                                                                          
+ [501] "            Ask questions, find answers and collaborate at work with Stack Overflow for Teams."                         
+ [502] "        </p>"                                                                                                           
+ [503] "        <a href=\"https://stackoverflow.co/teams/?utm_medium=referral&utm_source=stats-community&utm_"                  
+ [504] "           class=\"w100 s-btn s-btn__filled s-btn__xs bg-orange-400 h:bg-orange-500 js-gps-track pt8 "                  
+ [505] "           data-gps-track=\"teams.create.left-sidenav.click({ Action: 5 })\""                                           
+ [506] "           data-ga=\"[&quot;teams left navigation - anonymous&quot;,&quot;left nav free cta&quot;,&qu"                  
+ [507] "        <a href=\"https://stackoverflowteams.com/teams/create/free/?utm_medium=referral&utm_source=st"                  
+ [508] "           class=\"w100 s-btn s-btn__muted s-btn__xs mt1 js-gps-track\""                                                
+ [509] "           data-gps-track=\"teams.create.left-sidenav.click({ Action: 6 })\""                                           
+ [510] "           data-ga=\"[&quot;teams left navigation - anonymous&quot;,&quot;left nav free cta&quot;,&qu"                  
+ [511] "    </div>"                                                                                                             
+ [512] "</li>"                                                                                                                  
+ [513] ""                                                                                                                       
+ [514] ""                                                                                                                       
+ [515] "    <li class=\"d-flex ai-center jc-space-between ml8 mt32 mb8 js-create-team-cta d-none\">"                            
+ [516] ""                                                                                                                       
+ [517] "        <a href=\"javascript:void(0)\""                                                                                 
+ [518] "            class=\"s-link d-flex fl-grow1 fc-black-400 h:fc-black-600 fs-fine js-gps-track\""                          
+ [519] "            role=\"button\""                                                                                            
+ [520] "            aria-controls=\"popover-teams-create-cta\""                                                                 
+ [521] "            data-controller=\"s-popover\""                                                                              
+ [522] "            data-action=\"s-popover#toggle\""                                                                           
+ [523] "            data-s-popover-placement=\"bottom-start\""                                                                  
+ [524] "            data-s-popover-toggle-class=\"is-selected\""                                                                
+ [525] "            data-gps-track=\"teams.create.left-sidenav.click({ Action: ShowInfo })\""                                   
+ [526] "            data-ga=\"[&quot;teams left navigation - anonymous&quot;,&quot;left nav show teams info&q"                  
+ [527] "         >"                                                                                                             
+ [528] "            <div class=\"flex--item fl-grow1 fc-black-600 fw-bold tt-uppercase\">Teams</div>"                           
+ [529] "            <div class=\"flex--item px12\">"                                                                            
+ [530] "                <svg aria-hidden=\"true\" class=\"svg-icon iconPlusSm\" width=\"14\" height=\"14\"  viewBox="           
+ [531] "            </div>"                                                                                                     
+ [532] "        </a>"                                                                                                           
+ [533] "    </li>"                                                                                                              
+ [534] "    <li class=\"ps-relative js-create-team-cta d-none\">"                                                               
+ [535] "        <p class=\"fs-fine pr8 pl8 pb4 fc-black-400\">"                                                                 
+ [536] "            Ask questions, find answers and collaborate at work with Stack Overflow for Teams."                         
+ [537] "            <a href=\"https://stackoverflow.co/teams/?utm_medium=referral&utm_source=stats-community&"                  
+ [538] "        </p>"                                                                                                           
+ [539] "    </li> "                                                                                                             
+ [540] ""                                                                                                                       
+ [541] "            </ol>"                                                                                                      
+ [542] "        </nav>"                                                                                                         
+ [543] "    </div>"                                                                                                             
+ [544] ""                                                                                                                       
+ [545] ""                                                                                                                       
+ [546] ""                                                                                                                       
+ [547] "        <div class=\"s-popover ws2\""                                                                                   
+ [548] "        id=\"popover-teams-create-cta\""                                                                                
+ [549] "        role=\"menu\""                                                                                                  
+ [550] "        aria-hidden=\"true\">"                                                                                          
+ [551] "            <div class=\"s-popover--arrow\"></div>"                                                                     
+ [552] ""                                                                                                                       
+ [553] "            <div class=\"ps-relative overflow-hidden\">"                                                                
+ [554] "                <p class=\"mb2\"><strong>Teams</strong></p>"                                                            
+ [555] "                <p class=\"mb12 fs-caption fc-black-400\">Q&amp;A for work</p>"                                         
+ [556] "                <p class=\"mb12 fs-caption fc-black-500\">Connect and share knowledge within a single "                 
+ [557] "                <a href=\"https://stackoverflow.co/teams/\""                                                            
+ [558] "            class=\"js-gps-track s-btn s-btn__filled s-btn__xs\""                                                       
+ [559] "            data-gps-track=\"teams.create.left-sidenav.click({ Action: CtaClick })\""                                   
+ [560] "            data-ga=\"[&quot;teams left navigation - anonymous&quot;,&quot;left nav cta&quot;,&quot;s"                  
+ [561] "                    Learn more about Teams"                                                                             
+ [562] "                </a>"                                                                                                   
+ [563] "            </div>"                                                                                                     
+ [564] ""                                                                                                                       
+ [565] "            <div class=\"ps-absolute t8 r8\">"                                                                          
+ [566] "                <svg aria-hidden=\"true\" class=\"fc-orange-400 svg-spot spotPeople\" width=\"48\" height="             
+ [567] "            </div>"                                                                                                     
+ [568] "        </div>"                                                                                                         
+ [569] ""                                                                                                                       
+ [570] ""                                                                                                                       
+ [571] ""                                                                                                                       
+ [572] ""                                                                                                                       
+ [573] "</div>"                                                                                                                 
+ [574] ""                                                                                                                       
+ [575] ""                                                                                                                       
+ [576] ""                                                                                                                       
+ [577] "        <div id=\"content\" class=\"\">"                                                                                
+ [578] ""                                                                                                                       
+ [579] "            "                                                                                                           
+ [580] "<div class=\"inner-content\">"                                                                                          
+ [581] "    <div id=\"mainbar\">"                                                                                               
+ [582] "        "                                                                                                               
+ [583] "        "                                                                                                               
+ [584] ""                                                                                                                       
+ [585] "        <div class=\"d-flex\">"                                                                                         
+ [586] "            <h1 class=\"flex--item fl1 fs-headline1\">"                                                                 
+ [587] "                Explore our questions"                                                                                  
+ [588] "            </h1>"                                                                                                      
+ [589] "            <div class=\"ml12 aside-cta flex--item print:d-none\">"                                                     
+ [590] "                    <a href=\"/questions/ask\" class=\"ws-nowrap s-btn s-btn__filled\">"                                
+ [591] "        Ask Question"                                                                                                   
+ [592] "    </a>"                                                                                                               
+ [593] ""                                                                                                                       
+ [594] "            </div>"                                                                                                     
+ [595] "        </div>"                                                                                                         
+ [596] "    <div class=\"d-flex ai-end mb16 sm:fd-column\">"                                                                    
+ [597] "        <div class=\"flex--item fl1 fs-body1 sm:mb16\">"                                                                
+ [598] "            <a href=\"/?tags=regression\" class=\"s-tag post-tag no-tag-menu\" title=\"Show questions rel"              
+ [599] ""                                                                                                                       
+ [600] "        </div>"                                                                                                         
+ [601] "        <div class=\"flex--item ml16 fl-shrink0\">"                                                                     
+ [602] "            <div class=\" s-btn-group js-filter-btn\" >"                                                                
+ [603] "        <a"                                                                                                             
+ [604] "            href=\"?tab=active\""                                                                                       
+ [605] "            class=\"flex--item s-btn s-btn__muted js-sort-preference-change\""                                          
+ [606] "            title=\"Questions that have been asked, answered, or updated recently\""                                    
+ [607] "            data-nav-xhref=\"\""                                                                                        
+ [608] "            data-shortcut=\"A\""                                                                                        
+ [609] "            data-value=\"active\">"                                                                                     
+ [610] "            <span class=\"s-btn--text\" data-text=\"Active\">Active</span>"                                             
+ [611] "        </a>"                                                                                                           
+ [612] "        <a"                                                                                                             
+ [613] "            href=\"?tab=bounties\""                                                                                     
+ [614] "            class=\"flex--item s-btn s-btn__muted js-sort-preference-change\""                                          
+ [615] "            title=\"Questions with an active bounty\""                                                                  
+ [616] "            data-nav-xhref=\"\""                                                                                        
+ [617] "            data-shortcut=\"B\""                                                                                        
+ [618] "            data-value=\"bounties\">"                                                                                   
+ [619] "<span class=\"bounty-indicator-tab fw-normal\">11</span>            <span class=\"s-btn--text\" data-tex"               
+ [620] "        </a>"                                                                                                           
+ [621] "        <a"                                                                                                             
+ [622] "            href=\"?tab=hot\""                                                                                          
+ [623] "            class=\"flex--item s-btn s-btn__muted js-sort-preference-change\""                                          
+ [624] "            title=\"Questions with the most views, most answers, and highest score over the last few "                  
+ [625] "            data-nav-xhref=\"\""                                                                                        
+ [626] "            data-shortcut=\"H\""                                                                                        
+ [627] "            data-value=\"hot\">"                                                                                        
+ [628] "            <span class=\"s-btn--text\" data-text=\"Hot\">Hot</span>"                                                   
+ [629] "        </a>"                                                                                                           
+ [630] "        <a"                                                                                                             
+ [631] "            href=\"?tab=week\""                                                                                         
+ [632] "            class=\"flex--item s-btn s-btn__muted js-sort-preference-change\""                                          
+ [633] "            title=\"Questions with the most views, most answers, and highest score this week\""                         
+ [634] "            data-nav-xhref=\"\""                                                                                        
+ [635] "            data-shortcut=\"W\""                                                                                        
+ [636] "            data-value=\"week\">"                                                                                       
+ [637] "            <span class=\"s-btn--text\" data-text=\"Week\">Week</span>"                                                 
+ [638] "        </a>"                                                                                                           
+ [639] "        <a"                                                                                                             
+ [640] "            href=\"?tab=month\""                                                                                        
+ [641] "            class=\"flex--item s-btn s-btn__muted js-sort-preference-change\""                                          
+ [642] "            title=\"Questions with the most views, most answers, and highest score this month\""                        
+ [643] "            data-nav-xhref=\"\""                                                                                        
+ [644] "            data-shortcut=\"M\""                                                                                        
+ [645] "            data-value=\"month\">"                                                                                      
+ [646] "            <span class=\"s-btn--text\" data-text=\"Month\">Month</span>"                                               
+ [647] "        </a>"                                                                                                           
+ [648] "</div>"                                                                                                                 
+ [649] ""                                                                                                                       
+ [650] "        </div>"                                                                                                         
+ [651] "    </div>"                                                                                                             
+ [652] ""                                                                                                                       
+ [653] ""                                                                                                                       
+ [654] "<div id=\"qlist-wrapper\" class=\"flush-left\">"                                                                        
+ [655] "    <div id=\"question-mini-list\">"                                                                                    
+ [656] "        <div>"                                                                                                          
+ [657] "                        "                                                                                               
+ [658] ""                                                                                                                       
+ [659] ""                                                                                                                       
+ [660] "<div id=\"question-summary-647693\" class=\"s-post-summary    js-post-summary\" data-post-id=\"647693\" da"             
+ [661] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [662] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [663] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [664] "            <span class=\"s-post-summary--stats-item-unit\">votes</span>"                                               
+ [665] "        </div>"                                                                                                         
+ [666] "        <div class=\"s-post-summary--stats-item  \" title=\"0 answers\">"                                               
+ [667] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [668] "            <span class=\"s-post-summary--stats-item-unit\">answers</span>"                                             
+ [669] "        </div>"                                                                                                         
+ [670] "        <div class=\"s-post-summary--stats-item \" title=\"19 views\">"                                                 
+ [671] "            <span class=\"s-post-summary--stats-item-number\">19</span>"                                                
+ [672] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [673] "        </div>"                                                                                                         
+ [674] ""                                                                                                                       
+ [675] ""                                                                                                                       
+ [676] ""                                                                                                                       
+ [677] "    </div>"                                                                                                             
+ [678] "    <div class=\"s-post-summary--content\">"                                                                            
+ [679] ""                                                                                                                       
+ [680] ""                                                                                                                       
+ [681] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+ [682] "            <a href=\"/questions/647693/chernoff-bound-on-strings\" class=\"s-link\">Chernoff bound on s"               
+ [683] "        </h3>"                                                                                                          
+ [684] "        <div class=\"s-post-summary--meta\">"                                                                           
+ [685] "            <div class=\"s-post-summary--meta-tags d-inline-block tags js-tags t-probability t-distri"                  
+ [686] ""                                                                                                                       
+ [687] "<ul class='ml0 list-ls-none js-post-tag-list-wrapper d-inline'><li class='d-inline mr4 js-post-tag-l"                   
+ [688] "            </div>"                                                                                                     
+ [689] "            "                                                                                                           
+ [690] ""                                                                                                                       
+ [691] ""                                                                                                                       
+ [692] "<div class=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+ [693] ""                                                                                                                       
+ [694] "                <a href=\"/users/412895/david\" class=\"s-avatar s-avatar__16 s-user-card--avatar\" data"               
+ [695] "            <img src=\"https://i.sstatic.net/MBl6EhDp.jpg?s=32\" alt=\"David&#39;s user avatar\" width=\""              
+ [696] "        </div>"                                                                                                         
+ [697] "</a>"                                                                                                                   
+ [698] ""                                                                                                                       
+ [699] "    <div class=\"s-user-card--info\">"                                                                                  
+ [700] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+ [701] "                <a href=\"/users/412895/david\" class=\"flex--item\">David</a>"                                         
+ [702] "            </div>"                                                                                                     
+ [703] "        "                                                                                                               
+ [704] "                <ul class=\"s-user-card--awards\">"                                                                     
+ [705] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+ [706] ""                                                                                                                       
+ [707] "        </ul>"                                                                                                          
+ [708] ""                                                                                                                       
+ [709] "        "                                                                                                               
+ [710] "    </div>"                                                                                                             
+ [711] ""                                                                                                                       
+ [712] "        <time class=\"s-user-card--time\">"                                                                             
+ [713] "                <a href=\"/questions/647693/chernoff-bound-on-strings\" class=\"s-link s-link__muted\">m"               
+ [714] "            </time>"                                                                                                    
+ [715] "</div>"                                                                                                                 
+ [716] ""                                                                                                                       
+ [717] "        </div>"                                                                                                         
+ [718] "       "                                                                                                                
+ [719] "    </div>"                                                                                                             
+ [720] "</div>"                                                                                                                 
+ [721] ""                                                                                                                       
+ [722] "                        "                                                                                               
+ [723] ""                                                                                                                       
+ [724] ""                                                                                                                       
+ [725] "<div id=\"question-summary-635337\" class=\"s-post-summary    js-post-summary\" data-post-id=\"635337\" da"             
+ [726] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [727] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [728] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [729] "            <span class=\"s-post-summary--stats-item-unit\">votes</span>"                                               
+ [730] "        </div>"                                                                                                         
+ [731] "        <div class=\"s-post-summary--stats-item  \" title=\"0 answers\">"                                               
+ [732] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [733] "            <span class=\"s-post-summary--stats-item-unit\">answers</span>"                                             
+ [734] "        </div>"                                                                                                         
+ [735] "        <div class=\"s-post-summary--stats-item \" title=\"37 views\">"                                                 
+ [736] "            <span class=\"s-post-summary--stats-item-number\">37</span>"                                                
+ [737] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [738] "        </div>"                                                                                                         
+ [739] ""                                                                                                                       
+ [740] ""                                                                                                                       
+ [741] ""                                                                                                                       
+ [742] "    </div>"                                                                                                             
+ [743] "    <div class=\"s-post-summary--content\">"                                                                            
+ [744] ""                                                                                                                       
+ [745] ""                                                                                                                       
+ [746] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+ [747] "            <a href=\"/questions/635337/statistical-test-for-group-switches-in-repeated-measures\" cla"                 
+ [748] "        </h3>"                                                                                                          
+ [749] "        <div class=\"s-post-summary--meta\">"                                                                           
+ [750] "            <div class=\"s-post-summary--meta-tags d-inline-block tags js-tags t-statistical-signific"                  
+ [751] ""                                                                                                                       
+ [752] "<ul class='ml0 list-ls-none js-post-tag-list-wrapper d-inline'><li class='d-inline mr4 js-post-tag-l"                   
+ [753] "            </div>"                                                                                                     
+ [754] "            "                                                                                                           
+ [755] ""                                                                                                                       
+ [756] ""                                                                                                                       
+ [757] "<div class=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+ [758] ""                                                                                                                       
+ [759] "                <a href=\"/users/347109/luly\" class=\"s-avatar s-avatar__16 s-user-card--avatar js-use"                
+ [760] "            <img src=\"https://i.stack.imgur.com/qBbKy.jpg?s=32&amp;g=1\" alt=\"LulY&#39;s user avatar\""               
+ [761] "        </div>"                                                                                                         
+ [762] "</a>"                                                                                                                   
+ [763] ""                                                                                                                       
+ [764] "    <div class=\"s-user-card--info\">"                                                                                  
+ [765] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+ [766] "                <a href=\"/users/347109/luly\" class=\"flex--item\">LulY</a>"                                           
+ [767] "            </div>"                                                                                                     
+ [768] "        "                                                                                                               
+ [769] "                <ul class=\"s-user-card--awards\">"                                                                     
+ [770] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+ [771] ""                                                                                                                       
+ [772] "        </ul>"                                                                                                          
+ [773] ""                                                                                                                       
+ [774] "        "                                                                                                               
+ [775] "    </div>"                                                                                                             
+ [776] ""                                                                                                                       
+ [777] "        <time class=\"s-user-card--time\">"                                                                             
+ [778] "                <a href=\"/questions/635337/statistical-test-for-group-switches-in-repeated-measures\""                 
+ [779] "            </time>"                                                                                                    
+ [780] "</div>"                                                                                                                 
+ [781] ""                                                                                                                       
+ [782] "        </div>"                                                                                                         
+ [783] "       "                                                                                                                
+ [784] "    </div>"                                                                                                             
+ [785] "</div>"                                                                                                                 
+ [786] ""                                                                                                                       
+ [787] "                        "                                                                                               
+ [788] ""                                                                                                                       
+ [789] ""                                                                                                                       
+ [790] "<div id=\"question-summary-497491\" class=\"s-post-summary    js-post-summary\" data-post-id=\"497491\" da"             
+ [791] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [792] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [793] "            <span class=\"s-post-summary--stats-item-number\">1</span>"                                                 
+ [794] "            <span class=\"s-post-summary--stats-item-unit\">vote</span>"                                                
+ [795] "        </div>"                                                                                                         
+ [796] "        <div class=\"s-post-summary--stats-item has-answers \" title=\"1 answer\">"                                     
+ [797] "            <span class=\"s-post-summary--stats-item-number\">1</span>"                                                 
+ [798] "            <span class=\"s-post-summary--stats-item-unit\">answer</span>"                                              
+ [799] "        </div>"                                                                                                         
+ [800] "        <div class=\"s-post-summary--stats-item \" title=\"789 views\">"                                                
+ [801] "            <span class=\"s-post-summary--stats-item-number\">789</span>"                                               
+ [802] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [803] "        </div>"                                                                                                         
+ [804] ""                                                                                                                       
+ [805] ""                                                                                                                       
+ [806] ""                                                                                                                       
+ [807] "    </div>"                                                                                                             
+ [808] "    <div class=\"s-post-summary--content\">"                                                                            
+ [809] ""                                                                                                                       
+ [810] ""                                                                                                                       
+ [811] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+ [812] "            <a href=\"/questions/497491/running-time-rf\" class=\"s-link\">Running time RF</a>"                         
+ [813] "        </h3>"                                                                                                          
+ [814] "        <div class=\"s-post-summary--meta\">"                                                                           
+ [815] "            <div class=\"s-post-summary--meta-tags d-inline-block tags js-tags t-random-forest t-high"                  
+ [816] ""                                                                                                                       
+ [817] "<ul class='ml0 list-ls-none js-post-tag-list-wrapper d-inline'><li class='d-inline mr4 js-post-tag-l"                   
+ [818] "            </div>"                                                                                                     
+ [819] "            "                                                                                                           
+ [820] ""                                                                                                                       
+ [821] ""                                                                                                                       
+ [822] "<div class=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+ [823] ""                                                                                                                       
+ [824] "                <a href=\"/users/-1/community\" class=\"s-avatar s-avatar__16 s-user-card--avatar js-us"                
+ [825] "            <img src=\"https://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=id"                  
+ [826] "        </div>"                                                                                                         
+ [827] "</a>"                                                                                                                   
+ [828] ""                                                                                                                       
+ [829] "    <div class=\"s-user-card--info\">"                                                                                  
+ [830] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+ [831] "                <a href=\"/users/-1/community\" class=\"flex--item\">Community</a><span class=\"flex--ite"              
+ [832] "            </div>"                                                                                                     
+ [833] "        "                                                                                                               
+ [834] "                <ul class=\"s-user-card--awards\">"                                                                     
+ [835] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+ [836] ""                                                                                                                       
+ [837] "        </ul>"                                                                                                          
+ [838] ""                                                                                                                       
+ [839] "        "                                                                                                               
+ [840] "    </div>"                                                                                                             
+ [841] ""                                                                                                                       
+ [842] "        <time class=\"s-user-card--time\">"                                                                             
+ [843] "                <a href=\"/questions/497491/running-time-rf?lastactivity\" class=\"s-link s-link__muted"                
+ [844] "            </time>"                                                                                                    
+ [845] "</div>"                                                                                                                 
+ [846] ""                                                                                                                       
+ [847] "        </div>"                                                                                                         
+ [848] "       "                                                                                                                
+ [849] "    </div>"                                                                                                             
+ [850] "</div>"                                                                                                                 
+ [851] ""                                                                                                                       
+ [852] "                        "                                                                                               
+ [853] ""                                                                                                                       
+ [854] ""                                                                                                                       
+ [855] "<div id=\"question-summary-647320\" class=\"s-post-summary    js-post-summary\" data-post-id=\"647320\" da"             
+ [856] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [857] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [858] "            <span class=\"s-post-summary--stats-item-number\">2</span>"                                                 
+ [859] "            <span class=\"s-post-summary--stats-item-unit\">votes</span>"                                               
+ [860] "        </div>"                                                                                                         
+ [861] "        <div class=\"s-post-summary--stats-item  \" title=\"0 answers\">"                                               
+ [862] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [863] "            <span class=\"s-post-summary--stats-item-unit\">answers</span>"                                             
+ [864] "        </div>"                                                                                                         
+ [865] "        <div class=\"s-post-summary--stats-item \" title=\"44 views\">"                                                 
+ [866] "            <span class=\"s-post-summary--stats-item-number\">44</span>"                                                
+ [867] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [868] "        </div>"                                                                                                         
+ [869] ""                                                                                                                       
+ [870] ""                                                                                                                       
+ [871] ""                                                                                                                       
+ [872] "    </div>"                                                                                                             
+ [873] "    <div class=\"s-post-summary--content\">"                                                                            
+ [874] ""                                                                                                                       
+ [875] ""                                                                                                                       
+ [876] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+ [877] "            <a href=\"/questions/647320/including-random-effect-reduces-model-fit\" class=\"s-link\">Inc"               
+ [878] "        </h3>"                                                                                                          
+ [879] "        <div class=\"s-post-summary--meta\">"                                                                           
+ [880] "            <div class=\"s-post-summary--meta-tags d-inline-block tags js-tags t-mixed-model t-glmm t"                  
+ [881] ""                                                                                                                       
+ [882] "<ul class='ml0 list-ls-none js-post-tag-list-wrapper d-inline'><li class='d-inline mr4 js-post-tag-l"                   
+ [883] "            </div>"                                                                                                     
+ [884] "            "                                                                                                           
+ [885] ""                                                                                                                       
+ [886] ""                                                                                                                       
+ [887] "<div class=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+ [888] ""                                                                                                                       
+ [889] "                <a href=\"/users/284517/alessandra-bielli\" class=\"s-avatar s-avatar__16 s-user-card--"                
+ [890] "            <img src=\"https://lh3.googleusercontent.com/a-/AOh14GgIDhpBHLfeJnVp9XK0_6Tu6QfjiAoUM_WEc"                  
+ [891] "        </div>"                                                                                                         
+ [892] "</a>"                                                                                                                   
+ [893] ""                                                                                                                       
+ [894] "    <div class=\"s-user-card--info\">"                                                                                  
+ [895] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+ [896] "                <a href=\"/users/284517/alessandra-bielli\" class=\"flex--item\">Alessandra Bielli</a>"                 
+ [897] "            </div>"                                                                                                     
+ [898] "        "                                                                                                               
+ [899] "                <ul class=\"s-user-card--awards\">"                                                                     
+ [900] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+ [901] ""                                                                                                                       
+ [902] "        </ul>"                                                                                                          
+ [903] ""                                                                                                                       
+ [904] "        "                                                                                                               
+ [905] "    </div>"                                                                                                             
+ [906] ""                                                                                                                       
+ [907] "        <time class=\"s-user-card--time\">"                                                                             
+ [908] "                <a href=\"/questions/647320/including-random-effect-reduces-model-fit\" class=\"s-link "                
+ [909] "            </time>"                                                                                                    
+ [910] "</div>"                                                                                                                 
+ [911] ""                                                                                                                       
+ [912] "        </div>"                                                                                                         
+ [913] "       "                                                                                                                
+ [914] "    </div>"                                                                                                             
+ [915] "</div>"                                                                                                                 
+ [916] ""                                                                                                                       
+ [917] "                        "                                                                                               
+ [918] ""                                                                                                                       
+ [919] ""                                                                                                                       
+ [920] "<div id=\"question-summary-647644\" class=\"s-post-summary    js-post-summary\" data-post-id=\"647644\" da"             
+ [921] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [922] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [923] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [924] "            <span class=\"s-post-summary--stats-item-unit\">votes</span>"                                               
+ [925] "        </div>"                                                                                                         
+ [926] "        <div class=\"s-post-summary--stats-item  \" title=\"0 answers\">"                                               
+ [927] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [928] "            <span class=\"s-post-summary--stats-item-unit\">answers</span>"                                             
+ [929] "        </div>"                                                                                                         
+ [930] "        <div class=\"s-post-summary--stats-item \" title=\"14 views\">"                                                 
+ [931] "            <span class=\"s-post-summary--stats-item-number\">14</span>"                                                
+ [932] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [933] "        </div>"                                                                                                         
+ [934] ""                                                                                                                       
+ [935] ""                                                                                                                       
+ [936] ""                                                                                                                       
+ [937] "    </div>"                                                                                                             
+ [938] "    <div class=\"s-post-summary--content\">"                                                                            
+ [939] ""                                                                                                                       
+ [940] ""                                                                                                                       
+ [941] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+ [942] "            <a href=\"/questions/647644/standardization-of-summary-statistic-of-group-linked-values\" "                 
+ [943] "        </h3>"                                                                                                          
+ [944] "        <div class=\"s-post-summary--meta\">"                                                                           
+ [945] "            <div class=\"s-post-summary--meta-tags d-inline-block tags js-tags t-inference t-data-tra"                  
+ [946] ""                                                                                                                       
+ [947] "<ul class='ml0 list-ls-none js-post-tag-list-wrapper d-inline'><li class='d-inline mr4 js-post-tag-l"                   
+ [948] "            </div>"                                                                                                     
+ [949] "            "                                                                                                           
+ [950] ""                                                                                                                       
+ [951] ""                                                                                                                       
+ [952] "<div class=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+ [953] ""                                                                                                                       
+ [954] "                <a href=\"/users/70298/michael-gruenstaeudl\" class=\"s-avatar s-avatar__16 s-user-card"                
+ [955] "            <img src=\"https://i.stack.imgur.com/K4mSW.jpg?s=32&amp;g=1\" alt=\"Michael Gruenstaeudl&#3"                
+ [956] "        </div>"                                                                                                         
+ [957] "</a>"                                                                                                                   
+ [958] ""                                                                                                                       
+ [959] "    <div class=\"s-user-card--info\">"                                                                                  
+ [960] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+ [961] "                <a href=\"/users/70298/michael-gruenstaeudl\" class=\"flex--item\">Michael Gruenstaeudl<"               
+ [962] "            </div>"                                                                                                     
+ [963] "        "                                                                                                               
+ [964] "                <ul class=\"s-user-card--awards\">"                                                                     
+ [965] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+ [966] ""                                                                                                                       
+ [967] "        </ul>"                                                                                                          
+ [968] ""                                                                                                                       
+ [969] "        "                                                                                                               
+ [970] "    </div>"                                                                                                             
+ [971] ""                                                                                                                       
+ [972] "        <time class=\"s-user-card--time\">"                                                                             
+ [973] "                <a href=\"/questions/647644/standardization-of-summary-statistic-of-group-linked-valu"                  
+ [974] "            </time>"                                                                                                    
+ [975] "</div>"                                                                                                                 
+ [976] ""                                                                                                                       
+ [977] "        </div>"                                                                                                         
+ [978] "       "                                                                                                                
+ [979] "    </div>"                                                                                                             
+ [980] "</div>"                                                                                                                 
+ [981] ""                                                                                                                       
+ [982] "                        "                                                                                               
+ [983] ""                                                                                                                       
+ [984] ""                                                                                                                       
+ [985] "<div id=\"question-summary-647319\" class=\"s-post-summary    js-post-summary\" data-post-id=\"647319\" da"             
+ [986] "    <div class=\"s-post-summary--stats js-post-summary-stats\">"                                                        
+ [987] "        <div class=\"s-post-summary--stats-item s-post-summary--stats-item__emphasized\" title=\"Score "                
+ [988] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [989] "            <span class=\"s-post-summary--stats-item-unit\">votes</span>"                                               
+ [990] "        </div>"                                                                                                         
+ [991] "        <div class=\"s-post-summary--stats-item  \" title=\"0 answers\">"                                               
+ [992] "            <span class=\"s-post-summary--stats-item-number\">0</span>"                                                 
+ [993] "            <span class=\"s-post-summary--stats-item-unit\">answers</span>"                                             
+ [994] "        </div>"                                                                                                         
+ [995] "        <div class=\"s-post-summary--stats-item \" title=\"18 views\">"                                                 
+ [996] "            <span class=\"s-post-summary--stats-item-number\">18</span>"                                                
+ [997] "            <span class=\"s-post-summary--stats-item-unit\">views</span>"                                               
+ [998] "        </div>"                                                                                                         
+ [999] ""                                                                                                                       
+[1000] "<div class=\"s-post-summary--stats-item has-bounty\" title=\"this question has an open bounty worth 50 "                
+[1001] ""                                                                                                                       
+[1002] "    </div>"                                                                                                             
+[1003] "    <div class=\"s-post-summary--content\">"                                                                            
+[1004] ""                                                                                                                       
+[1005] ""                                                                                                                       
+[1006] "        <h3 class=\"s-post-summary--content-title\">"                                                                   
+[1007] "            <a href=\"/questions/647319/is-my-understanding-approach-to-nested-cross-validation-final"                  
+[1008] "        </h3>"                                                                                                          
+[1009] "        <div class=\"s-p  C-c C-c^Css=\"s-user-card s-user-card__minimal\" aria-live=\"polite\">"                                                  
+[1018] ""                                                                                                                       
+[1019] "                <a href=\"/users/302882/curious\" class=\"s-avatar s-avatar__16 s-user-card--avatar\" da"               
+[1020] "            <img src=\"https://www.gravatar.com/avatar/77db9e901c53fafadd695b2a7e3fe0bb?s=32&amp;d=id"                  
+[1021] "        </div>"                                                                                                         
+[1022] "</a>"                                                                                                                   
+[1023] ""                                                                                                                       
+[1024] "    <div class=\"s-user-card--info\">"                                                                                  
+[1025] "            <div class=\"s-user-card--link d-flex gs4\" >"                                                              
+[1026] "                <a href=\"/users/302882/curious\" class=\"flex--item\">curious</a>"                                     
+[1027] "            </div>"                                                                                                     
+[1028] "        "                                                                                                               
+[1029] "                <ul class=\"s-user-card--awards\">"                                                                     
+[1030] "            <li class=\"s-user-card--rep\"><span class=\"todo-no-class-here\" title=\"reputation score \" "             
+[1031] ""                                                                                                                       
+[1032] "        </ul>"                                                                                                          
+[1033] ""                                                                                                                       
+[1034] "        "                                                                                                               
+[1035] "    </div>"                                                                                                             
+[1036] ""                                                                                                                       
+[1037] "        <time class=\"s-user-card--time\">"                                                                             
+[1038] "                <a href=\"/questions/647319/is-my-understanding-approach-to-nested-cross-validation-f"                  
+[1039] "            </time>"                                                                                                    
+[1040] "</div>"                                                                                                                 
+[1041] ""                                                                                                                       
+[1042] "        </div>"                                                                                                         
+
+No suitable frames for recover()
+[49:31] 252> doc = htmlParse(z)
+[50:02] 253> getNodeSet(doc, "//div[@data-post-id]//a//@href")
+[[1]]
+                                         href 
+"/questions/647693/chernoff-bound-on-strings" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[2]]
+                           href 
+"/questions/tagged/probability" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[3]]
+                             href 
+"/questions/tagged/distributions" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[4]]
+                    href 
+"/questions/tagged/mean" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[5]]
+                              href 
+"/questions/tagged/expected-value" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[6]]
+                 href 
+"/users/412895/david" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[7]]
+                 href 
+"/users/412895/david" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[8]]
+                                         href 
+"/questions/647693/chernoff-bound-on-strings" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[9]]
+                                                                        href 
+"/questions/635337/statistical-test-for-group-switches-in-repeated-measures" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[10]]
+                                        href 
+"/questions/tagged/statistical-significance" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[11]]
+                                href 
+"/questions/tagged/categorical-data" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[12]]
+                                 href 
+"/questions/tagged/repeated-measures" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[13]]
+                href 
+"/users/347109/luly" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[14]]
+                href 
+"/users/347109/luly" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[15]]
+                                                                        href 
+"/questions/635337/statistical-test-for-group-switches-in-repeated-measures" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[16]]
+                               href 
+"/questions/497491/running-time-rf" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[17]]
+                             href 
+"/questions/tagged/random-forest" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[18]]
+                                href 
+"/questions/tagged/high-dimensional" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[19]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[20]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[21]]
+                                            href 
+"/questions/497491/running-time-rf?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[22]]
+                                                         href 
+"/questions/647320/including-random-effect-reduces-model-fit" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[23]]
+                           href 
+"/questions/tagged/mixed-model" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[24]]
+                    href 
+"/questions/tagged/glmm" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[25]]
+                       href 
+"/questions/tagged/glmmtmb" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[26]]
+                             href 
+"/users/284517/alessandra-bielli" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[27]]
+                             href 
+"/users/284517/alessandra-bielli" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[28]]
+                                                         href 
+"/questions/647320/including-random-effect-reduces-model-fit" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[29]]
+                                                                           href 
+"/questions/647644/standardization-of-summary-statistic-of-group-linked-values" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[30]]
+                         href 
+"/questions/tagged/inference" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[31]]
+                                   href 
+"/questions/tagged/data-transformation" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[32]]
+                                      href 
+"/questions/tagged/descriptive-statistics" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[33]]
+                               href 
+"/questions/tagged/standardization" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[34]]
+                                 href 
+"/questions/tagged/group-differences" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[35]]
+                               href 
+"/users/70298/michael-gruenstaeudl" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[36]]
+                               href 
+"/users/70298/michael-gruenstaeudl" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[37]]
+                                                                           href 
+"/questions/647644/standardization-of-summary-statistic-of-group-linked-values" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[38]]
+                                                                                               href 
+"/questions/647319/is-my-understanding-approach-to-nested-cross-validation-final-model-tuning-corr" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[39]]
+                                href 
+"/questions/tagged/cross-validation" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[40]]
+                   href 
+"/questions/tagged/svm" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[41]]
+                            href 
+"/questions/tagged/scikit-learn" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[42]]
+                   href 
+"/users/302882/curious" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[43]]
+                   href 
+"/users/302882/curious" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[44]]
+                                                                                               href 
+"/questions/647319/is-my-understanding-approach-to-nested-cross-validation-final-model-tuning-corr" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[45]]
+                                                                href 
+"/questions/249860/test-to-prove-change-in-data-structure-over-time" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[46]]
+                           href 
+"/questions/tagged/time-series" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[47]]
+                                 href 
+"/questions/tagged/structural-change" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[48]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[49]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[50]]
+                                                                             href 
+"/questions/249860/test-to-prove-change-in-data-structure-over-time?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[51]]
+                                                            href 
+"/questions/157895/unbiased-estimators-of-skewness-and-kurtosis" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[52]]
+                        href 
+"/questions/tagged/skewness" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[53]]
+                                  href 
+"/questions/tagged/unbiased-estimator" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[54]]
+                        href 
+"/questions/tagged/kurtosis" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[55]]
+                      href 
+"/users/358340/cottontail" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[56]]
+                      href 
+"/users/358340/cottontail" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[57]]
+                                                                         href 
+"/questions/157895/unbiased-estimators-of-skewness-and-kurtosis?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[58]]
+                                                                          href 
+"/questions/647709/rel-contribution-of-each-term-to-deviance-explained-in-gam" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[59]]
+                 href 
+"/questions/tagged/r" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[60]]
+                                          href 
+"/questions/tagged/generalized-additive-model" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[61]]
+                    href 
+"/questions/tagged/mgcv" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[62]]
+                        href 
+"/questions/tagged/deviance" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[63]]
+                         href 
+"/users/384233/user-20201213" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[64]]
+                         href 
+"/users/384233/user-20201213" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[65]]
+                                                                          href 
+"/questions/647709/rel-contribution-of-each-term-to-deviance-explained-in-gam" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[66]]
+                                 href 
+"/questions/647706/rda-analysis-in-r" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[67]]
+                                  href 
+"/questions/tagged/data-visualization" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[68]]
+                                   href 
+"/questions/tagged/redundancy-analysis" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[69]]
+                       href 
+"/users/412906/endre-hagen" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[70]]
+                       href 
+"/users/412906/endre-hagen" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[71]]
+                                 href 
+"/questions/647706/rda-analysis-in-r" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[72]]
+                                                                                                href 
+"/questions/647705/does-the-estimate-of-a-nonparametric-function-changes-when-adding-a-parametric-c" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[73]]
+                             href 
+"/questions/tagged/nonparametric" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[74]]
+                              href 
+"/questions/tagged/semiparametric" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[75]]
+              href 
+"/users/31382/bob" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[76]]
+              href 
+"/users/31382/bob" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[77]]
+                                                                                                href 
+"/questions/647705/does-the-estimate-of-a-nonparametric-function-changes-when-adding-a-parametric-c" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[78]]
+                                                                                 href 
+"/questions/647636/omit-continuous-variable-in-categorical-by-continuous-interaction" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[79]]
+                          href 
+"/questions/tagged/regression" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[80]]
+                           href 
+"/questions/tagged/interaction" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[81]]
+                            href 
+"/questions/tagged/econometrics" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[82]]
+                        href 
+"/users/509/peter-mortensen" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[83]]
+                        href 
+"/users/509/peter-mortensen" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[84]]
+                                                                                              href 
+"/questions/647636/omit-continuous-variable-in-categorical-by-continuous-interaction?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[85]]
+                                                                                     href 
+"/questions/511148/whats-the-minimum-number-of-datapoints-in-order-to-run-a-diff-in-diff" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[86]]
+                          href 
+"/questions/tagged/regression" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[87]]
+                            href 
+"/questions/tagged/econometrics" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[88]]
+                          href 
+"/questions/tagged/panel-data" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[89]]
+                                        href 
+"/questions/tagged/difference-in-difference" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[90]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[91]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[92]]
+                                                                                                  href 
+"/questions/511148/whats-the-minimum-number-of-datapoints-in-order-to-run-a-diff-in-diff?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[93]]
+                                                                                        href 
+"/questions/215613/key-scientific-publications-reporting-non-normal-glmms-in-marine-biology" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[94]]
+                 href 
+"/questions/tagged/r" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[95]]
+                    href 
+"/questions/tagged/glmm" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[96]]
+                         href 
+"/questions/tagged/reporting" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[97]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[98]]
+                 href 
+"/users/-1/community" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+[[99]]
+                                                                                                     href 
+"/questions/215613/key-scientific-publications-reporting-non-normal-glmms-in-marine-biology?lastactivity" 
+attr(,"class")
+[1] "XMLAttributeValue"
+
+attr(,"class")
+[1] "XMLNodeSet"
+[51:21] 254> getNodeSet(doc, "//div[@data-post-id]//a//@href")
