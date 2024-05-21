@@ -76,16 +76,22 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	     + [SQL session](Lectures/Day14/SQLSession)		 
 	     + [helper functions](Lectures/Day14/dbFuns.R)		 		 
 
-<!-- 
-
-     + [Day 8](Lectures/Day8)
-
-     + [Day 10](Lectures/Day10)
-     + [Day 11](Lectures/Day11)
-     + [Day 12](Lectures/Day12)
-     + [Day 13](Lectures/Day13)
-     + [Day 14](Lectures/Day14)
      + [Day 15](Lectures/Day15)
+         + [Slides](Lectures/Day15/slides.html)	 
+		 + Description of HTML tree.
+         + [NYTimes map example](https://www.nytimes.com/interactive/2015/05/03/upshot/the-best-and-worst-places-to-grow-up-how-your-area-compares.html)
+		    + Data in CSV via separate background download			
+            + [NYT.R](Lectures/Day15/NYT.R)
+         + [Marine Traffic](https://www.marinetraffic.com/en/ais/home/centerx:-123.5/centery:36.9/zoom:10)
+		    + Data in JSON via separate background download
+			+ Can't make simple HTTP request with readLines()
+         + [Stats StackExchange](https://stats.stackexchange.com)
+		    + static HTML content in Question summary front page
+			+ Get links to page for each question.
+         + [Rsession](Lectures/Day15/Rsession)			
+<!-- 
+     + [Day 15](Lectures/Day15)
+
      + [Day 16](Lectures/Day16)
      + [Day 17](Lectures/Day17)
      + [Day 18](Lectures/Day18)
