@@ -18,7 +18,7 @@ rx = '^([0-9.]+) - ([^ ]+) \\[([^]]+)\\] "([A-Z]+) ([^ ]+) HTTP/(1.[01])" ([0-9]
    + [cumsum.md](cumsum.md)
 
 + Getting tables in .stat file
-
+   + See [Day7 R session](Day7.session)
 
 
 + N/S
