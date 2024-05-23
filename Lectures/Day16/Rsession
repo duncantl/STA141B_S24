@@ -1,0 +1,272 @@
+[26:44] 273> z = readLines("https://stats.stackexchange.com/")
+[28:53] 274> doc = htmlParse(z)
+[28:55] 275> ti = xpathSApply(doc, "//div[@data-post-id]//a", xmlValue)
+[28:59] 276> length(ti)
+[1] 101
+[29:01] 277> head(ti)
+[1] "Does Code exist for MCMC with Dirichlet Process Priors?" "machine-learning"                                       
+[3] "markov-chain-montecarlo"                                 "dirichlet-process"                                      
+[5] "        \n            \n"                                "LifeisGood94"                                           
+[43:37] 278> div =getNodeSet(doc, "//div[@data-post-id]")
+[48:57] 279> length(div)
+[1] 14
+[49:00] 280> div[[1]]
+<div id="question-summary-647841" class="s-post-summary    js-post-summary" data-post-id="647841" data-post-type-id="1">
+    <div class="s-post-summary--stats js-post-summary-stats">
+        <div class="s-post-summary--stats-item s-post-summary--stats-item__emphasized" title="Score of 0">
+            <span class="s-post-summary--stats-item-number">0</span>
+            <span class="s-post-summary--stats-item-unit">votes</span>
+        </div>
+        <div class="s-post-summary--stats-item  " title="0 answers">
+            <span class="s-post-summary--stats-item-number">0</span>
+            <span class="s-post-summary--stats-item-unit">answers</span>
+        </div>
+        <div class="s-post-summary--stats-item " title="2 views">
+            <span class="s-post-summary--stats-item-number">2</span>
+            <span class="s-post-summary--stats-item-unit">views</span>
+        </div>
+
+
+
+    </div>
+    <div class="s-post-summary--content">
+
+
+        <h3 class="s-post-summary--content-title">
+            <a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link">Does Code exist for MCMC with Dirichlet Process Priors?</a>
+        </h3>
+        <div class="s-post-summary--meta">
+            <div class="s-post-summary--meta-tags d-inline-block tags js-tags t-machine-learning t-markov-chain-montecarlo t-dirichlet-process">
+
+<ul class="ml0 list-ls-none js-post-tag-list-wrapper d-inline"><li class="d-inline mr4 js-post-tag-list-item"><a href="/questions/tagged/machine-learning" class="s-tag post-tag flex--item mt0 js-tagname-machine-learning" title="show questions tagged 'machine-learning'" aria-label="show questions tagged 'machine-learning'" rel="tag" aria-labelledby="tag-machine-learning-tooltip-container" data-tag-menu-origin="Unknown">machine-learning</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="/questions/tagged/markov-chain-montecarlo" class="s-tag post-tag flex--item mt0 js-tagname-markov-chain-montecarlo" title="show questions tagged 'markov-chain-montecarlo'" aria-label="show questions tagged 'markov-chain-montecarlo'" rel="tag" aria-labelledby="tag-markov-chain-montecarlo-tooltip-container" data-tag-menu-origin="Unknown">markov-chain-montecarlo</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="/questions/tagged/dirichlet-process" class="s-tag post-tag flex--item mt0 js-tagname-dirichlet-process" title="show questions tagged 'dirichlet-process'" aria-label="show questions tagged 'dirichlet-process'" rel="tag" aria-labelledby="tag-dirichlet-process-tooltip-container" data-tag-menu-origin="Unknown">dirichlet-process</a></li></ul></div>
+            
+
+
+<div class="s-user-card s-user-card__minimal" aria-live="polite">
+
+                <a href="/users/383993/lifeisgood94" class="s-avatar s-avatar__16 s-user-card--avatar" data-user-id="383993">        <div class="gravatar-wrapper-16">
+            <img src="https://www.gravatar.com/avatar/8dd18f373288c5473e9437e75037107f?s=32&amp;d=identicon&amp;r=PG" alt="LifeisGood94's user avatar" width="16" height="16" class="s-avatar--image"/></div>
+</a>
+
+    <div class="s-user-card--info">
+            <div class="s-user-card--link d-flex gs4">
+                <a href="/users/383993/lifeisgood94" class="flex--item">LifeisGood94</a>
+            </div>
+        
+                <ul class="s-user-card--awards"><li class="s-user-card--rep"><span class="todo-no-class-here" title="reputation score " dir="ltr">11</span></li>
+
+        </ul></div>
+
+        <time class="s-user-card--time"><a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link s-link__muted">asked <span title="2024-05-23 17:24:16Z" class="relativetime">4 mins ago</span></a>
+            </time></div>
+
+        </div>
+       
+    </div>
+</div> 
+[49:18] 281> getNodeSet(div[[1]], ".//a")
+[[1]]
+<a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link">Does Code exist for MCMC with Dirichlet Process Priors?</a> 
+
+[[2]]
+<a href="/questions/tagged/machine-learning" class="s-tag post-tag flex--item mt0 js-tagname-machine-learning" title="show questions tagged 'machine-learning'" aria-label="show questions tagged 'machine-learning'" rel="tag" aria-labelledby="tag-machine-learning-tooltip-container" data-tag-menu-origin="Unknown">machine-learning</a> 
+
+[[3]]
+<a href="/questions/tagged/markov-chain-montecarlo" class="s-tag post-tag flex--item mt0 js-tagname-markov-chain-montecarlo" title="show questions tagged 'markov-chain-montecarlo'" aria-label="show questions tagged 'markov-chain-montecarlo'" rel="tag" aria-labelledby="tag-markov-chain-montecarlo-tooltip-container" data-tag-menu-origin="Unknown">markov-chain-montecarlo</a> 
+
+[[4]]
+<a href="/questions/tagged/dirichlet-process" class="s-tag post-tag flex--item mt0 js-tagname-dirichlet-process" title="show questions tagged 'dirichlet-process'" aria-label="show questions tagged 'dirichlet-process'" rel="tag" aria-labelledby="tag-dirichlet-process-tooltip-container" data-tag-menu-origin="Unknown">dirichlet-process</a> 
+
+[[5]]
+<a href="/users/383993/lifeisgood94" class="s-avatar s-avatar__16 s-user-card--avatar" data-user-id="383993">        <div class="gravatar-wrapper-16">
+            <img src="https://www.gravatar.com/avatar/8dd18f373288c5473e9437e75037107f?s=32&amp;d=identicon&amp;r=PG" alt="LifeisGood94's user avatar" width="16" height="16" class="s-avatar--image"/></div>
+</a> 
+
+[[6]]
+<a href="/users/383993/lifeisgood94" class="flex--item">LifeisGood94</a> 
+
+[[7]]
+<a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link s-link__muted">asked <span title="2024-05-23 17:24:16Z" class="relativetime">4 mins ago</span></a> 
+
+attr(,"class")
+[1] "XMLNodeSet"
+[50:11] 282> getNodeSet(div[[1]], ".//a[@class = 's-link']")
+[[1]]
+<a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link">Does Code exist for MCMC with Dirichlet Process Priors?</a> 
+
+attr(,"class")
+[1] "XMLNodeSet"
+[52:44] 283> ti =getNodeSet(doc, "//div[@data-post-id]//a[@class = 's-link']")
+[53:57] 284> length(ti)
+[1] 14
+[54:00] 285> ti2 =getNodeSet(doc, "//div[@data-post-id]//h3/a")
+[54:16] 286> length(ti2)
+[1] 14
+[54:20] 287> ti == ti2
+Error in ti == ti2 : comparison of these types is not implemented
+No suitable frames for recover()
+[54:20] 287> ti
+[[1]]
+<a href="/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" class="s-link">Does Code exist for MCMC with Dirichlet Process Priors?</a> 
+
+[[2]]
+<a href="/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but" class="s-link">How to compare three groups of patients if one group is normally distributed but the other two are not?</a> 
+
+[[3]]
+<a href="/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor" class="s-link">When to include a variable as a mediator or a predictor</a> 
+
+[[4]]
+<a href="/questions/647838/anova-alternatives" class="s-link">ANOVA alternatives</a> 
+
+[[5]]
+<a href="/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure" class="s-link">Should I expect statistical analytical problems in this PLS-SEM structure?</a> 
+
+[[6]]
+<a href="/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination" class="s-link">For estimating weights in the Synthetic Control Method, what linear combination of the outcomes and symmetric matrix are used?</a> 
+
+[[7]]
+<a href="/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental" class="s-link">What statistical test do we use to compare normal control group and experimental group?</a> 
+
+[[8]]
+<a href="/questions/603110/how-to-calculate-px-in-a-sinx-y" class="s-link">How to calculate $P[X\in A|\sin(X)=y]$?</a> 
+
+[[9]]
+<a href="/questions/396840/are-trend-stationary-series-i0" class="s-link">Are trend-stationary series I(0)?</a> 
+
+[[10]]
+<a href="/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro" class="s-link">What are the fundamental differences of Kaplan-Meier testing versus tests of proportions?</a> 
+
+[[11]]
+<a href="/questions/647834/constrained-cholesky-decomposition" class="s-link">Constrained Cholesky Decomposition</a> 
+
+[[12]]
+<a href="/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist" class="s-link">estimating category thresholds across a continuous variable using Ordered logistic regression</a> 
+
+[[13]]
+<a href="/questions/647776/unit-root-asymptotics" class="s-link">Unit-Root Asymptotics</a> 
+
+[[14]]
+<a href="/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con" class="s-link">(Mixed-)model specification and comparison for testing hypotheses concerning continuous ratings</a> 
+
+attr(,"class")
+[1] "XMLNodeSet"
+[54:35] 288> ti2 = xpathSApply(doc, "//div[@data-post-id]//h3/a", xmlValue)
+[55:42] 289> ti2
+ [1] "Does Code exist for MCMC with Dirichlet Process Priors?"                                                                       
+ [2] "How to compare three groups of patients if one group is normally distributed but the other two are not?"                       
+ [3] "When to include a variable as a mediator or a predictor"                                                                       
+ [4] "ANOVA alternatives"                                                                                                            
+ [5] "Should I expect statistical analytical problems in this PLS-SEM structure?"                                                    
+ [6] "For estimating weights in the Synthetic Control Method, what linear combination of the outcomes and symmetric matrix are used?"
+ [7] "What statistical test do we use to compare normal control group and experimental group?"                                       
+ [8] "How to calculate $P[X\\in A|\\sin(X)=y]$?"                                                                                     
+ [9] "Are trend-stationary series I(0)?"                                                                                             
+[10] "What are the fundamental differences of Kaplan-Meier testing versus tests of proportions?"                                     
+[11] "Constrained Cholesky Decomposition"                                                                                            
+[12] "estimating category thresholds across a continuous variable using Ordered logistic regression"                                 
+[13] "Unit-Root Asymptotics"                                                                                                         
+[14] "(Mixed-)model specification and comparison for testing hypotheses concerning continuous ratings"                               
+[55:45] 290> ti2 = xpathSApply(doc, "//div[@data-post-id]//h3/a", xmlGetAttr, "href")
+[57:14] 291> ti2
+ [1] "/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors"                          
+ [2] "/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but"
+ [3] "/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor"                         
+ [4] "/questions/647838/anova-alternatives"                                                              
+ [5] "/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure"       
+ [6] "/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination"  
+ [7] "/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental"
+ [8] "/questions/603110/how-to-calculate-px-in-a-sinx-y"                                                 
+ [9] "/questions/396840/are-trend-stationary-series-i0"                                                  
+[10] "/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro"
+[11] "/questions/647834/constrained-cholesky-decomposition"                                              
+[12] "/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist"
+[13] "/questions/647776/unit-root-asymptotics"                                                           
+[14] "/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con"  
+[57:16] 292> 
+[57:16] 292> hrefs = xpathSApply(doc, "//div[@data-post-id]//h3/a", xmlGetAttr, "href")
+[12:36] 293> hrefs
+ [1] "/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors"                          
+ [2] "/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but"
+ [3] "/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor"                         
+ [4] "/questions/647838/anova-alternatives"                                                              
+ [5] "/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure"       
+ [6] "/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination"  
+ [7] "/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental"
+ [8] "/questions/603110/how-to-calculate-px-in-a-sinx-y"                                                 
+ [9] "/questions/396840/are-trend-stationary-series-i0"                                                  
+[10] "/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro"
+[11] "/questions/647834/constrained-cholesky-decomposition"                                              
+[12] "/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist"
+[13] "/questions/647776/unit-root-asymptotics"                                                           
+[14] "/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con"  
+[12:38] 294> u = "https://stats.stackexchange.com"
+[12:54] 295> paste0(u, hrefs)
+ [1] "https://stats.stackexchange.com/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors"                          
+ [2] "https://stats.stackexchange.com/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but"
+ [3] "https://stats.stackexchange.com/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor"                         
+ [4] "https://stats.stackexchange.com/questions/647838/anova-alternatives"                                                              
+ [5] "https://stats.stackexchange.com/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure"       
+ [6] "https://stats.stackexchange.com/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination"  
+ [7] "https://stats.stackexchange.com/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental"
+ [8] "https://stats.stackexchange.com/questions/603110/how-to-calculate-px-in-a-sinx-y"                                                 
+ [9] "https://stats.stackexchange.com/questions/396840/are-trend-stationary-series-i0"                                                  
+[10] "https://stats.stackexchange.com/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro"
+[11] "https://stats.stackexchange.com/questions/647834/constrained-cholesky-decomposition"                                              
+[12] "https://stats.stackexchange.com/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist"
+[13] "https://stats.stackexchange.com/questions/647776/unit-root-asymptotics"                                                           
+[14] "https://stats.stackexchange.com/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con"  
+[13:08] 296> urls = paste0(u, hrefs)
+[13:17] 297> ll = readLines(urls[1])
+[13:24] 298> u
+[1] "https://stats.stackexchange.com"
+[13:58] 299> 
+[13:58] 299> u = "https://stats.stackexchange.com?abc=xyz&1231&offset=100"
+[17:02] 300> getRelativeURL(u, hrefs)
+[1] "https://stats.stackexchange.com?abc=xyz&1231&offset=100"
+[18:23] 301> getRelativeURL( hrefs, u)
+                                                           /questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors 
+                          "https://stats.stackexchange.com/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors" 
+                                 /questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but 
+"https://stats.stackexchange.com/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but" 
+                                                          /questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor 
+                         "https://stats.stackexchange.com/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor" 
+                                                                                               /questions/647838/anova-alternatives 
+                                                              "https://stats.stackexchange.com/questions/647838/anova-alternatives" 
+                                        /questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure 
+       "https://stats.stackexchange.com/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure" 
+                                   /questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination 
+  "https://stats.stackexchange.com/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination" 
+                                 /questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental 
+"https://stats.stackexchange.com/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental" 
+                                                                                  /questions/603110/how-to-calculate-px-in-a-sinx-y 
+                                                 "https://stats.stackexchange.com/questions/603110/how-to-calculate-px-in-a-sinx-y" 
+                                                                                   /questions/396840/are-trend-stationary-series-i0 
+                                                  "https://stats.stackexchange.com/questions/396840/are-trend-stationary-series-i0" 
+                                 /questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro 
+"https://stats.stackexchange.com/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro" 
+                                                                               /questions/647834/constrained-cholesky-decomposition 
+                                              "https://stats.stackexchange.com/questions/647834/constrained-cholesky-decomposition" 
+                                 /questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist 
+"https://stats.stackexchange.com/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist" 
+                                                                                            /questions/647776/unit-root-asymptotics 
+                                                           "https://stats.stackexchange.com/questions/647776/unit-root-asymptotics" 
+                                   /questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con 
+  "https://stats.stackexchange.com/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con" 
+[18:29] 302> u
+[1] "https://stats.stackexchange.com?abc=xyz&1231&offset=100"
+[18:57] 303>  paste0(u, hrefs)
+ [1] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647841/does-code-exist-for-mcmc-with-dirichlet-process-priors"                          
+ [2] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647839/how-to-compare-three-groups-of-patients-if-one-group-is-normally-distributed-but"
+ [3] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/396632/when-to-include-a-variable-as-a-mediator-or-a-predictor"                         
+ [4] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647838/anova-alternatives"                                                              
+ [5] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647020/should-i-expect-statistical-analytical-problems-in-this-pls-sem-structure"       
+ [6] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/646989/for-estimating-weights-in-the-synthetic-control-method-what-linear-combination"  
+ [7] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647829/what-statistical-test-do-we-use-to-compare-normal-control-group-and-experimental"
+ [8] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/603110/how-to-calculate-px-in-a-sinx-y"                                                 
+ [9] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/396840/are-trend-stationary-series-i0"                                                  
+[10] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647835/what-are-the-fundamental-differences-of-kaplan-meier-testing-versus-tests-of-pro"
+[11] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647834/constrained-cholesky-decomposition"                                              
+[12] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647833/estimating-category-thresholds-across-a-continuous-variable-using-ordered-logist"
+[13] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647776/unit-root-asymptotics"                                                           
+[14] "https://stats.stackexchange.com?abc=xyz&1231&offset=100/questions/647773/mixed-model-specification-and-comparison-for-testing-hypotheses-concerning-con"  
+[18:59] 304>

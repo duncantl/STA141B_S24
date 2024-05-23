@@ -90,7 +90,12 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 			+ Get links to page for each question.
          + [Firefox Developer Tools](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/)			
          + [Rsession](Lectures/Day15/Rsession)			
-		 
+
+     + [Day 16](Lectures/Day16)
+         + [XPath slides](Lectures/Day16/XPath.html)	 
+         + [Using selenium to remote-control a Web browser](Lectures/Day16/selenium.R)	 		 
+		 + [Scraping stats.stackexchange.com & XPath](StatsSE.R)
+         + [Rsession](Lectures/Day16/Ression)
 <!-- 
      + [Day 15](Lectures/Day15)
 
