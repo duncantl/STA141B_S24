@@ -96,6 +96,20 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [Using selenium to remote-control a Web browser](Lectures/Day16/selenium.R)	 		 
 		 + [Scraping stats.stackexchange.com & XPath](StatsSE.R)
          + [Rsession](Lectures/Day16/Ression)
+		 
+     + [Day 17](Lectures/Day17)		 
+	      + [code to process search results/pages of question from stats.stackexchange.com](Lectures/Day17/so.R)
+             + This is a good structure for harvesting posts/questions/etc. when we have page after
+   			   page of search results.
+			   In other words, consider using this structure for assignment 4, and specializing it
+   			   to craigslist. The components correspond to
+			   + loop over pages and append the results			   
+			   + process a page of results
+			   + process each result, e.g., get URL for actual post/question
+			   + get URL or HTML for the next page of results			   
+			   + fix/post-process the columns in the overall data.frame
+
+			   
 <!-- 
      + [Day 15](Lectures/Day15)
 
