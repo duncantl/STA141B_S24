@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Animated COVID Map</title>
+<script src="stateColors.json"></script>
+<script src="setColor.js" type="text/javascript"></script>
+</head>
+
+<body onload="init()">
+<h1>Animated Map</h1>
+
+<div>
+    <p>
+    The display below shows the number of COVID cases across the entire US as a time series
+    and animates the number of cases in each state for each day so we can see the growth
+    in the number of cases and where they occur geographically.
+    Since this is the number of cases, not per capita, the large states have the large numbers.
+    We can change the data we export from R to show per capita cases, or number of deaths, etc. - the
+    structure of the HTML and JavaScript doesn't change.
+    Similarly,  some minor changes in how we create the map and JSON data allow us to look at all the counties in the US
+    or a subset of them, e.g., California.
+  <p>
+<ul>
+    <li> The Start button starts or restarts the animation from the beginning.</li>
+    <li>	 The Pause/Resume button (the label toggles when clicked) suspends/pauses and then restarts
+	    from the same point in the animation. This allows the viewer to temporarily pause and examine the geographic distribution of cases for the day.</li>
+    <li> The Delay slider allows the viewer to slow down or speed up the animation.
+		This controls the number of (milli)seconds between steps in the animation.</li>
+    <li> The "Change Date" slider both shows the current date being displayed in the  animation
+		    and also allows the viewer to change the date directly, allowing her to 
+		    control the animation directly by dragging the slider across different time periods.</li>
+    <li> Clicking on a point in the the time series (plot on the right or below depending on the size of the page)
+        changes the display in the map to the corresponding day.
+	This allows the viewer to identify specific days based on the total number of cases.
+    </li>
+			
+</ul>	  
+      
+</div>    
+
+<hr width="50%"/>
+
+
+<button onclick="start()">Start</button>
+
+<button id="pause"
+	onclick="if(timer) { 
+                     pause(); timer = null; event.target.innerHTML = 'Resume'
+		 } else {
+		     resume(); event.target.innerHTML = 'Pause'
+		 } ">Pause</button>
+
+Delay: <input id="speed" type="range" min="0" max="5000" value="250" class="slider"
+        style="width: 25%"
+        onchange="setDelay(event.target.value)"> 5s
+
+<p>
+
+Change Date:
+<br/>
+<div>
+<i id="startDate"></i><input type="range" min="1" max="278" value="1"
+   			     class="slider" id="setDate"
+                             oninput="pause();
+				      tickNum = event.target.value;
+				      setStatesColorEmbedded(tickNum)"
+    style="width:70%" list="dateLabels"></input>
+<i id="endDate"></i>
+</div>
+
+
+
+<h2>
+Date: <b id="date"></b>
+</h2>
+
+<div id="Map">
+<!--  Inline or embed? -->  
+<embed id="svgMap" src="usStates.svg" type="image/svg+xml" width="960" height="768"/> 
+
+<embed id="usCases" src="usCases.svg" type="image/svg+xml" width="960" height="768"/> 
+</div>
+
+<script src="timer.js" type="text/javascript"></script>
+</body> </html>
