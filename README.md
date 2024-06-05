@@ -119,7 +119,15 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
           + [animated map & time series](Lectures/Day18/AnimatedMap)
  		     + [runnable version here](https://www.stat.ucdavis.edu/~duncan/VizEg/AnimatedCOVIDMap/animatedMap.html)
 	      + [D3 gallery](https://observablehq.com/@d3/gallery)
-		  
+
+     + [Day 19](Lectures/Day19)
+         + [Outline](Lectures/Day19/Outline.md)
+		 + [plotly output](Lectures/Day18/plotlySimple.html)
+         + [button and "dynamic" HTML tables](Lectures/Day19/buttonTable.html)		 
+         + [R-generated plotly plot with event handler - custom data](Lectures/Day19/handerl.R)
+         + [list as custom data](Lectures/Day19/cmplxCustomData.R)         
+
+
 <!-- 
      + [Day 15](Lectures/Day15)
 
