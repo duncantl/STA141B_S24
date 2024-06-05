@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+	let index = 0;
+	
+var tableContents = [
+"<table><tr><th>Column 1</th><th>Column 2</th></tr><tr><td>A</td><td>123</td></tr></table>",
+
+"<table><tr><th>Column 1</th><th>Column 2</th></tr><tr><td>X</td><td>999</td></tr></table>"
+	];
+</script>
+
+
+</head>
+
+<body>
+
+<div>
+<button onclick="
+  index = (index + 1) % 2;
+  document.getElementById('table').innerHTML = tableContents[index];
+  console.log('index = ' + index);
+" label="Click to set table">Click to set table</button>
+</div>
+
+<div id="table">
+Nothing here yet.
+</div>
+
+</body>
+
+</html>
