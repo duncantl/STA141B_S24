@@ -127,6 +127,8 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [R-generated plotly plot with event handler - custom data](Lectures/Day19/handerl.R)
          + [list as custom data](Lectures/Day19/cmplxCustomData.R)         
 
+     + [Day 20](Lectures/Day20)
+	      + [Low-level Approach](Lectures/Day20/README.md)
 
 <!-- 
      + [Day 15](Lectures/Day15)
