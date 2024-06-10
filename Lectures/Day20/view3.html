@@ -1,0 +1,38 @@
+<html>
+    <head>
+	<script type="text/javascript">
+	 function showCountyTimeSeries(png) {
+	     var el = document.getElementById('countySVG');
+	     var rx1 = /\.png/;
+	     var svg = png.replace(rx1, '.svg');
+	     var rx2 = /PNG\//;
+	     svg = svg.replace(rx2, 'SVG/');
+	     console.log("showing " + svg);
+	     el.data = svg;
+	 }
+	</script>
+    </head>
+    
+    <body>
+	<p>
+	    One can click any of the states to display a time series for just that state.
+	</p>
+
+	<hr width="50%"></hr>	
+
+     <div style="display: flex;">
+	<div xwidth="45%" style="border: 1pt solid black;">
+	    <object type="image/svg+xml" data="ca.svg">
+		Couldn't display SVG - fallback
+	    </object>
+	</div>
+	
+	<div xwidth="" style="border: 1pt solid black;">
+	    <object type="image/svg+xml" data="" id="countySVG">
+	    </object>	    
+	</div>
+    </div>
+	
+	
+</body>
+</html>
