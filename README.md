@@ -128,7 +128,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
          + [list as custom data](Lectures/Day19/cmplxCustomData.R)         
 
      + [Day 20](Lectures/Day20)
-	      + [Low-level Approach](Lectures/Day20/README.md)
+	      + [Direct/Low-level Approach](Lectures/Day20/README.md)
 
 <!-- 
      + [Day 15](Lectures/Day15)
