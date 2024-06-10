@@ -23,9 +23,11 @@
    + State-level animation of COVID cases with interactivity.
 
 + SVG scatterplot
-   + [R scatterplot.svg](scatterplot.svg)
-   + [Annotated scatterplot.svg](scatterplot2.svg)  with onclick and id attributes.
-
+   + [R scatterplot.svg](scatterplot.svg) created from R
+   + [Annotated scatterplot.svg](scatterplot2.svg) annotated (from R) with onclick and id attributes
+     on each point.
+   + Click a point and an alert() dialog appears displaying the index of the point.
+   
 + [view2.html](view2.html)
    + California COVID cases
    + Map of CA
@@ -36,6 +38,14 @@
 
 + [inlineSVG.html](inlineSVG.html)
    + Version of view3.html that doesn't require using a Web server to serve the files.
+      + This inlines the SVG directly in the HTML document rather than using an &lt;object&gt; node
+        in the HTML.
+
++ [view4.html](view4.html)
+   + Similar to view3.html above, but the time series display for a county is interactive
+   and clicking on any point in the time series updates the map
+   to show the level of the number of cases for each county for that day.
+   + So this illustrates interactions between two embedded SVG documents.
 
 ## Background
 
