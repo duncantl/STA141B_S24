@@ -22,6 +22,10 @@
    + [Directly runnable version](https://www.stat.ucdavis.edu/~duncan/VizEg/AnimatedCOVIDMap/animatedMap.html)
    + State-level animation of COVID cases with interactivity.
 
++ SVG scatterplot
+   + [R scatterplot.svg](scatterplot.svg)
+   + [Annotated scatterplot.svg](scatterplot2.svg)  with onclick and id attributes.
+
 + [view2.html](view2.html)
    + California COVID cases
    + Map of CA
