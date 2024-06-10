@@ -551,6 +551,8 @@ Of course, we are now using the same SVG county plots for multiple HTML document
 So we need to ensure that the other HTML documents have a version of a `colorCounties()`
 Javascript function and it can do nothing so no errors occur.
 
+NOT FINISHED YET - almost there.
+
 
 
 
