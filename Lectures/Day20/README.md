@@ -551,11 +551,19 @@ Each of these needs to call
 `top.colorCounties(index)`
 where index is 0, 1, 2, ....
 
-Of course, we are now using the same SVG county plots for multiple HTML documents.
+Of course, we would now be using the same SVG county plots for multiple HTML documents.
 So we need to ensure that the other HTML documents have a version of a `colorCounties()`
 Javascript function and it can do nothing so no errors occur.
+Alternatively, we modify the SVG files from the SVG/ directory but save them in another directory,
+e.g., SVG2, and have the HTML file load the SVG files from there.
+We'll do the latter using [annotateSVGCountyTimeSeries.R](annotateSVGCountyTimeSeries.R).
 
-NOT FINISHED YET - almost there.
+This is again a reasonably simple getNodeSet() and mapply() loop to add the onclick attribute to
+each point in each SVG plot.
+
+
+We can interact with the results in view4.html.
+
 
 
 

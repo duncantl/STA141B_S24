@@ -6,7 +6,7 @@
 	     var rx1 = /\.png/;
 	     var svg = png.replace(rx1, '.svg');
 	     var rx2 = /PNG\//;
-	     svg = svg.replace(rx2, 'SVG/');
+	     svg = svg.replace(rx2, 'SVG2/');
 	     console.log("showing " + svg);
 	     el.data = svg;
 	 }
@@ -22,7 +22,7 @@
 	 }	 
 	</script>
 	<script>
-	 function getCasesBydate(index) {
+	 function getCasesByDate(index) {
 	     return(countyCasesByDate[index]);
 	 }
 	</script>
@@ -31,7 +31,11 @@
     
     <body>
 	<p>
-	    One can click any of the states to display a time series for just that state.
+	    <ul>
+		<li>Click any of the counties to display a time series for just that county.</li>
+		<li>Click on a red point/circle in the time series for the county to
+		     display in the map the level of cases for each county for that day.</li>
+	    
 	</p>
 
 	<hr width="50%"></hr>	
