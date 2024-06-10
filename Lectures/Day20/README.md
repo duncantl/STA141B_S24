@@ -495,7 +495,62 @@ Specifically, when we click on a point in one, we want to update the other.
 This can be involved.
 
 
-Let's take our examples above and add something just to illustrate.
+Let's take our examples above and add something just to illustrate interaction between
+2 embedded SVG documents within an HTML document.
+
+
+Suppose in the county-level SVG plots, we added an onclick  for each point (corresponding to a date)
+that attempted to change the CA state map to color each county the appropriate color for that date.
+
+One approach to handle this is to have a Javascript function, say `colorCounties()`, in the HTML
+document.
+The onclick attribute for each point in the county-level time series would call this with the
+specific date or index for the date, e.g., `top.colorCounties(10)` or as `colorCounties(10)` if the
+county SVG document was inlined and not a sub-document.
+
+This `colorCounties()` Javascript function would then find the state-level SVG document.
+It would then use XPath to query the polygons by their id attribute which we set to be the
+county name in the code above.
+
+We'll assume we have the data exported from R as a JSON in the HTML document and so is a Javascript
+variable that we can reference. Let's assume we can access a Javascript named list/associative array
+of colors for each county for that date. The names on the elements are the county names.
+We'll assume a Javascript function getCasesByDate() gets this list for us.
+
+Then we can 
+
++ get the SVG document associated with the CA count plot.
++ loop over the county names
++ find the polygon for that county
++ set its fill color to the value in the list.
+
+```
+function colorCounties(date)
+{
+	let cases = getCasesByDate(date);
+	let svg = document.getElementById('caCountyMap').getSVGDocument();
+	for(let k in cases) {
+	    let p = svg.getElementById(k);
+		p.style.fill = cases[k];
+	}
+}
+```
+
+
+We need to serialize the JSON to create the colors for the number of cases
+for each date/day for each count.
+See [mkCountCasesByDate.R](mkCountCasesByDate.R)
+
+Now we need to update the SVG count time series plots.
+We need to add the onclick attribute to each of the 285 points.
+Each of these needs to call
+`top.colorCounties(index)`
+where index is 0, 1, 2, ....
+
+Of course, we are now using the same SVG county plots for multiple HTML documents.
+So we need to ensure that the other HTML documents have a version of a `colorCounties()`
+Javascript function and it can do nothing so no errors occur.
+
 
 
 
