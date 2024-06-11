@@ -129,16 +129,18 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 
      + [Day 20](Lectures/Day20)
 	      + [Direct/Low-level Approach](Lectures/Day20/README.md)
-
+		     + Discusses generating the SVG directly from R using R graphics (including ggplot2)
+ 			   and then annotating them from R using XPath and XML manipulation.
+		  + [Stand-alone version of Animated Map](Lectures/Day20/AnimatedMap_standalone)
+		     + This directly inlines the SVG documents in the HTML.
+		  
 <!-- 
      + [Day 15](Lectures/Day15)
-
      + [Day 16](Lectures/Day16)
      + [Day 17](Lectures/Day17)
      + [Day 18](Lectures/Day18)
      + [Day 19](Lectures/Day19)
      + [Day 20](Lectures/Day20)
-
 
 mdList(sprintf("[Day %d](Lectures/Day%d)", 7:20, 7:20), "     + ")
 -->
