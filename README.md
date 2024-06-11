@@ -131,6 +131,7 @@ I will put code, notes, R sessions from live coding in class, etc. from the cour
 	      + [Direct/Low-level Approach](Lectures/Day20/README.md)
 		     + Discusses generating the SVG directly from R using R graphics (including ggplot2)
  			   and then annotating them from R using XPath and XML manipulation.
+          + [Annotating SVG plots - succinct](Lectures/Day20/svgAnnotation.md)
 		  + [Stand-alone version of Animated Map](Lectures/Day20/AnimatedMap_standalone)
 		     + This directly inlines the SVG documents in the HTML and avoids the 
 			   cross-origin security issue which we dealt with previously 
